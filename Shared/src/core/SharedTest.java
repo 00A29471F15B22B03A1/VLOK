@@ -1,5 +1,6 @@
+package core;
 
-public class Main {
+public class SharedTest {
 
     public static void main(String[] args) {
 
