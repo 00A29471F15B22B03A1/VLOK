@@ -1,6 +1,6 @@
 package core;
 
-public class ConnectRequestPacket {
+public class ConnectionRequestPacket {
 
     public String fullKey;
 

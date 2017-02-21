@@ -18,7 +18,16 @@ public class ServerMain {
 
             @Override
             public void received(Connection connection, Object o) {
-                System.out.println("received");
+                if (o instanceof ConnectionRequestPacket) {
+                    String fullKey = ((ConnectionRequestPacket) o).fullKey;
+
+                    System.out.println(fullKey);
+
+                    ConnectionResponsePacket responsePacket = new ConnectionResponsePacket();
+                    responsePacket.connectionSuccesfull = true;
+
+                    server.sendTCP(connection.getID(), responsePacket);
+                }
             }
         });
     }

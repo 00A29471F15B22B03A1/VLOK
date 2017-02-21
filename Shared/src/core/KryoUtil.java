@@ -22,6 +22,10 @@ public class KryoUtil {
         kryo.register(boolean.class);
         kryo.register(String.class);
         kryo.register(String[].class);
+
+        kryo.register(ConnectionRequestPacket.class);
+        kryo.register(ConnectionResponsePacket.class);
+
     }
 
 }

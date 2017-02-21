@@ -2,427 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e01d402a-2884-48e0-8bf3-1384370f7d8f" name="Default" comment="Added shared utils and packet classes">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/jars/production/asm-4.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/jars/production/jsonbeans-0.5.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/jars/production/kryo-2.20.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/jars/production/kryonet-2.21.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/jars/production/minlog-none-1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/jars/production/objenesis-1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/jars/production/onejar/kryonet-2.21-all.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/jars/production/reflectasm-1.07.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/asm-4.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/jsonbeans-0.5.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/kryo-debug-2.20.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/minlog-1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/objenesis-1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/reflectasm-1.07.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/resources/background.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/resources/tab.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/resources/titlebar.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/resources/titlebar_end.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Client_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/kryonet_2_21_all.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/core/NetworkClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/core/NetworkServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/core/ServerMain.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shared/src/core/ConnectRequestPacket.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shared/src/core/ConnectionResponsePacket.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shared/src/core/ErrorPacket.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shared/src/core/KryoUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shared/src/core/SharedTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chat/ChatClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chat/ChatServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chat/Network.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chatrmi/ChatRmiClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chatrmi/ChatRmiServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chatrmi/IChatFrame.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chatrmi/IPlayer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chatrmi/Network.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/position/Character.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/position/Network.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/position/PositionClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/position/PositionServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/license.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/project.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/Client.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/Connection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/EndPoint.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/FrameworkMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/JsonSerialization.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/KryoNetException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/KryoSerialization.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/Listener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/Serialization.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/Server.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/TcpConnection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/UdpConnection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/rmi/ObjectSpace.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/rmi/RemoteObject.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/rmi/TimeoutException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/util/InputStreamSender.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/util/TcpIdleSender.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/BufferTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/DiscoverHostTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/InputStreamSenderTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/JsonTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/KryoNetTestCase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/MultipleServerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/MultipleThreadTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/PingPongTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/PingTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/ReconnectTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/ReuseTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/UnregisteredClassTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/compress/DeflateTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/rmi/RmiTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/allclasses-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/allclasses-noframe.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/ClassResolver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/DefaultSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/Generics.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/Kryo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/KryoCopyable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/KryoException.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/KryoSerializable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/NotNull.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/ReferenceResolver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/Registration.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/Serializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/StreamFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/ClassResolver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/DefaultSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/Generics.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/Kryo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/KryoCopyable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/KryoException.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/KryoSerializable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/NotNull.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/ReferenceResolver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/Registration.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/Serializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/class-use/StreamFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/factories/PseudoSerializerFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/factories/ReflectionSerializerFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/factories/SerializerFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/factories/class-use/PseudoSerializerFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/factories/class-use/ReflectionSerializerFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/factories/class-use/SerializerFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/factories/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/factories/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/factories/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/factories/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/ByteBufferInput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/ByteBufferInputStream.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/ByteBufferOutput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/ByteBufferOutputStream.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/FastInput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/FastOutput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/Input.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/InputChunked.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/Output.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/OutputChunked.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/UnsafeInput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/UnsafeMemoryInput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/UnsafeMemoryOutput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/UnsafeOutput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/ByteBufferInput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/ByteBufferInputStream.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/ByteBufferOutput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/ByteBufferOutputStream.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/FastInput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/FastOutput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/Input.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/InputChunked.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/Output.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/OutputChunked.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/UnsafeInput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/UnsafeMemoryInput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/UnsafeMemoryOutput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/class-use/UnsafeOutput.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/io/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/AsmCacheFields.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/BeanSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/BlowfishSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/CollectionSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/CompatibleFieldSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.BooleanArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.ByteArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.CharArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.DoubleArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.FloatArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.IntArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.LongArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.ObjectArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.ShortArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.StringArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultArraySerializers.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.BigDecimalSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.BigIntegerSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.BooleanSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.ByteSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.CalendarSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.CharSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.ClassSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.CollectionsEmptyListSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.CollectionsEmptyMapSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.CollectionsEmptySetSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.CollectionsSingletonListSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.CollectionsSingletonMapSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.CollectionsSingletonSetSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.CurrencySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.DateSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.DoubleSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.EnumSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.EnumSetSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.FloatSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.IntSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.KryoSerializableSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.LongSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.ShortSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.StringBufferSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.StringBuilderSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.StringSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.TimeZoneSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.TreeMapSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.TreeSetSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.VoidSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DefaultSerializers.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/DeflateSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/FieldSerializer.CachedField.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/FieldSerializer.CachedFieldFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/FieldSerializer.Optional.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/FieldSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/JavaSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/MapSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/TaggedFieldSerializer.Tag.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/TaggedFieldSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/UnsafeCacheFields.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/AsmCacheFields.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/BeanSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/BlowfishSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/CollectionSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/CompatibleFieldSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.BooleanArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.ByteArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.CharArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.DoubleArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.FloatArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.IntArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.LongArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.ObjectArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.ShortArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.StringArraySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultArraySerializers.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.BigDecimalSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.BigIntegerSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.BooleanSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.ByteSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.CalendarSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.CharSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.ClassSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.CollectionsEmptyListSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.CollectionsEmptyMapSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.CollectionsEmptySetSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.CollectionsSingletonListSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.CollectionsSingletonMapSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.CollectionsSingletonSetSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.CurrencySerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.DateSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.DoubleSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.EnumSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.EnumSetSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.FloatSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.IntSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.KryoSerializableSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.LongSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.ShortSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.StringBufferSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.StringBuilderSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.StringSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.TimeZoneSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.TreeMapSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.TreeSetSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.VoidSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DefaultSerializers.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/DeflateSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/FieldSerializer.CachedField.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/FieldSerializer.CachedFieldFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/FieldSerializer.Optional.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/FieldSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/JavaSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/MapSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/TaggedFieldSerializer.Tag.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/TaggedFieldSerializer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/class-use/UnsafeCacheFields.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/serializers/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/DefaultClassResolver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/DefaultStreamFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/FastestStreamFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/IdentityMap.Entries.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/IdentityMap.Entry.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/IdentityMap.Keys.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/IdentityMap.Values.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/IdentityMap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/IdentityObjectIntMap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/IntArray.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/IntMap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/ListReferenceResolver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/MapReferenceResolver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/ObjectMap.Entries.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/ObjectMap.Entry.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/ObjectMap.Keys.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/ObjectMap.Values.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/ObjectMap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/UnsafeUtil.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/Util.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/DefaultClassResolver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/DefaultStreamFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/FastestStreamFactory.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/IdentityMap.Entries.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/IdentityMap.Entry.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/IdentityMap.Keys.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/IdentityMap.Values.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/IdentityMap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/IdentityObjectIntMap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/IntArray.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/IntMap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/ListReferenceResolver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/MapReferenceResolver.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/ObjectMap.Entries.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/ObjectMap.Entry.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/ObjectMap.Keys.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/ObjectMap.Values.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/ObjectMap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/UnsafeUtil.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/class-use/Util.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryo/util/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/Client.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/Connection.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/EndPoint.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/FrameworkMessage.DiscoverHost.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/FrameworkMessage.KeepAlive.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/FrameworkMessage.Ping.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/FrameworkMessage.RegisterTCP.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/FrameworkMessage.RegisterUDP.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/FrameworkMessage.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/JsonSerialization.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/KryoNetException.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/KryoSerialization.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/Listener.LagListener.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/Listener.QueuedListener.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/Listener.ReflectionListener.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/Listener.ThreadedListener.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/Listener.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/Serialization.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/Server.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/Client.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/Connection.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/EndPoint.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/FrameworkMessage.DiscoverHost.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/FrameworkMessage.KeepAlive.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/FrameworkMessage.Ping.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/FrameworkMessage.RegisterTCP.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/FrameworkMessage.RegisterUDP.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/FrameworkMessage.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/JsonSerialization.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/KryoNetException.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/KryoSerialization.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/Listener.LagListener.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/Listener.QueuedListener.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/Listener.ReflectionListener.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/Listener.ThreadedListener.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/Listener.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/Serialization.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/class-use/Server.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/ObjectSpace.InvokeMethod.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/ObjectSpace.InvokeMethodResult.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/ObjectSpace.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/RemoteObject.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/TimeoutException.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/class-use/ObjectSpace.InvokeMethod.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/class-use/ObjectSpace.InvokeMethodResult.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/class-use/ObjectSpace.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/class-use/RemoteObject.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/class-use/TimeoutException.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/rmi/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/util/InputStreamSender.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/util/TcpIdleSender.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/util/class-use/InputStreamSender.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/util/class-use/TcpIdleSender.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/util/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/util/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/util/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/kryonet/util/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/minlog/Log.Logger.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/minlog/Log.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/minlog/class-use/Log.Logger.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/minlog/class-use/Log.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/minlog/package-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/minlog/package-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/minlog/package-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/com/esotericsoftware/minlog/package-use.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/constant-values.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/deprecated-list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/help-doc.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-10.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-11.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-12.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-13.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-14.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-15.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-16.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-17.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-18.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-19.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-20.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-21.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-22.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-23.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-3.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-4.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-5.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-6.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-7.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-8.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index-files/index-9.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/overview-frame.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/overview-summary.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/overview-tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/package-list" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/serialized-form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/stylesheet.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/src/Main.java" afterPath="$PROJECT_DIR$/Client/src/core/ClientMain.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Shared/src/core/ConnectRequestPacket.java" afterPath="$PROJECT_DIR$/Shared/src/core/ConnectionRequestPacket.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/kryonet_2_21_all.xml" afterPath="$PROJECT_DIR$/.idea/libraries/kryonet_2_21_all.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Client.iml" afterPath="$PROJECT_DIR$/Client/Client.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Server.iml" afterPath="$PROJECT_DIR$/Server/Server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shared/Shared.iml" afterPath="$PROJECT_DIR$/Shared/Shared.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VLOK.iml" afterPath="$PROJECT_DIR$/VLOK.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/core/ClientMain.java" afterPath="$PROJECT_DIR$/Client/src/core/ClientMain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/core/ServerMain.java" afterPath="$PROJECT_DIR$/Server/src/core/ServerMain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shared/src/core/KryoUtil.java" afterPath="$PROJECT_DIR$/Shared/src/core/KryoUtil.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -432,28 +17,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/VLOK$ClientMain.coverage" NAME="ClientMain Coverage Results" MODIFIED="1487712344810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>core.*</FILTER>
+    </SUITE>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ClientMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/src/core/ClientMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NetworkClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/core/NetworkClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="211">
+              <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#467#829#0" expanded="true" />
+                <element signature="e#828#829#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -461,60 +45,10 @@
       <file leaf-file-name="ServerMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/core/ServerMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="312">
+              <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#383#384#0" expanded="true" />
-                <element signature="e#468#469#0" expanded="true" />
-                <element signature="e#559#560#0" expanded="true" />
-                <element signature="e#621#622#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectRequestPacket.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Shared/src/core/ConnectRequestPacket.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectionResponsePacket.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Shared/src/core/ConnectionResponsePacket.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ErrorPacket.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Shared/src/core/ErrorPacket.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KryoUtil.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Shared/src/core/KryoUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#319#320#0" expanded="true" />
-                <element signature="e#361#362#0" expanded="true" />
-                <element signature="e#422#423#0" expanded="true" />
-                <element signature="e#464#465#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -550,20 +84,19 @@
         <option value="$PROJECT_DIR$/Admin/src/core/AdminMain.java" />
         <option value="$PROJECT_DIR$/Server/src/core/NetworkServer.java" />
         <option value="$PROJECT_DIR$/Client/src/core/NetworkClient.java" />
-        <option value="$PROJECT_DIR$/Client/src/core/ClientMain.java" />
-        <option value="$PROJECT_DIR$/Server/src/core/ServerMain.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/ConnectionResponsePacket.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/ErrorPacket.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/ConnectRequestPacket.java" />
+        <option value="$PROJECT_DIR$/Server/src/core/ServerMain.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/KryoUtil.java" />
+        <option value="$PROJECT_DIR$/Client/src/core/ClientMain.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="y" value="-1" />
+    <option name="width" value="1366" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -585,7 +118,6 @@
     <panes>
       <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -726,12 +258,13 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/kryonet-2.21/jars/debug/onejar/kryonet-2.21-all.jar!/" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/kryonet-2.21/jars/production/onejar/kryonet-2.21-all.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -1021,25 +554,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26635513" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17708333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17642753" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1072,38 +605,85 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/Client/src/core/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Admin/src/core/AdminMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/core/NetworkServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+        <state relative-caret-position="78">
+          <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#467#829#0" expanded="true" />
+            <element signature="e#828#829#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/core/NetworkClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/core/ServerMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/ConnectionRequestPacket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/ConnectionResponsePacket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/ErrorPacket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/KryoUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Admin/src/core/AdminMain.java" />
     <entry file="file://$PROJECT_DIR$/Shared/src/core/SharedTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1112,39 +692,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/core/ClientMain.java">
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/ConnectionRequestPacket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/core/NetworkClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/core/ServerMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#383#384#0" expanded="true" />
-            <element signature="e#468#469#0" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shared/src/core/ConnectRequestPacket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="52">
           <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
           <folding />
         </state>
@@ -1152,7 +702,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Shared/src/core/ConnectionResponsePacket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="52">
           <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
           <folding />
         </state>
@@ -1160,7 +710,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Shared/src/core/ErrorPacket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="52">
           <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
           <folding />
         </state>
@@ -1170,20 +720,56 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="31" column="49" lean-forward="true" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/core/NetworkServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="21" column="16" lean-forward="false" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <folding>
+            <element signature="e#477#478#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Shared/src/core/KryoUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+        <state relative-caret-position="299">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#319#320#0" expanded="true" />
-            <element signature="e#361#362#0" expanded="true" />
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#464#465#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/core/NetworkClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/core/ServerMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/core/ClientMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#467#829#0" expanded="true" />
+            <element signature="e#828#829#0" expanded="true" />
           </folding>
         </state>
       </provider>
