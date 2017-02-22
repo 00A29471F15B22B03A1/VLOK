@@ -1,4 +1,6 @@
-package core.filesystem;
+package core.filesystem.caching;
+
+import core.filesystem.caching.CachedFile;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -12,7 +14,7 @@ public class FileCache {
 
     private long currentCacheSize = 0;
 
-    private Queue<CachedFile> cachedFiles;
+    private Queue<core.filesystem.caching.CachedFile> cachedFiles;
 
     public FileCache() {
         this.cachedFiles = new LinkedList<>();
@@ -23,7 +25,11 @@ public class FileCache {
      *
      * @param file to add to cache
      */
-    public void addFile(CachedFile file) {
+    public void addFile(core.filesystem.caching.CachedFile file) {
+        if (file.getByteSize() == 0) {
+            System.err.println("File " + file.getPath() + " has a size of 0");
+        }
+
         if (file.getByteSize() >= MAX_CACHE_SIZE) {
             System.err.println("File " + file.getPath() + " is bigger than cache size");
             return;
@@ -34,7 +40,7 @@ public class FileCache {
         currentCacheSize = getSize();
 
         while (currentCacheSize >= MAX_CACHE_SIZE) {
-            CachedFile removedFile = cachedFiles.remove();
+            core.filesystem.caching.CachedFile removedFile = cachedFiles.remove();
 
             currentCacheSize -= removedFile.getByteSize();
         }
@@ -48,7 +54,7 @@ public class FileCache {
     private long getSize() {
         long totalSize = 0;
 
-        for (CachedFile file : cachedFiles)
+        for (core.filesystem.caching.CachedFile file : cachedFiles)
             totalSize += file.getByteSize();
 
         return totalSize;

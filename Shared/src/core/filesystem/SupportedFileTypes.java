@@ -3,7 +3,7 @@ package core.filesystem;
 /**
  * Enum with all supported file types
  */
-public enum SupportedCacheFileTypes {
+public enum SupportedFileTypes {
 
     TXT,    //Text file
     PNG,    //Image
@@ -17,7 +17,7 @@ public enum SupportedCacheFileTypes {
     ODP;     //Open Presentation
 
     public static boolean isValidExtension(String extension) {
-        for (SupportedCacheFileTypes type : SupportedCacheFileTypes.values())
+        for (SupportedFileTypes type : SupportedFileTypes.values())
             if (type.toString().toLowerCase().equals(extension))
                 return true;
 

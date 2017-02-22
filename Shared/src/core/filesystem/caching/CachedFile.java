@@ -1,4 +1,4 @@
-package core.filesystem;
+package core.filesystem.caching;
 
 /**
  * Class to store a single cached file
