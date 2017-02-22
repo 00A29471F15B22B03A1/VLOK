@@ -17,6 +17,7 @@ public class ClientMain {
             @Override
             public void received(Connection connection, Object o) {
                 System.out.println("Received");
+
                 if (o instanceof ConnectionResponsePacket) {
                     System.out.println("Login: " + ((ConnectionResponsePacket) o).connectionSuccesfull);
                 }
