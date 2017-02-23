@@ -19,7 +19,7 @@ public class ClientMain {
                 System.out.println("Received");
 
                 if (o instanceof ConnectionResponsePacket) {
-                    System.out.println("Login: " + ((ConnectionResponsePacket) o).connectionSuccesfull);
+                    System.out.println("Login: " + ((ConnectionResponsePacket) o).connectionSuccessful);
                 }
             }
         });

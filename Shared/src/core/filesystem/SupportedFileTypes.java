@@ -14,8 +14,14 @@ public enum SupportedFileTypes {
     ODT,    //Open Document
     PPT,    //PowerPoint Presentation
     PPTX,   //PowerPoint Presentation
-    ODP;     //Open Presentation
+    ODP;    //Open Presentation
 
+    /**
+     * Checks if a file extension is supported
+     *
+     * @param extension of the file
+     * @return if extension is valid
+     */
     public static boolean isValidExtension(String extension) {
         for (SupportedFileTypes type : SupportedFileTypes.values())
             if (type.toString().toLowerCase().equals(extension))

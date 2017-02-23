@@ -2,6 +2,6 @@ package core;
 
 public class ConnectionResponsePacket {
 
-    public boolean connectionSuccesfull;
+    public boolean connectionSuccessful;
 
 }

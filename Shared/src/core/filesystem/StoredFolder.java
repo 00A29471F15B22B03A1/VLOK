@@ -26,25 +26,44 @@ public class StoredFolder extends StoredFile {
         return null;
     }
 
-    public StoredFile hasFile(String name) {
+    public StoredFile getFile(String name) {
         for (StoredFile f : containingFiles) {
             if (f.getName().equals(name))
                 return f;
+
         }
 
         return null;
     }
 
     public void addFile(StoredFile file) {
-        if (hasFile(file.getName()) != null) {
-            System.err.println("Folder " + getName() + " already has5= a file with name " + file.getName());
+        if (getFile(file.getName()) != null) {
+            System.err.println("Folder " + getName() + " already has a file with name " + file.getName());
             return;
         }
 
         containingFiles.add(file);
     }
 
-    public List<StoredFile> getContainingFiles() {
-        return containingFiles;
+    public void print(int layer) {
+        System.out.println(tabs(layer) + "└fo " + getName());
+
+        for (StoredFile f : containingFiles) {
+
+            if (f instanceof StoredFolder) {
+                ((StoredFolder) f).print(++layer);
+                continue;
+            }
+
+            System.out.println(tabs(layer) + "└fi " + f.getName());
+        }
+    }
+
+
+    private String tabs(int amount) {
+        String result = "";
+        for (int i = 0; i < amount; i++)
+            result += "\t";
+        return result;
     }
 }

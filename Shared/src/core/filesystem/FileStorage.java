@@ -7,29 +7,30 @@ public class FileStorage {
     public FileStorage() {
         rootFolder = new StoredFolder("root");
 
-        addFolder("test/test2/pindakaas");
-        addFolder("test/test2/pindakaas");
+        addFile("test/test2/pindakaas/");
+        addFile("twat/twinkies.txt");
 
-        for (int i = 0; i < rootFolder.getContainingFiles().size(); i++) {
+        //rootFolder.getSubfolder("test").addFile(new StoredFile("hehe.txt"));
+        //rootFolder.getSubfolder("test").getSubfolder("test2").addFile(new StoredFile("hehe2.png"));
 
-            StoredFile file = rootFolder.getContainingFiles().get(i);
-            System.out.println(file.getName());
-
-            if (file instanceof StoredFolder) {
-                StoredFolder folder = (StoredFolder) file;
-
-                for (int j = 0; j < folder.getContainingFiles().size(); j++) {
-                    System.out.println("   -" + folder.getContainingFiles().get(j).getName());
-                }
-            }
-        }
+        rootFolder.print(0);
     }
 
-    public void addFolder(String path) {
+    //TODO: fix file and folder difference
+    public void addFile(String path) {
         String[] splitPath = path.split("/");
+        String fileName = splitPath[splitPath.length - 1];
+
+        int count = splitPath.length - 1;
+
+        if (path.endsWith("/"))
+            count++;
+
         StoredFolder currentFolder = rootFolder;
 
-        for (String f : splitPath) {
+        for (int i = 0; i < count; i++) {
+
+            String f = splitPath[i];
 
             StoredFolder subfolder = currentFolder.getSubfolder(f);
 
@@ -43,5 +44,8 @@ public class FileStorage {
             }
 
         }
+
+        if (!path.endsWith("/"))
+            currentFolder.addFile(new StoredFile(fileName));
     }
 }

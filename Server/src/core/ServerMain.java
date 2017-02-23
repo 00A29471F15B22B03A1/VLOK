@@ -24,7 +24,7 @@ public class ServerMain {
                     System.out.println(fullKey);
 
                     ConnectionResponsePacket responsePacket = new ConnectionResponsePacket();
-                    responsePacket.connectionSuccesfull = true;
+                    responsePacket.connectionSuccessful = true;
 
                     server.sendTCP(connection.getID(), responsePacket);
                 }
