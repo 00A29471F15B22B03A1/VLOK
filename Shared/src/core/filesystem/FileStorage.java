@@ -6,10 +6,9 @@ public class FileStorage {
 
     public FileStorage() {
         rootFolder = new StoredFolder("root");
-        rootFolder.getContainingFiles().add(new StoredFile("Test.txt"));
-        StoredFolder f = new StoredFolder("test");
-        f.getContainingFiles().add(new StoredFile("test2.png"));
-        rootFolder.getContainingFiles().add(f);
+
+        addFolder("test/test2/pindakaas");
+        addFolder("test/test2/pindakaas");
 
         for (int i = 0; i < rootFolder.getContainingFiles().size(); i++) {
 
@@ -23,6 +22,26 @@ public class FileStorage {
                     System.out.println("   -" + folder.getContainingFiles().get(j).getName());
                 }
             }
+        }
+    }
+
+    public void addFolder(String path) {
+        String[] splitPath = path.split("/");
+        StoredFolder currentFolder = rootFolder;
+
+        for (String f : splitPath) {
+
+            StoredFolder subfolder = currentFolder.getSubfolder(f);
+
+            if (subfolder == null) {
+                subfolder = new StoredFolder(f);
+                currentFolder.addFile(subfolder);
+                currentFolder = subfolder;
+
+            } else {
+                currentFolder = subfolder;
+            }
+
         }
     }
 }

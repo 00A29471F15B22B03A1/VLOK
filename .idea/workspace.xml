@@ -1,75 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e01d402a-2884-48e0-8bf3-1384370f7d8f" name="Default" comment="Added tests for shared module and removed kryonet javadocs">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jimfs_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shared/src/core/filesystem/FileStorage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shared/src/core/filesystem/FileSystemLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shared/src/core/filesystem/StoredFile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shared/src/core/filesystem/StoredFolder.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chat/ChatClient.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chat/ChatServer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chat/Network.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chatrmi/ChatRmiClient.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chatrmi/ChatRmiServer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chatrmi/IChatFrame.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chatrmi/IPlayer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/chatrmi/Network.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/position/Character.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/position/Network.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/position/PositionClient.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/examples/com/esotericsoftware/kryonet/examples/position/PositionServer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/asm-4.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/jsonbeans-0.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/kryo-debug-2.20.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/minlog-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/objenesis-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/lib/reflectasm-1.07.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/license.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/project.yaml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/Client.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/Connection.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/EndPoint.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/FrameworkMessage.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/JsonSerialization.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/KryoNetException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/KryoSerialization.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/Listener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/Serialization.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/Server.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/TcpConnection.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/UdpConnection.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/rmi/ObjectSpace.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/rmi/RemoteObject.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/rmi/TimeoutException.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/util/InputStreamSender.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/src/com/esotericsoftware/kryonet/util/TcpIdleSender.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/BufferTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/DiscoverHostTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/InputStreamSenderTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/JsonTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/KryoNetTestCase.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/MultipleServerTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/MultipleThreadTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/PingPongTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/PingTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/ReconnectTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/ReuseTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/UnregisteredClassTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/compress/DeflateTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/java/test/com/esotericsoftware/kryonet/rmi/RmiTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/package-list" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/resources/background.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/resources/tab.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/resources/titlebar.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/resources/titlebar_end.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/kryonet-2.21/javadoc/stylesheet.css" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Shared/src/core/filesystem/CachedFile.java" afterPath="$PROJECT_DIR$/Shared/src/core/filesystem/caching/CachedFile.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Shared/src/core/filesystem/FileCache.java" afterPath="$PROJECT_DIR$/Shared/src/core/filesystem/caching/FileCache.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Shared/src/core/filesystem/SupportedCacheFileTypes.java" afterPath="$PROJECT_DIR$/Shared/src/core/filesystem/SupportedFileTypes.java" />
+    <list default="true" id="e01d402a-2884-48e0-8bf3-1384370f7d8f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shared/src/core/SharedTest.java" afterPath="$PROJECT_DIR$/Shared/src/core/SharedTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shared/src/core/filesystem/FileStorage.java" afterPath="$PROJECT_DIR$/Shared/src/core/filesystem/FileStorage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shared/src/core/filesystem/StoredFolder.java" afterPath="$PROJECT_DIR$/Shared/src/core/filesystem/StoredFolder.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -89,7 +24,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="CachedFile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/caching/CachedFile.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -100,15 +35,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoredFolder.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StoredFolder.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/StoredFolder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="637">
+              <caret line="39" column="70" lean-forward="false" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#335#336#0" expanded="true" />
-                <element signature="e#373#374#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,20 +52,29 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#393#394#0" expanded="false" />
+                <element signature="e#446#447#0" expanded="false" />
+                <element signature="e#1639#1640#0" expanded="false" />
+                <element signature="e#1674#1675#0" expanded="false" />
+                <element signature="e#1715#1716#0" expanded="false" />
+                <element signature="e#1754#1755#0" expanded="false" />
+                <element signature="e#1788#1789#0" expanded="false" />
+                <element signature="e#1829#1830#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoredFile.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StoredFile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/StoredFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+            <state relative-caret-position="187">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
                 <element signature="e#114#115#0" expanded="true" />
                 <element signature="e#146#147#0" expanded="true" />
-                <element signature="e#177#178#0" expanded="true" />
                 <element signature="e#204#205#0" expanded="true" />
               </folding>
             </state>
@@ -152,8 +94,8 @@
       <file leaf-file-name="FileStorage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/FileStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="44" lean-forward="false" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+            <state relative-caret-position="307">
+              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -162,8 +104,8 @@
       <file leaf-file-name="SharedTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shared/src/core/SharedTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="12" column="42" lean-forward="false" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -217,13 +159,13 @@
         <option value="$PROJECT_DIR$/Shared/src/core/filesystem/caching/Folder.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/filesystem/Files.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/filesystem/FileSystem.java" />
-        <option value="$PROJECT_DIR$/Shared/src/core/SharedTest.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/filesystem/FileCache.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/filesystem/caching/FileCache.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/filesystem/StoredFie.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/filesystem/StoredFile.java" />
-        <option value="$PROJECT_DIR$/Shared/src/core/filesystem/StoredFolder.java" />
+        <option value="$PROJECT_DIR$/Shared/src/core/SharedTest.java" />
         <option value="$PROJECT_DIR$/Shared/src/core/filesystem/FileStorage.java" />
+        <option value="$PROJECT_DIR$/Shared/src/core/filesystem/StoredFolder.java" />
       </list>
     </option>
   </component>
@@ -251,9 +193,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -438,6 +379,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -759,17 +701,24 @@
       <option name="project" value="LOCAL" />
       <updated>1487795413636</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added tests for shared module and removed kryonet javadocs">
+      <created>1487797303648</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1487797303648</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -782,7 +731,6 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17604166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -794,6 +742,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -804,12 +753,21 @@
     <MESSAGE value="Added shared utils and packet classes" />
     <MESSAGE value="Added comments to main files and added basic file caching" />
     <MESSAGE value="Added tests for shared module and removed kryonet javadocs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tests for shared module and removed kryonet javadocs" />
+    <MESSAGE value="added basic filesystem fuctionallity&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added basic filesystem fuctionallity&#10;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Shared/src/core/filesystem/FileStorage.java</url>
+          <line>9</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -818,6 +776,80 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/caching/CachedFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/StoredFolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/caching/FileCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#393#394#0" expanded="false" />
+            <element signature="e#446#447#0" expanded="false" />
+            <element signature="e#1639#1640#0" expanded="false" />
+            <element signature="e#1674#1675#0" expanded="false" />
+            <element signature="e#1715#1716#0" expanded="false" />
+            <element signature="e#1754#1755#0" expanded="false" />
+            <element signature="e#1788#1789#0" expanded="false" />
+            <element signature="e#1829#1830#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/StoredFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#114#115#0" expanded="true" />
+            <element signature="e#146#147#0" expanded="true" />
+            <element signature="e#204#205#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/FileSystemLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/FileStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="44" lean-forward="false" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/SharedTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/core/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -928,7 +960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,51 +1053,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/caching/Folder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/jimfs-1.1.jar!/com/google/common/jimfs/Configuration.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/jimfs-1.1.jar!/com/google/common/jimfs/JimfsFileSystem.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="35" column="27" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/caching/Folder.java" />
+    <entry file="jar://$PROJECT_DIR$/libs/jimfs-1.1.jar!/com/google/common/jimfs/Configuration.class" />
+    <entry file="jar://$PROJECT_DIR$/libs/jimfs-1.1.jar!/com/google/common/jimfs/JimfsFileSystem.class" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/nio/file/FileSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
           <caret line="97" column="30" lean-forward="true" selection-start-line="97" selection-start-column="30" selection-end-line="97" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/jimfs-1.1.jar!/com/google/common/jimfs/Jimfs.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/jimfs-1.1.jar!/com/google/common/jimfs/Jimfs.class" />
     <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/FileSystemLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/caching/FileCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#393#394#0" expanded="false" />
+            <element signature="e#446#447#0" expanded="false" />
+            <element signature="e#1639#1640#0" expanded="false" />
+            <element signature="e#1674#1675#0" expanded="false" />
+            <element signature="e#1715#1716#0" expanded="false" />
+            <element signature="e#1754#1755#0" expanded="false" />
+            <element signature="e#1788#1789#0" expanded="false" />
+            <element signature="e#1829#1830#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1078,30 +1098,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/caching/FileCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/StoredFolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Shared/src/core/SharedTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="204">
+          <caret line="12" column="42" lean-forward="false" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1110,21 +1110,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/FileStorage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="44" lean-forward="false" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+        <state relative-caret-position="307">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/StoredFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
             <element signature="e#114#115#0" expanded="true" />
             <element signature="e#146#147#0" expanded="true" />
-            <element signature="e#177#178#0" expanded="true" />
             <element signature="e#204#205#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shared/src/core/filesystem/StoredFolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="39" column="70" lean-forward="false" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
