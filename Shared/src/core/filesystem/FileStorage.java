@@ -2,10 +2,10 @@ package core.filesystem;
 
 public class FileStorage {
 
-    private StoredFolder rootFolder;
+    public StoredFolder rootFolder;
 
     public FileStorage() {
-        rootFolder = new StoredFolder("root");
+        rootFolder = new StoredFolder("root", "");
 
         //addFile("test/test2/pindakaas/");
         //addFile("twat/twinkies.txt");
@@ -15,40 +15,28 @@ public class FileStorage {
 
     }
 
-    public void print() {
-        rootFolder.print(0);
-    }
-
-    //TODO: fix file and folder difference
-    public void addFile(String path) {
+    public StoredFolder addFolder(String path) {
         String[] splitPath = path.split("/");
-        String fileName = splitPath[splitPath.length - 1];
 
-        int count = splitPath.length - 1;
+        StoredFolder currentDir = rootFolder;
 
-        if (path.endsWith("/"))
-            count++;
+        for (String f : splitPath) {
+            StoredFolder subFolder = currentDir.getSubfolder(f);
 
-        StoredFolder currentFolder = rootFolder;
-
-        for (int i = 0; i < count; i++) {
-
-            String f = splitPath[i];
-
-            StoredFolder subfolder = currentFolder.getSubfolder(f);
-
-            if (subfolder == null) {
-                subfolder = new StoredFolder(f);
-                currentFolder.addFile(subfolder);
-                currentFolder = subfolder;
-
+            if (subFolder == null) {
+                StoredFolder newFolder = new StoredFolder(f, currentDir.getPath());
+                currentDir.addFile(newFolder);
+                currentDir = newFolder;
             } else {
-                currentFolder = subfolder;
+                currentDir = subFolder;
             }
-
         }
 
-        if (!path.endsWith("/"))
-            currentFolder.addFile(new StoredFile(fileName));
+        return currentDir;
+    }
+
+    public void addFile(String folder, String file) {
+        StoredFolder f = addFolder(folder);
+        f.addFile(new StoredFile(file, folder));
     }
 }

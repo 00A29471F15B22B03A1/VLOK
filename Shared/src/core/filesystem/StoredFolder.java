@@ -7,8 +7,8 @@ public class StoredFolder extends StoredFile {
 
     private List<StoredFile> containingFiles;
 
-    public StoredFolder(String name) {
-        super(name);
+    public StoredFolder(String name, String path) {
+        super(name, path);
 
         containingFiles = new ArrayList<>();
     }
@@ -45,25 +45,7 @@ public class StoredFolder extends StoredFile {
         containingFiles.add(file);
     }
 
-    public void print(int layer) {
-        System.out.println(tabs(layer) + "└fo " + getName());
-
-        for (StoredFile f : containingFiles) {
-
-            if (f instanceof StoredFolder) {
-                ((StoredFolder) f).print(++layer);
-                continue;
-            }
-
-            System.out.println(tabs(layer) + "└fi " + f.getName());
-        }
-    }
-
-
-    private String tabs(int amount) {
-        String result = "";
-        for (int i = 0; i < amount; i++)
-            result += "\t";
-        return result;
+    public List<StoredFile> getContainingFiles() {
+        return containingFiles;
     }
 }

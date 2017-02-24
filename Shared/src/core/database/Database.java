@@ -59,28 +59,6 @@ public class Database {
         return null;
     }
 
-    public String getPath(String fileName) {
-        String sql = "SELECT path FROM files WHERE name LIKE ?";
-
-        try {
-            PreparedStatement pstmt = connection.prepareStatement(sql);
-
-            pstmt.setString(1, fileName);
-
-            ResultSet rs = pstmt.executeQuery();
-
-            String path = rs.getString("path");
-
-            rs.close();
-
-            return path;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
     public void close() {
         try {
             connection.close();

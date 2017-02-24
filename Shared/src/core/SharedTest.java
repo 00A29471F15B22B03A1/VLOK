@@ -19,13 +19,8 @@ public class SharedTest {
 
         Map<String, String> files = db.getFiles();
 
-        for (Map.Entry<String, String> entry : files.entrySet()) {
-
-            fileStorage.addFile(entry.getValue());
-
-        }
-
-        fileStorage.print();
+        for (Map.Entry<String, String> entry : files.entrySet())
+            fileStorage.addFile(entry.getValue(), entry.getKey());
 
         db.close();
     }
@@ -44,7 +39,7 @@ public class SharedTest {
             fileCache.addFile(new core.filesystem.caching.CachedFile("file " + i, testData));
 
         System.out.println("FileCache Test: " + (fileCache.getFileAmount() == 100));
-        System.out.println("FileCache Test: " + (fileCache.getCurrentCacheSize() == 100 * 100));
+        System.out.println("FileCache Test: " + (fileCache.getCurrentCacheSize() == 100 * testData.length));
 
     }
 
