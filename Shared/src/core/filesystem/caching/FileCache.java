@@ -1,7 +1,5 @@
 package core.filesystem.caching;
 
-import core.filesystem.caching.CachedFile;
-
 import java.util.LinkedList;
 import java.util.Queue;
 

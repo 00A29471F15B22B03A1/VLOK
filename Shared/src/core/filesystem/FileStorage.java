@@ -7,12 +7,15 @@ public class FileStorage {
     public FileStorage() {
         rootFolder = new StoredFolder("root");
 
-        addFile("test/test2/pindakaas/");
-        addFile("twat/twinkies.txt");
+        //addFile("test/test2/pindakaas/");
+        //addFile("twat/twinkies.txt");
 
         //rootFolder.getSubfolder("test").addFile(new StoredFile("hehe.txt"));
         //rootFolder.getSubfolder("test").getSubfolder("test2").addFile(new StoredFile("hehe2.png"));
 
+    }
+
+    public void print() {
         rootFolder.print(0);
     }
 

@@ -1,8 +1,11 @@
 package core;
 
-import core.filesystem.caching.FileCache;
+import core.database.Database;
 import core.filesystem.FileStorage;
 import core.filesystem.SupportedFileTypes;
+import core.filesystem.caching.FileCache;
+
+import java.util.Map;
 
 public class SharedTest {
 
@@ -11,6 +14,20 @@ public class SharedTest {
         supportedFileTest();
 
         FileStorage fileStorage = new FileStorage();
+
+        Database db = new Database("test.sqlite");
+
+        Map<String, String> files = db.getFiles();
+
+        for (Map.Entry<String, String> entry : files.entrySet()) {
+
+            fileStorage.addFile(entry.getValue());
+
+        }
+
+        fileStorage.print();
+
+        db.close();
     }
 
     private static void supportedFileTest() {
