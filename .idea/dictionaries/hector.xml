@@ -3,6 +3,9 @@
     <words>
       <w>inet</w>
       <w>pstmt</w>
+      <w>sqlite</w>
+      <w>subfile</w>
+      <w>treeview</w>
     </words>
   </dictionary>
 </component>

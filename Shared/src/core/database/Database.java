@@ -4,6 +4,9 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class to communicate with the database file
+ */
 public class Database {
 
     private Connection connection;
