@@ -3,6 +3,8 @@ package core;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Server;
+import core.packets.FileCompletedPacket;
+import core.packets.FileUploadPacket;
 
 /**
  * Class for all KryoNet utilities
@@ -41,6 +43,10 @@ public class KryoUtil {
         kryo.register(boolean.class);
         kryo.register(String.class);
         kryo.register(String[].class);
+        kryo.register(byte[].class);
+
+        kryo.register(FileUploadPacket.class);
+        kryo.register(FileCompletedPacket.class);
     }
 
 }

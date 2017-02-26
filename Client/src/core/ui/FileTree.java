@@ -1,12 +1,11 @@
 package core.ui;
 
-import core.database.Database;
+import core.database.FileDatabase;
 import core.filesystem.FileStorage;
 import core.filesystem.StoredFile;
 import core.filesystem.StoredFolder;
 
 import javax.swing.*;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.util.Map;
@@ -31,15 +30,6 @@ public class FileTree extends JPanel {
         JScrollPane scrollpane = new JScrollPane();
         scrollpane.getViewport().add(tree);
         add(BorderLayout.CENTER, scrollpane);
-    }
-
-    /**
-     * Adds a listener to the treeview
-     *
-     * @param listener to add
-     */
-    public void addActionListener(TreeSelectionListener listener) {
-        tree.addTreeSelectionListener(listener);
     }
 
     /**
@@ -70,13 +60,11 @@ public class FileTree extends JPanel {
         }
 
         JFrame frame = new JFrame("FileTree");
-        frame.setForeground(Color.black);
-        frame.setBackground(Color.lightGray);
         Container cp = frame.getContentPane();
 
         FileStorage fileStorage = new FileStorage();
 
-        Database db = new Database("test.sqlite");
+        FileDatabase db = new FileDatabase("files.sqlite");
 
         Map<String, String> files = db.getFiles();
 

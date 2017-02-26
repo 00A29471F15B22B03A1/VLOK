@@ -13,7 +13,7 @@ public class NetworkServer {
      * Creates a new server instance and registers serializable classes
      */
     public NetworkServer() {
-        server = new Server(60000, 60000);
+        server = new Server(60000000, 60000000);
         server.start();
         KryoUtil.registerServerClass(server);
     }

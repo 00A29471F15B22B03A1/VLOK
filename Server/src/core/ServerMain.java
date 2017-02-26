@@ -2,6 +2,16 @@ package core;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import core.database.FileDatabase;
+import core.filesystem.StoredFile;
+import core.packets.FileCompletedPacket;
+import core.packets.FileUploadPacket;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServerMain {
 
@@ -10,26 +20,73 @@ public class ServerMain {
 
         server.start();
 
+        FileDatabase fileDatabase = new FileDatabase("files.sqlite");
+
+        List<byte[]> currentReceivingFile = new ArrayList<>();
+
         server.addListener(new Listener() {
             @Override
             public void connected(Connection connection) {
-                System.out.println(connection.getID() + " connected");
+                System.out.println("Connected " + connection.getRemoteAddressTCP());
             }
 
             @Override
             public void received(Connection connection, Object o) {
-                if (o instanceof ConnectionRequestPacket) {
-                    String fullKey = ((ConnectionRequestPacket) o).fullKey;
+                if (o instanceof FileUploadPacket) {
+                    FileUploadPacket packet = (FileUploadPacket) o;
+                    System.out.println("Received file: " + packet.name + " path: " + packet.path);
 
-                    System.out.println(fullKey);
+                    currentReceivingFile.add(packet.data);
+                } else if (o instanceof FileCompletedPacket) {
+                    FileCompletedPacket packet = (FileCompletedPacket) o;
 
-                    ConnectionResponsePacket responsePacket = new ConnectionResponsePacket();
-                    responsePacket.connectionSuccessful = true;
+                    System.out.println("Fully received " + packet.name);
 
-                    server.sendTCP(connection.getID(), responsePacket);
+                    byte[] fullData = storeInByteArray(currentReceivingFile);
+
+                    fileDatabase.addFile(new StoredFile(packet.name, packet.path));
+                    storeFile(packet.name.replaceAll("'", ""), packet.path, fullData);
+
+                    currentReceivingFile.clear();
                 }
             }
         });
+    }
+
+    private static byte[] storeInByteArray(List<byte[]> data) {
+        int byteLength = 0;
+        for (byte[] array : data)
+            byteLength += array.length;
+
+        byte[] fullData = new byte[byteLength];
+
+        int bytePointer = 0;
+        for (byte[] array : data)
+            for (byte b : array) {
+                fullData[bytePointer++] = b;
+            }
+
+        return fullData;
+    }
+
+    public static void storeFile(String name, String path, byte[] data) {
+        try {
+            String fullPath = "storage/" + path + "/" + name;
+
+            File folder = new File("storage/" + path);
+            folder.mkdirs();
+
+            File file = new File(fullPath);
+
+            if (!file.exists())
+                file.createNewFile();
+
+            FileOutputStream fos = new FileOutputStream(fullPath);
+            fos.write(data);
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

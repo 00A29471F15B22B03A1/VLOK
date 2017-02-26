@@ -14,6 +14,9 @@ public class FileStorage {
         StoredFolder currentDir = rootFolder;
 
         for (String f : splitPath) {
+            if (f.isEmpty())
+                continue;
+
             StoredFolder subFolder = currentDir.getSubfolder(f);
 
             if (subFolder == null) {

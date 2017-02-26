@@ -2,6 +2,7 @@
   <dictionary name="hecto">
     <words>
       <w>docx</w>
+      <w>jdbc</w>
       <w>kryonet</w>
       <w>pptx</w>
       <w>scrollpane</w>

@@ -4,7 +4,8 @@
     <root id="archive" name="Client.jar">
       <element id="module-output" name="Client" />
       <element id="module-output" name="Shared" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/kryonet-2.21/jars/debug/onejar/kryonet-2.21-all.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/sqlite-jdbc-3.7.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/kryonet-2.21/jars/production/onejar/kryonet-2.21-all.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

@@ -1,5 +1,7 @@
 package core.database;
 
+import core.filesystem.StoredFile;
+
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,14 +9,14 @@ import java.util.Map;
 /**
  * Class to communicate with the database file
  */
-public class Database {
+public class FileDatabase {
 
     private Connection connection;
 
-    public Database(String file) {
+    public FileDatabase(String databaseFile) {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:" + file);
+            connection = DriverManager.getConnection("jdbc:sqlite:" + databaseFile);
             System.out.println("Opened database successfully");
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -33,6 +35,10 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addFile(StoredFile file) {
+        execute("INSERT INTO files(name, path) VALUES ('" + file.getName() + "', '" + file.getPath() + "');");
     }
 
     public Map<String, String> getFiles() {
