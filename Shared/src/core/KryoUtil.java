@@ -32,7 +32,6 @@ public class KryoUtil {
         register(client.getKryo());
     }
 
-
     /**
      * Generic function for registering serializable classes
      *

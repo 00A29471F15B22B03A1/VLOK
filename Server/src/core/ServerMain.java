@@ -11,7 +11,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ServerMain {
 
@@ -22,12 +24,19 @@ public class ServerMain {
 
         FileDatabase fileDatabase = new FileDatabase("files.sqlite");
 
-        List<byte[]> currentReceivingFile = new ArrayList<>();
+        Map<Connection, List<byte[]>> receivingFiles = new HashMap<>();
 
         server.addListener(new Listener() {
             @Override
             public void connected(Connection connection) {
                 System.out.println("Connected " + connection.getRemoteAddressTCP());
+                receivingFiles.put(connection, new ArrayList<>());
+            }
+
+            @Override
+            public void disconnected(Connection connection) {
+                System.out.println("Disconnected " + connection.getID());
+                receivingFiles.remove(connection);
             }
 
             @Override
@@ -36,18 +45,18 @@ public class ServerMain {
                     FileUploadPacket packet = (FileUploadPacket) o;
                     System.out.println("Received file: " + packet.name + " path: " + packet.path);
 
-                    currentReceivingFile.add(packet.data);
+                    receivingFiles.get(connection).add(packet.data);
                 } else if (o instanceof FileCompletedPacket) {
                     FileCompletedPacket packet = (FileCompletedPacket) o;
 
                     System.out.println("Fully received " + packet.name);
 
-                    byte[] fullData = storeInByteArray(currentReceivingFile);
+                    byte[] fullData = storeInByteArray(receivingFiles.get(connection));
 
                     fileDatabase.addFile(new StoredFile(packet.name, packet.path));
                     storeFile(packet.name.replaceAll("'", ""), packet.path, fullData);
 
-                    currentReceivingFile.clear();
+                    receivingFiles.remove(connection);
                 }
             }
         });
