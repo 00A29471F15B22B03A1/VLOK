@@ -4,7 +4,10 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Server;
 import core.packets.FileCompletedPacket;
+import core.packets.FileStructurePacket;
 import core.packets.FileUploadPacket;
+
+import java.util.Map;
 
 /**
  * Class for all KryoNet utilities
@@ -43,9 +46,11 @@ public class KryoUtil {
         kryo.register(String.class);
         kryo.register(String[].class);
         kryo.register(byte[].class);
+        kryo.register(Map.class);
 
         kryo.register(FileUploadPacket.class);
         kryo.register(FileCompletedPacket.class);
+        kryo.register(FileStructurePacket.class);
     }
 
 }

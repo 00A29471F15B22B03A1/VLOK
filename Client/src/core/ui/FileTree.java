@@ -1,15 +1,16 @@
 package core.ui;
 
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
 import core.NetworkClient;
-import core.database.FileDatabase;
 import core.filesystem.FileStorage;
 import core.filesystem.StoredFile;
 import core.filesystem.StoredFolder;
+import core.packets.FileStructurePacket;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
-import java.util.Map;
 
 /**
  * Class for showing a filesystem in a tree view
@@ -85,21 +86,22 @@ public class FileTree extends JPanel {
         }
 
         client = new NetworkClient();
-        client.connect("192.168.1.27");
+        client.connect("192.168.1.18");
 
         JFrame frame = new JFrame("FileTree");
         Container cp = frame.getContentPane();
 
-        fileStorage = new FileStorage();
+        client.addListener(new Listener() {
+            @Override
+            public void received(Connection connection, Object o) {
+                System.out.println(o);
+                if (o instanceof FileStructurePacket) {
+                    fileStorage = new FileStorage();
+                    cp.add(new FileTree(fileStorage.rootFolder));
+                }
+            }
+        });
 
-        FileDatabase db = new FileDatabase("files.sqlite");
-
-        Map<String, String> files = db.getFiles();
-
-        for (Map.Entry<String, String> entry : files.entrySet())
-            fileStorage.addFile(entry.getValue(), entry.getKey());
-
-        cp.add(new FileTree(fileStorage.rootFolder));
 
         frame.pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

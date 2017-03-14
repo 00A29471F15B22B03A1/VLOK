@@ -7,6 +7,7 @@ import core.filesystem.SupportedFileTypes;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
+import java.util.Arrays;
 
 public class ClientMain {
 
@@ -46,7 +47,11 @@ public class ClientMain {
             if (returnValue == JFileChooser.APPROVE_OPTION) {
                 File[] files = chooser.getSelectedFiles();
 
+                System.out.println("Selected files " + Arrays.toString(files));
+
                 String path = JOptionPane.showInputDialog("Please gimme path:");
+
+                System.out.println("Selected path " + path);
 
                 FileUploader.sendFiles(path, files, client);
 

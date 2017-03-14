@@ -1,5 +1,6 @@
-package core.database;
+package core;
 
+import core.filesystem.FileStorage;
 import core.filesystem.StoredFile;
 
 import java.sql.*;
@@ -9,14 +10,14 @@ import java.util.Map;
 /**
  * Class to communicate with the database file
  */
-public class FileDatabase {
+public final class FileDatabase {
 
-    private Connection connection;
+    private static Connection connection;
 
-    public FileDatabase(String databaseFile) {
+    static {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:" + databaseFile);
+            connection = DriverManager.getConnection("jdbc:sqlite:" + "files.sqlite");
             System.out.println("Opened database successfully");
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -25,7 +26,7 @@ public class FileDatabase {
 
     }
 
-    public void execute(String query) {
+    public static void execute(String query) {
         try {
             Statement statement = connection.createStatement();
 
@@ -37,11 +38,15 @@ public class FileDatabase {
         }
     }
 
-    public void addFile(StoredFile file) {
+    public static void removeFile(String filename) {
+        execute("REMOVE FROM files WHERE name = " + filename);
+    }
+
+    public static void addFile(StoredFile file) {
         execute("INSERT INTO files(name, path) VALUES ('" + file.getName() + "', '" + file.getPath() + "');");
     }
 
-    public Map<String, String> getFiles() {
+    public static Map<String, String> getFiles() {
         String sql = "SELECT * FROM files";
 
         try {
@@ -68,7 +73,18 @@ public class FileDatabase {
         return null;
     }
 
-    public void close() {
+    public static FileStorage getFileStorage() {
+        Map<String, String> files = getFiles();
+
+        FileStorage fileStorage = new FileStorage();
+
+        for (Map.Entry<String, String> f : files.entrySet())
+            fileStorage.addFile(f.getValue(), f.getKey());
+
+        return fileStorage;
+    }
+
+    public static void close() {
         try {
             connection.close();
         } catch (SQLException e) {

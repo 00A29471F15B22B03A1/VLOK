@@ -12,7 +12,7 @@ public class FileCache {
 
     private long currentCacheSize = 0;
 
-    private Queue<core.filesystem.caching.CachedFile> cachedFiles;
+    private Queue<CachedFile> cachedFiles;
 
     public FileCache() {
         this.cachedFiles = new LinkedList<>();
@@ -23,7 +23,7 @@ public class FileCache {
      *
      * @param file to add to cache
      */
-    public void addFile(core.filesystem.caching.CachedFile file) {
+    public void addFile(CachedFile file) {
         if (file.getByteSize() == 0) {
             System.err.println("File " + file.getPath() + " has a size of 0");
         }
@@ -38,7 +38,7 @@ public class FileCache {
         currentCacheSize = getSize();
 
         while (currentCacheSize >= MAX_CACHE_SIZE) {
-            core.filesystem.caching.CachedFile removedFile = cachedFiles.remove();
+            CachedFile removedFile = cachedFiles.remove();
 
             currentCacheSize -= removedFile.getByteSize();
         }
@@ -52,7 +52,7 @@ public class FileCache {
     private long getSize() {
         long totalSize = 0;
 
-        for (core.filesystem.caching.CachedFile file : cachedFiles)
+        for (CachedFile file : cachedFiles)
             totalSize += file.getByteSize();
 
         return totalSize;
@@ -65,10 +65,19 @@ public class FileCache {
         cachedFiles.clear();
     }
 
+    /**
+     * Gets the total size of cache
+     *
+     * @return long of size
+     */
     public long getCurrentCacheSize() {
         return currentCacheSize;
     }
 
+    /**
+     * Gets the amount of cached files
+     * @return int of fileamount
+     */
     public int getFileAmount() {
         return cachedFiles.size();
     }

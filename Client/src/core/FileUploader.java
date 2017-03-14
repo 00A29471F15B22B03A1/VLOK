@@ -14,6 +14,7 @@ public class FileUploader {
     public static void sendFiles(String path, File[] files, NetworkClient client) {
         for (File file : files) {
 
+            System.out.println("Sending file " + file.getName() + "...");
             sendFile(path, file, client);
 
             try {

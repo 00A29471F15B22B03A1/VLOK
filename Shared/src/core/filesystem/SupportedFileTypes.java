@@ -14,7 +14,10 @@ public enum SupportedFileTypes {
     ODT,    //Open Document
     PPT,    //PowerPoint Presentation
     PPTX,   //PowerPoint Presentation
-    ODP;    //Open Presentation
+    ODP,    //Open Presentation
+    MP3,    //Audio
+    MP4,    //Video
+    WMA;    //Video
 
     /**
      * Checks if a file extension is supported

@@ -7,12 +7,21 @@ public class StoredFile {
 
     private String name;
     private String path;
+    private String description;
 
     private StoredFolder parentDir;
 
     public StoredFile(String name, String path) {
         this.name = name;
         this.path = path;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getName() {
