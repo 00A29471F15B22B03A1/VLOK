@@ -1,12 +1,15 @@
 package core.packets;
 
+import core.FileInfo;
+
 public class FileUploadPacket {
 
-    //TODO: move constant to better locaton
+    //TODO: move to better location
     public static final int MAX_PACKET_SIZE = 50000;
 
-    public String name;
-    public String path;
+    public boolean finished = false;
+
+    public FileInfo fileInfo;
     public byte[] data;
 
 }

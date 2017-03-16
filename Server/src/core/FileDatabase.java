@@ -1,16 +1,8 @@
 package core;
 
-import core.filesystem.FileStorage;
-import core.filesystem.StoredFile;
-
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
 
-/**
- * Class to communicate with the database file
- */
-public final class FileDatabase {
+public class FileDatabase {
 
     private static Connection connection;
 
@@ -23,7 +15,6 @@ public final class FileDatabase {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void execute(String query) {
@@ -38,34 +29,21 @@ public final class FileDatabase {
         }
     }
 
-    public static void removeFile(String filename) {
-        execute("REMOVE FROM files WHERE name = " + filename);
-    }
-
-    public static void addFile(StoredFile file) {
-        execute("INSERT INTO files(name, path) VALUES ('" + file.getName() + "', '" + file.getPath() + "');");
-    }
-
-    public static Map<String, String> getFiles() {
-        String sql = "SELECT * FROM files";
-
+    public static FileInfo getFile(String name) {
         try {
-            PreparedStatement pstmt = connection.prepareStatement(sql);
+            Statement statement = connection.createStatement();
 
-            ResultSet rs = pstmt.executeQuery();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM files WHERE name = '" + name + "'");
+            FileInfo file = null;
 
-            Map<String, String> result = new HashMap<>();
-
-            while (rs.next()) {
-                String name = rs.getString("name");
-                String path = rs.getString("path");
-
-                result.put(name, path);
+            while (resultSet.next() && file == null) {
+                String description = resultSet.getString("description");
+                String path = resultSet.getString("path");
+                int minPermissions = resultSet.getInt("minPermissions");
+                file = new FileInfo(name, path, description, minPermissions);
             }
 
-            rs.close();
-
-            return result;
+            return file;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -73,15 +51,62 @@ public final class FileDatabase {
         return null;
     }
 
-    public static FileStorage getFileStorage() {
-        Map<String, String> files = getFiles();
+    public static void updateFile(FileInfo fileInfo) {
+        String sql = "UPDATE files SET path=?, description=?, minPermissions=? WHERE name=?";
 
-        FileStorage fileStorage = new FileStorage();
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, fileInfo.getPath());
+            pstmt.setString(2, fileInfo.getDescription());
+            pstmt.setInt(3, fileInfo.getMinPermissionLevel());
+            pstmt.setString(4, fileInfo.getName());
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
-        for (Map.Entry<String, String> f : files.entrySet())
-            fileStorage.addFile(f.getValue(), f.getKey());
+    public static void addFile(FileInfo fileInfo) {
+        String sql = "INSERT INTO files(name, path, description, minPermissions) VALUES(?, ?, ?, ?)";
 
-        return fileStorage;
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, fileInfo.getName());
+            pstmt.setString(2, fileInfo.getPath());
+            pstmt.setString(3, fileInfo.getDescription());
+            pstmt.setInt(4, fileInfo.getMinPermissionLevel());
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static FileStorage getAllFiles() {
+        FileStorage files = new FileStorage();
+        try {
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM files");
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String path = resultSet.getString("path");
+                String description = resultSet.getString("description");
+                int minPermissions = resultSet.getInt("minPermissions");
+                files.addFile(new FileInfo(name, path, description, minPermissions));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return files;
+    }
+
+    public static void removeFile(String filename) {
+        execute("REMOVE FROM files WHERE name = " + filename);
     }
 
     public static void close() {
@@ -91,4 +116,5 @@ public final class FileDatabase {
             e.printStackTrace();
         }
     }
+
 }

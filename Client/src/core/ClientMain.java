@@ -2,61 +2,42 @@ package core;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
-import core.filesystem.SupportedFileTypes;
+import core.packets.FileInfoPacket;
+import core.packets.FileStoragePacket;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
-import java.util.Arrays;
 
 public class ClientMain {
 
-    public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
+    public static void main(String[] args) throws InterruptedException {
         NetworkClient client = new NetworkClient();
-        client.connect("vlok.dynu.com");
+
+//        client.connect("vlok.dynu.com");
+        client.connect("192.168.1.39");
 
         client.addListener(new Listener() {
             @Override
-            public void connected(Connection connection) {
-                System.out.println("Connected " + connection.getRemoteAddressTCP());
+            public void received(Connection connection, Object o) {
+                if (o instanceof FileInfoPacket) {
+                    System.out.println(((FileInfoPacket) o).fileInfo.getPath());
+                } else if (o instanceof FileStoragePacket) {
+                    System.out.println(((FileStoragePacket) o).fileStorage.getFiles());
+                }
             }
         });
 
-        System.out.println("Successfully connected to server");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        int result = fileChooser.showOpenDialog(null);
 
-        JFileChooser chooser = new JFileChooser();
-        chooser.setMultiSelectionEnabled(true);
-
-        String[] supportedFiles = new String[SupportedFileTypes.values().length];
-
-        int i = 0;
-        for (SupportedFileTypes file : SupportedFileTypes.values())
-            supportedFiles[i++] = file.toString().toLowerCase();
-
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Upload Files", supportedFiles);
-        chooser.setFileFilter(filter);
-
-        while (true) {
-            int returnValue = chooser.showOpenDialog(null);
-            if (returnValue == JFileChooser.APPROVE_OPTION) {
-                File[] files = chooser.getSelectedFiles();
-
-                System.out.println("Selected files " + Arrays.toString(files));
-
-                String path = JOptionPane.showInputDialog("Please gimme path:");
-
-                System.out.println("Selected path " + path);
-
-                FileUploader.sendFiles(path, files, client);
-
-            }
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            long startTime = System.currentTimeMillis();
+            FileUploader.sendFile(new FileInfo(selectedFile.getName(), "res/test/", "a test fileInfo", PermissionLevels.PEASAN), selectedFile, client);
+            System.out.println(System.currentTimeMillis() - startTime);
         }
+
     }
 
 }

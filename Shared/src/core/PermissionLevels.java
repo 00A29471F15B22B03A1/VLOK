@@ -1,0 +1,24 @@
+package core;
+
+public class PermissionLevels {
+
+    public static int ADMIN = 5;
+    public static int TRUSTED = 4;
+    public static int STUDENT = 3;
+    public static int PEASAN = 2;
+    public static int QUEUED = 1;
+    public static int BLOCKED = 0;
+
+    public boolean canRead(int permissionLevel) {
+        return permissionLevel >= 2;
+    }
+
+    public boolean canWrite(int permissionLevel) {
+        return permissionLevel >= 3;
+    }
+
+    public boolean needsCheckABooleanssss(int permissionLevel) {
+        return permissionLevel < 4;
+    }
+
+}

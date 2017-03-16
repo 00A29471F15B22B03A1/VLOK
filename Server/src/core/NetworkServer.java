@@ -15,6 +15,7 @@ public class NetworkServer {
     public NetworkServer() {
         server = new Server(60000000, 60000000);
         server.start();
+
         KryoUtil.registerServerClass(server);
     }
 
