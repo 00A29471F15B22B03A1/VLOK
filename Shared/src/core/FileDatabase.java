@@ -83,8 +83,8 @@ public class FileDatabase {
         }
     }
 
-    public static FileStorage getAllFiles() {
-        FileStorage files = new FileStorage();
+    public static FileStructure getAllFiles() {
+        FileStructure files = new FileStructure();
         try {
             Statement statement = connection.createStatement();
 

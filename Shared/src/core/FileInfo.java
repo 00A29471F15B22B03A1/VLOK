@@ -7,6 +7,11 @@ public class FileInfo {
     private String description = "EMPTY";
     private int minPermissionLevel = PermissionLevels.PEASAN;
 
+    //TODO: add these properties
+    private int size;
+    private String uploadDate;
+    private String uploader;
+
     /**
      * Empty constructor for serialization
      */
@@ -58,6 +63,6 @@ public class FileInfo {
 
     @Override
     public String toString() {
-        return "File: " + name;
+        return name;
     }
 }

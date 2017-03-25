@@ -1,6 +1,6 @@
 package core;
 
-import core.packets.FileUploadPacket;
+import core.packets.FileTransferPacket;
 
 import javax.swing.*;
 import java.io.File;
@@ -8,7 +8,33 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class FileUploader {
+public class FileSender {
+
+    public static void sendFile(FileInfo fileInfo, InputStream inputStream, NetworkClient client) {
+        try {
+            byte[] buffer = new byte[FileTransferPacket.MAX_PACKET_SIZE];
+
+            int read;
+
+            while ((read = inputStream.read(buffer)) != -1) {
+                byte[] sendData = compact(buffer, read);
+
+                sendFilePacket(fileInfo, sendData, client);
+
+                Thread.sleep(2);
+            }
+
+            inputStream.close();
+
+            FileTransferPacket finishedPacket = new FileTransferPacket();
+            finishedPacket.fileInfo = fileInfo;
+            finishedPacket.finished = true;
+            client.sendTCP(finishedPacket);
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void sendFile(FileInfo fileInfo, File file, NetworkClient client) {
         if (file.length() > Math.pow(10, 9)) {
@@ -17,7 +43,7 @@ public class FileUploader {
         }
 
         try {
-            byte[] buffer = new byte[FileUploadPacket.MAX_PACKET_SIZE];
+            byte[] buffer = new byte[FileTransferPacket.MAX_PACKET_SIZE];
             InputStream inputStream = new FileInputStream(file);
 
             int read;
@@ -32,7 +58,7 @@ public class FileUploader {
 
             inputStream.close();
 
-            FileUploadPacket finishedPacket = new FileUploadPacket();
+            FileTransferPacket finishedPacket = new FileTransferPacket();
             finishedPacket.fileInfo = fileInfo;
             finishedPacket.finished = true;
             client.sendTCP(finishedPacket);
@@ -43,7 +69,7 @@ public class FileUploader {
     }
 
     private static void sendFilePacket(FileInfo fileInfo, byte[] data, NetworkClient client) {
-        FileUploadPacket packet = new FileUploadPacket();
+        FileTransferPacket packet = new FileTransferPacket();
         packet.fileInfo = fileInfo;
         packet.data = data;
         client.sendTCP(packet);

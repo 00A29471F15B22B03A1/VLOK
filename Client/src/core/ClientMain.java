@@ -2,42 +2,32 @@ package core;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
-import core.packets.FileInfoPacket;
-import core.packets.FileStoragePacket;
+import core.packets.FileStructurePacket;
+import core.ui.MainWindow;
 
 import javax.swing.*;
-import java.io.File;
 
 public class ClientMain {
 
-    public static void main(String[] args) throws InterruptedException {
-        NetworkClient client = new NetworkClient();
+    public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
 
-//        client.connect("vlok.dynu.com");
-        client.connect("192.168.1.39");
+        final MainWindow mainWindow = new MainWindow();
 
-        client.addListener(new Listener() {
+        VLOKManager.init();
+
+        VLOKManager.client.addListener(new Listener() {
             @Override
             public void received(Connection connection, Object o) {
-                if (o instanceof FileInfoPacket) {
-                    System.out.println(((FileInfoPacket) o).fileInfo.getPath());
-                } else if (o instanceof FileStoragePacket) {
-                    System.out.println(((FileStoragePacket) o).fileStorage.getFiles());
+                if (o instanceof FileStructurePacket) {
+                    mainWindow.fileTreePanel.updateTree(((FileStructurePacket) o).fileStructure);
                 }
             }
         });
-
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-        int result = fileChooser.showOpenDialog(null);
-
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            long startTime = System.currentTimeMillis();
-            FileUploader.sendFile(new FileInfo(selectedFile.getName(), "res/test/", "a test fileInfo", PermissionLevels.PEASAN), selectedFile, client);
-            System.out.println(System.currentTimeMillis() - startTime);
-        }
-
     }
 
 }

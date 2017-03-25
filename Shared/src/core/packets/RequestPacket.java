@@ -1,10 +1,9 @@
 package core.packets;
 
-public class RequestPacket {
+public class RequestPacket extends Packet {
 
     public enum Type {
         FILE_STRUCTURE,
-        FILE_INFO,
         FILE_DOWNLOAD
     }
 

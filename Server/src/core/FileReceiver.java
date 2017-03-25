@@ -2,7 +2,7 @@ package core;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
-import core.packets.FileUploadPacket;
+import core.packets.FileTransferPacket;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,11 +13,11 @@ import java.util.Map;
 public class FileReceiver extends Listener {
 
     private Map<Integer, FileOutputStream> receivingCache;
-    private FileStorage fileStorage;
+    private FileStructure fileStructure;
 
-    public FileReceiver(FileStorage fileStorage) {
+    public FileReceiver(FileStructure fileStructure) {
         receivingCache = new HashMap<>();
-        this.fileStorage = fileStorage;
+        this.fileStructure = fileStructure;
     }
 
     @Override
@@ -35,8 +35,8 @@ public class FileReceiver extends Listener {
 
     @Override
     public void received(Connection connection, Object o) {
-        if (o instanceof FileUploadPacket) {
-            FileUploadPacket p = (FileUploadPacket) o;
+        if (o instanceof FileTransferPacket) {
+            FileTransferPacket p = (FileTransferPacket) o;
 
             //Started receiving fileInfo
             if (!receivingCache.containsKey(connection.getID())) {
@@ -50,11 +50,12 @@ public class FileReceiver extends Listener {
                     receivingCache.get(connection.getID()).close();
                     receivingCache.remove(connection.getID());
 
-                    fileStorage.addFile(p.fileInfo);
+                    fileStructure.addFile(p.fileInfo);
                     FileDatabase.addFile(p.fileInfo);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
                 return;
             }
 

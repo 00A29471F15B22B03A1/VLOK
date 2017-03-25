@@ -2,62 +2,61 @@ package core;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
-import core.packets.FileInfoPacket;
-import core.packets.FileStoragePacket;
+import core.packets.FileStructurePacket;
+import core.packets.FileTransferPacket;
 import core.packets.RequestPacket;
 
 public class ServerMain {
 
     private static NetworkServer server;
 
-    private static FileStorage fileStorage;
+    private static FileStructure fileStructure;
 
     public static void main(String[] args) {
-        fileStorage = FileDatabase.getAllFiles();
+        fileStructure = FileDatabase.getAllFiles();
 
         server = new NetworkServer();
 
-        server.addListener(new FileReceiver(fileStorage));
+        server.addListener(new FileReceiver(fileStructure));
 
         server.addListener(new Listener() {
             @Override
+            public void connected(Connection connection) {
+                sendFileStructure(connection);
+            }
+
+            @Override
             public void received(Connection connection, Object o) {
-                if (o instanceof RequestPacket)
-                    handleRequestPacket((RequestPacket) o, connection);
+                System.out.println(o.getClass().getSimpleName());
+
+                if (o instanceof FileTransferPacket) {
+                    FileTransferPacket packet = (FileTransferPacket) o;
+
+                    if (packet.finished)
+                        sendFileStructure(null);
+
+                } else if (o instanceof RequestPacket) {
+                    RequestPacket packet = (RequestPacket) o;
+
+                    if (packet.type == RequestPacket.Type.FILE_STRUCTURE)
+                        sendFileStructure(connection);
+                    else if (packet.type == RequestPacket.Type.FILE_DOWNLOAD)
+                        FileSender.sendFile(server, connection, fileStructure.getFile(packet.argument));
+                }
             }
         });
 
         server.start();
     }
 
-    private static void handleRequestPacket(RequestPacket packet, Connection connection) {
-        switch (packet.type) {
-            case FILE_STRUCTURE:
-                FileStoragePacket fileStoragePacket = new FileStoragePacket();
+    public static void sendFileStructure(Connection connection) {
+        FileStructurePacket fileStructurePacket = new FileStructurePacket();
 
-                fileStoragePacket.fileStorage = fileStorage;
+        fileStructurePacket.fileStructure = fileStructure;
 
-                server.sendTCP(connection.getID(), fileStoragePacket);
-
-                break;
-            case FILE_INFO:
-                FileInfoPacket fileInfoPacket = new FileInfoPacket();
-
-                FileInfo file = fileStorage.getFile(packet.argument);
-
-                if (file == null) {
-                    System.err.println("Failed to find fileInfo " + packet.argument);
-                    return;
-                }
-
-                fileInfoPacket.fileInfo = file;
-
-                server.sendTCP(connection.getID(), fileInfoPacket);
-
-                break;
-            case FILE_DOWNLOAD:
-
-                break;
-        }
+        if (connection == null)
+            server.sendToAllTCP(fileStructurePacket);
+        else
+            server.sendTCP(connection.getID(), fileStructurePacket);
     }
 }

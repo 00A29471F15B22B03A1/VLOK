@@ -15,7 +15,7 @@ public class NetworkClient {
      * Creates a new client instance and registers serializable classes
      */
     public NetworkClient() {
-        client = new Client(60000000, 60000000);
+        client = new Client(600000, 600000);
         client.start();
 
         KryoUtil.registerClientClass(client);

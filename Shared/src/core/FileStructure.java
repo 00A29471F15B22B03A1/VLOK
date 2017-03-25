@@ -1,13 +1,14 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class FileStorage {
+public class FileStructure {
 
     private List<FileInfo> files;
 
-    public FileStorage() {
+    public FileStructure() {
         files = new ArrayList<>();
     }
 
@@ -16,7 +17,10 @@ public class FileStorage {
     }
 
     public void removeFile(String name) {
-        files.removeIf(file -> file.getName().equals(name));
+        Iterator<FileInfo> iterator = files.iterator();
+        while (iterator.hasNext())
+            if (iterator.next().getName().equals(name))
+                iterator.remove();
     }
 
     public int getFileAmount() {

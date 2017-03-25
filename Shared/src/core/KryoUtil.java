@@ -3,9 +3,8 @@ package core;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Server;
-import core.packets.FileInfoPacket;
-import core.packets.FileStoragePacket;
-import core.packets.FileUploadPacket;
+import core.packets.FileStructurePacket;
+import core.packets.FileTransferPacket;
 import core.packets.RequestPacket;
 
 import javax.crypto.KeyGenerator;
@@ -69,13 +68,12 @@ public class KryoUtil {
         kryo.register(byte[].class);
 
         kryo.register(FileInfo.class);
-        kryo.register(FileStorage.class);
+        kryo.register(FileStructure.class);
 
         kryo.register(RequestPacket.class);
         kryo.register(RequestPacket.Type.class);
-        kryo.register(FileInfoPacket.class);
-        kryo.register(FileStoragePacket.class);
-        kryo.register(FileUploadPacket.class);
+        kryo.register(FileStructurePacket.class);
+        kryo.register(FileTransferPacket.class);
 
         System.out.println("Registered serialization classes");
     }
