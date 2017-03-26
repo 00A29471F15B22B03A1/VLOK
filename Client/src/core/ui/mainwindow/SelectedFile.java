@@ -1,4 +1,4 @@
-package core.ui;
+package core.ui.mainwindow;
 
 import core.FileInfo;
 

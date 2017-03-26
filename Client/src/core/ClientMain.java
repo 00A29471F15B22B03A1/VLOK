@@ -1,33 +1,34 @@
 package core;
 
-import com.esotericsoftware.kryonet.Connection;
-import com.esotericsoftware.kryonet.Listener;
-import core.packets.FileStructurePacket;
-import core.ui.MainWindow;
+import core.localization.Language;
+import core.localization.Localization;
+import core.logging.Logger;
+import core.ui.login.LoginWindow;
+import core.ui.mainwindow.MainWindow;
 
 import javax.swing.*;
 
 public class ClientMain {
 
     public static void main(String[] args) {
+        Localization.setLanguage(Language.English);
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
+            Logger.err("Failed to change ui look and feel");
         }
-
-        final MainWindow mainWindow = new MainWindow();
 
         VLOKManager.init();
 
-        VLOKManager.client.addListener(new Listener() {
-            @Override
-            public void received(Connection connection, Object o) {
-                if (o instanceof FileStructurePacket) {
-                    mainWindow.fileTreePanel.updateTree(((FileStructurePacket) o).fileStructure);
-                }
-            }
+        LoginWindow loginWindow = new LoginWindow();
+
+        loginWindow.addLoginListener(sessionKey -> {
+            VLOKManager.setSessionKey(sessionKey);
+            new MainWindow();
         });
+
     }
 
 }

@@ -3,8 +3,10 @@ package core;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Server;
+import core.logging.Logger;
 import core.packets.FileStructurePacket;
 import core.packets.FileTransferPacket;
+import core.packets.LoginPacket;
 import core.packets.RequestPacket;
 
 import javax.crypto.KeyGenerator;
@@ -23,17 +25,18 @@ public class KryoUtil {
     private static byte[] key = generateKey();
 
     /**
-     * Generates a new blowfish key
+     * Generates a new blowfish fullKey
      *
-     * @return key as byte[]
+     * @return fullKey as byte[]
      */
     private static byte[] generateKey() {
         byte[] key = null;
         try {
             key = KeyGenerator.getInstance("Blowfish").generateKey().getEncoded();
-            System.out.println("Successfully generated key");
+            Logger.info("Successfully generated fullKey");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
+            Logger.err("Failed to generate encryption fullKey");
         }
         return key;
     }
@@ -74,8 +77,9 @@ public class KryoUtil {
         kryo.register(RequestPacket.Type.class);
         kryo.register(FileStructurePacket.class);
         kryo.register(FileTransferPacket.class);
+        kryo.register(LoginPacket.class);
 
-        System.out.println("Registered serialization classes");
+        Logger.info("Registered serialization classes");
     }
 
 }

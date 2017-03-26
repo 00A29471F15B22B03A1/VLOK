@@ -2,7 +2,9 @@ package core;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import core.logging.Logger;
 import core.packets.FileTransferPacket;
+import core.packets.LoginPacket;
 import core.packets.RequestPacket;
 
 import java.awt.*;
@@ -18,12 +20,15 @@ public class VLOKManager {
     public static NetworkClient client;
 
     private static Map<Connection, OutputStream> outputStreams;
+    private static String sessionKey;
 
     public static void init() {
         outputStreams = new HashMap<>();
 
         client = new NetworkClient();
-        client.connect("vlok.dynu.com");
+
+        if (!client.connect("vlok.dynu.com"))
+            System.exit(-1);
 
         client.addListener(new Listener() {
             @Override
@@ -35,7 +40,7 @@ public class VLOKManager {
                         OutputStream outputStream = createOutputStream(packet.fileInfo.getName());
 
                         if (outputStream == null) {
-                            System.err.println("Failed to create OutputStream");
+                            Logger.err("Failed to create output stream");
                             return;
                         }
 
@@ -50,13 +55,17 @@ public class VLOKManager {
 
                             String tempPath = File.createTempFile("temp-file", "tmp").getParent();
 
+                            Logger.info("Finished downloading " + packet.fileInfo.getName());
+
+                            Logger.info("Opening " + packet.fileInfo.getName());
+
                             File file = new File(tempPath + "/" + packet.fileInfo.getName());
                             Desktop.getDesktop().open(file);
 
-                            System.out.println("Finished " + packet.fileInfo.getName());
                             return;
                         } catch (IOException e) {
                             e.printStackTrace();
+                            Logger.err("Failed to finish downloading " + packet.fileInfo.getName());
                         }
                     }
 
@@ -64,27 +73,55 @@ public class VLOKManager {
                         outputStreams.get(connection).write(packet.data);
                     } catch (IOException e) {
                         e.printStackTrace();
+                        Logger.err("Failed writing to output steam");
                     }
                 }
             }
         });
+
+        Logger.info("Initialized VLOK");
     }
 
     private static OutputStream createOutputStream(String name) {
         try {
-            System.out.println("Downloading to " + (File.createTempFile("temp-file", "tmp").getParent() + "/" + name));
+            Logger.info("Created output stream for " + name);
             return new FileOutputStream(new File(File.createTempFile("temp-file", "tmp").getParent() + "/" + name));
         } catch (IOException e) {
             e.printStackTrace();
+            Logger.err("Failed creating output stream for " + name);
         }
         return null;
     }
 
+    public static void sendFile(File file, FileInfo fileInfo) {
+        FileSender.sendFile(fileInfo, file, sessionKey, client);
+    }
+
     public static void sendDownloadRequest(FileInfo fileInfo) {
         RequestPacket requestPacket = new RequestPacket();
+        requestPacket.sessionKey = sessionKey;
         requestPacket.type = RequestPacket.Type.FILE_DOWNLOAD;
         requestPacket.argument = fileInfo.getName();
+
+        client.sendTCP(requestPacket);
+        Logger.info("Sent file download request");
+    }
+
+    public static void sendLogin(String key, String hashCode, String os) {
+        LoginPacket loginPacket = new LoginPacket();
+        loginPacket.fullKey = key + "¡" + hashCode + "¡" + os;
+
+        client.sendTCP(loginPacket);
+    }
+
+    public static void sendFileStructureRequest() {
+        RequestPacket requestPacket = new RequestPacket();
+        requestPacket.sessionKey = sessionKey;
+        requestPacket.type = RequestPacket.Type.FILE_STRUCTURE;
         client.sendTCP(requestPacket);
     }
 
+    public static void setSessionKey(String sessionKey) {
+        VLOKManager.sessionKey = sessionKey;
+    }
 }

@@ -2,6 +2,7 @@ package core;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import core.logging.Logger;
 import core.packets.FileTransferPacket;
 
 import java.io.File;
@@ -30,6 +31,7 @@ public class FileReceiver extends Listener {
             receivingCache.remove(connection.getID());
         } catch (IOException e) {
             e.printStackTrace();
+            Logger.err("Failed to close input stream for connection " + connection.getID());
         }
     }
 
@@ -54,6 +56,7 @@ public class FileReceiver extends Listener {
                     FileDatabase.addFile(p.fileInfo);
                 } catch (IOException e) {
                     e.printStackTrace();
+                    Logger.err("Failed to close input stream for connection " + connection.getID());
                 }
 
                 return;
@@ -61,9 +64,9 @@ public class FileReceiver extends Listener {
 
             try {
                 receivingCache.get(connection.getID()).write(p.data);
-                System.out.println(p.fileInfo.getName() + ": " + p.data.length);
             } catch (IOException e) {
                 e.printStackTrace();
+                Logger.err("Failed to write to output stream for " + p.fileInfo.getName());
             }
         }
 
@@ -88,6 +91,7 @@ public class FileReceiver extends Listener {
             return new FileOutputStream(fullPath);
         } catch (IOException e) {
             e.printStackTrace();
+            Logger.err("Failed to create output stream for " + fileInfo.getName());
         }
         return null;
     }

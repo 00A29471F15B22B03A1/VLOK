@@ -1,6 +1,8 @@
 package core.packets;
 
-public class RequestPacket extends Packet {
+public class RequestPacket {
+
+    public String sessionKey;
 
     public enum Type {
         FILE_STRUCTURE,

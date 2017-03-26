@@ -1,6 +1,6 @@
-package core.ui;
+package core.ui.mainwindow;
 
-import core.FileClickListener;
+import core.logging.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,14 +20,13 @@ public class SidePanel extends JPanel {
         final CardLayout cardLayout = (CardLayout) getLayout();
         final SidePanel sidePanel = this;
 
-        fileTreePanel.addFileClickListener(new FileClickListener() {
-            @Override
-            public void onFileClick(SelectedFile selectedFile) {
-                if (selectedFile.isFolder)
-                    cardLayout.show(sidePanel, FolderInfoPanel.class.getSimpleName());
-                else
-                    cardLayout.show(sidePanel, FileInfoPanel.class.getSimpleName());
-            }
+        fileTreePanel.addFileClickListener(selectedFile -> {
+            if (selectedFile.isFolder)
+                cardLayout.show(sidePanel, FolderInfoPanel.class.getSimpleName());
+            else
+                cardLayout.show(sidePanel, FileInfoPanel.class.getSimpleName());
         });
+
+        Logger.info("Created SidePanel");
     }
 }

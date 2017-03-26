@@ -1,0 +1,9 @@
+#UI
+ui.file_properties=Propriétés du fichier
+ui.download=Télécharger
+ui.folder_properties=Propriétés du dossier
+ui.upload=Envoyer
+
+#ERROR
+error.error=Erreur
+error.file_too_big=Fichier trop large

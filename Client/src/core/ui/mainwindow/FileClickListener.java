@@ -1,6 +1,4 @@
-package core;
-
-import core.ui.SelectedFile;
+package core.ui.mainwindow;
 
 import java.util.EventListener;
 

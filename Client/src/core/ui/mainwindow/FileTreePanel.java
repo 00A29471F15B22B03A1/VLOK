@@ -1,12 +1,10 @@
-package core.ui;
+package core.ui.mainwindow;
 
-import core.FileClickListener;
 import core.FileInfo;
 import core.FileStructure;
+import core.logging.Logger;
 
 import javax.swing.*;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
@@ -28,33 +26,36 @@ public class FileTreePanel extends JPanel {
         fileTree = new JTree(root);
         fileTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 
-        fileTree.addTreeSelectionListener(new TreeSelectionListener() {
-            @Override
-            public void valueChanged(TreeSelectionEvent e) {
-                DefaultMutableTreeNode node = (DefaultMutableTreeNode) fileTree.getLastSelectedPathComponent();
-                if (node == null)
-                    return;
+        fileTree.addTreeSelectionListener(e -> {
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) fileTree.getLastSelectedPathComponent();
 
-                if (node.getUserObject() instanceof FileInfo) {
-                    FileInfo fileInfo = (FileInfo) node.getUserObject();
-                    fireFileClickEvent(new SelectedFile(fileInfo));
-                } else {
-                    fireFileClickEvent(new SelectedFile(joinPath(node.getPath())));
-                }
-            }
+            if (node == null)
+                return;
+
+            if (node.getUserObject() instanceof FileInfo)
+                fireFileClickEvent(new SelectedFile((FileInfo) node.getUserObject()));
+            else
+                fireFileClickEvent(new SelectedFile(joinPath(node.getPath())));
         });
 
         JScrollPane scrollPane = new JScrollPane(fileTree);
         add(scrollPane, BorderLayout.CENTER);
+
+        Logger.info("Created FileTreePanel");
     }
 
     public void updateTree(FileStructure fileStructure) {
         root.removeAllChildren();
-        for (FileInfo fileInfo : fileStructure.getFiles()) {
+        for (FileInfo fileInfo : fileStructure.getFiles())
             addFile(fileInfo);
-        }
+
         DefaultTreeModel model = (DefaultTreeModel) fileTree.getModel();
-        model.reload();
+
+        model.reload(root);
+        model.nodeStructureChanged(root);
+        fileTree.treeDidChange();
+
+        Logger.info("Updated file tree view");
     }
 
     private void addFile(FileInfo fileInfo) {

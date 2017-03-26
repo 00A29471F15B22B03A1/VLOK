@@ -2,10 +2,12 @@ package core.packets;
 
 import core.FileInfo;
 
-public class FileTransferPacket extends Packet {
+public class FileTransferPacket {
 
     //TODO: move to better location
     public static final int MAX_PACKET_SIZE = 50000;
+
+    public String sessionKey;
 
     public boolean finished = false;
 

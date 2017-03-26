@@ -2,7 +2,10 @@ package core;
 
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Listener;
+import core.localization.Localization;
+import core.logging.Logger;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.List;
@@ -62,26 +65,15 @@ public class NetworkClient {
      *
      * @param address to connect to
      */
-    public void connect(String address) {
+    public boolean connect(String address) {
         try {
             client.connect(5000, address, 54555, 54777);
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Failed to connect to " + address);
-        }
-    }
-
-    /**
-     * Connects to a server using an InetAddress as the address
-     *
-     * @param address to connect to
-     */
-    public void connect(InetAddress address) {
-        try {
-            client.connect(5000, address, 54555, 54777);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Failed to connect to " + address);
+            Logger.err("Failed to connect to " + address);
+            JOptionPane.showMessageDialog(null, Localization.getString("error.connect_to_server"), Localization.getString("error.error"), JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
 

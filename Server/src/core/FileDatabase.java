@@ -1,5 +1,7 @@
 package core;
 
+import core.logging.Logger;
+
 import java.sql.*;
 
 public class FileDatabase {
@@ -10,10 +12,11 @@ public class FileDatabase {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:" + "files.sqlite");
-            System.out.println("Opened database successfully");
+            Logger.info("Opened file database successfully");
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+            Logger.err("Failed to connect to file database");
         }
     }
 
@@ -26,6 +29,7 @@ public class FileDatabase {
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            Logger.err("Failed to execute sqlite query " + query);
         }
     }
 
@@ -46,6 +50,7 @@ public class FileDatabase {
             return file;
         } catch (SQLException e) {
             e.printStackTrace();
+            Logger.err("Failed to get file info for " + name);
         }
 
         return null;
@@ -64,6 +69,7 @@ public class FileDatabase {
             pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            Logger.err("Failed to update file info for " + fileInfo.getName());
         }
     }
 
@@ -80,6 +86,7 @@ public class FileDatabase {
             pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            Logger.err("Failed to add file info for " + fileInfo.getName());
         }
     }
 
@@ -100,6 +107,7 @@ public class FileDatabase {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            Logger.err("Failed to fetch files from database");
         }
 
         return files;
@@ -114,6 +122,7 @@ public class FileDatabase {
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            Logger.err("Failed to close database connection");
         }
     }
 
