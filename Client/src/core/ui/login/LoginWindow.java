@@ -32,6 +32,7 @@ public class LoginWindow extends JFrame {
 
 
         JTextField keyField = new JTextField(10);
+        keyField.setText("5B3872Y0241Y5H6N");
         JLabel keyLabel = new JLabel(Localization.getString("ui.key"));
         keyLabel.setLabelFor(keyField);
 
@@ -77,9 +78,7 @@ public class LoginWindow extends JFrame {
             }
         });
 
-        continueButton.addActionListener(e -> {
-            VLOKManager.sendLogin(keyField.getText(), Utils.hash(codeField.getText()), getOS());
-        });
+        continueButton.addActionListener(e -> VLOKManager.sendLogin(keyField.getText(), Utils.hash(codeField.getText()), getOS()));
 
         add(panel);
         setVisible(true);

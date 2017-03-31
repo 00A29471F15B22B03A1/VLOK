@@ -2,10 +2,12 @@ package core;
 
 public class FileInfo {
 
-    private String name;
-    private String path;
-    private String description = "EMPTY";
-    private int minPermissionLevel = PermissionLevels.PEASAN;
+    public int id;
+    public String name;
+    public String path;
+    public String description = "EMPTY";
+    public int minPermissionLevel = PermissionLevels.PEASAN;
+    public boolean pending;
 
     //TODO: add these properties
     private int size;
@@ -18,47 +20,21 @@ public class FileInfo {
     public FileInfo() {
     }
 
-    public FileInfo(String name, String path, String description, int minPermissionLevel) {
+    public FileInfo(String name, String path, String description, int minPermissionLevel, boolean pending) {
         this.name = name;
         this.path = path;
         this.description = description;
         this.minPermissionLevel = minPermissionLevel;
+        this.pending = pending;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public FileInfo(int id, String name, String path, String description, int minPermissionLevel, boolean pending) {
+        this.id = id;
         this.name = name;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
         this.path = path;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getMinPermissionLevel() {
-        return minPermissionLevel;
-    }
-
-    public void setMinPermissionLevel(int minPermissionLevel) {
         this.minPermissionLevel = minPermissionLevel;
-    }
-
-    public boolean hasPermissions(int permissionLevel) {
-        return permissionLevel >= minPermissionLevel;
+        this.pending = pending;
     }
 
     @Override

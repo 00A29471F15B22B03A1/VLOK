@@ -1,9 +1,25 @@
 #UI
 ui.file_properties=Propriétés du fichier
 ui.download=Télécharger
-ui.folder_properties=Propriétés du dossier
-ui.upload=Envoyer
+ui.folder_properties=Propriétés du dosier
+ui.upload=Télécharger
+
+ui.login=D'Identifier
+ui.key=Clé
+ui.code=Code
+ui.continue=Continuer
+ui.file=Fichier
+ui.files=Fichiers
+ui.languages=Langue
+ui.settings=Paramètres
+ui.save=Enregistrer
+ui.cancel=Annuler
+ui.accept=Accepter
+ui.pending=En attendant
 
 #ERROR
 error.error=Erreur
-error.file_too_big=Fichier trop large
+error.file_too_big=Fichier trop grand
+error.connect_to_server=Echec de connexion au serveur
+
+error.login=Echec d'indentifier

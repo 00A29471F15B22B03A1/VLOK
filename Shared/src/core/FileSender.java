@@ -8,8 +8,8 @@ import java.io.*;
 
 public class FileSender {
 
-    public static void sendFile(final NetworkServer server, final Connection connection, final FileInfo fileInfo) {
-        final InputStream inputStream = getInputStream(new File("storage/" + fileInfo.getPath() + "/" + fileInfo.getName()));
+    public static void sendFile(final NetworkInterface ni, final Connection connection, final FileInfo fileInfo) {
+        final InputStream inputStream = getInputStream(new File("storage/" + fileInfo.name));
         if (inputStream == null)
             return;
 
@@ -22,7 +22,7 @@ public class FileSender {
                 while ((read = inputStream.read(buffer)) != -1) {
                     byte[] sendData = compact(buffer, read);
 
-                    sendFilePacket(fileInfo, sendData, server, connection);
+                    sendFilePacket(fileInfo, sendData, ni, connection);
 
                     Thread.sleep(1);
                 }
@@ -32,11 +32,11 @@ public class FileSender {
                 FileTransferPacket finishedPacket = new FileTransferPacket();
                 finishedPacket.fileInfo = fileInfo;
                 finishedPacket.finished = true;
-                server.sendTCP(connection.getID(), finishedPacket);
+                ni.sendTCP(finishedPacket, connection.getID());
 
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
-                Logger.err("Failed to read file " + fileInfo.getName());
+                Logger.err("Failed to read file " + fileInfo.name);
             }
         });
         thread.start();
@@ -53,11 +53,11 @@ public class FileSender {
     }
 
 
-    private static void sendFilePacket(FileInfo fileInfo, byte[] data, NetworkServer server, Connection connection) {
+    private static void sendFilePacket(FileInfo fileInfo, byte[] data, NetworkInterface ni, Connection connection) {
         FileTransferPacket packet = new FileTransferPacket();
         packet.fileInfo = fileInfo;
         packet.data = data;
-        server.sendTCP(connection.getID(), packet);
+        ni.sendTCP(packet, connection.getID());
     }
 
 

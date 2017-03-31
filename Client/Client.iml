@@ -8,7 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Shared" />
     <orderEntry type="library" name="kryonet-2.18-all" level="project" />
+    <orderEntry type="module" module-name="Shared" />
   </component>
 </module>

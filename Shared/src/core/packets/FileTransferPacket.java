@@ -2,7 +2,7 @@ package core.packets;
 
 import core.FileInfo;
 
-public class FileTransferPacket {
+public class FileTransferPacket extends Packet {
 
     //TODO: move to better location
     public static final int MAX_PACKET_SIZE = 50000;

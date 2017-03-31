@@ -1,0 +1,25 @@
+#UI
+ui.file_properties=Lêer Properties
+ui.download=Aflaai
+ui.folder_properties=Gids eiendomme
+ui.upload=Oplaai
+
+ui.login=Teken aan
+ui.key=Sleutel
+ui.code=Kode
+ui.continue=Aanhou
+ui.file=Lêer
+ui.files=Lêers
+ui.languages=Tale
+ui.settings=Instellings
+ui.save=Red
+ui.cancel=Kanselleer
+ui.accept=Aanvaar
+ui.pending=Hangende
+
+#ERROR
+error.error=Fout
+error.file_too_big=Lêer is te groot
+error.connect_to_server=Kon nie aan bediener koppel
+
+error.login=Versuim het om aan te meld

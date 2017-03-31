@@ -1,14 +1,21 @@
 #UI
 ui.file_properties=Bestand eigenschappen
-ui.download=Download
+ui.download=Downloaden
 ui.folder_properties=Map eigenschappen
-ui.upload=Upload
+ui.upload=Uploaden
 
 ui.login=Inloggen
-ui.password=Wachtwoord
-ui.continue=Verder
+ui.key=Sleutel
+ui.code=Code
+ui.continue=Doorgaan
+ui.file=Bestand
+ui.files=Bestanden
+
+ui.pending=In afwachting
 
 #ERROR
 error.error=Fout
 error.file_too_big=Bestand is te groot
 error.connect_to_server=Verbinden met de server is mislukt
+
+error.login=Inloggen mislukt

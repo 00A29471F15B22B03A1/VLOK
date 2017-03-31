@@ -1,95 +1,56 @@
 package core;
 
+import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 import core.logging.Logger;
 
 import java.io.IOException;
 
-public class NetworkServer {
+public class NetworkServer extends NetworkInterface {
 
     private Server server;
 
-    /**
-     * Creates a new server instance and registers serializable classes
-     */
     public NetworkServer() {
         server = new Server(60000000, 60000000);
         server.start();
 
         KryoUtil.registerServerClass(server);
+
+        server.addListener(new Listener() {
+            @Override
+            public void received(Connection connection, Object o) {
+                handlePacket(connection, o);
+            }
+        });
     }
 
-    /**
-     * Adds a listener to the server
-     *
-     * @param listener to add to server
-     */
+    @Override
     public void addListener(Listener listener) {
         server.addListener(listener);
     }
 
-    /**
-     * Sends a TCP message to a certain client
-     *
-     * @param to     id of client
-     * @param object to send
-     */
-    public void sendTCP(int to, Object object) {
-        server.sendToTCP(to, object);
+    @Override
+    public void sendTCP(Object o) {
+        server.sendToAllTCP(o);
     }
 
-    /**
-     * Sends an UDP message to a certain client
-     *
-     * @param to     id of client
-     * @param object to send
-     */
-    public void sendUDP(int to, Object object) {
-        server.sendToUDP(to, object);
+    @Override
+    public void sendUDP(Object o) {
+        server.sendToAllUDP(o);
     }
 
-    /**
-     * Sends a TCP message to all connected clients
-     *
-     * @param object to send
-     */
-    public void sendToAllTCP(Object object) {
-        server.sendToAllTCP(object);
+    @Override
+    public void sendTCP(Object o, int connection) {
+        server.sendToTCP(connection, o);
     }
 
-    /**
-     * Sends an UDP message to all connected clients
-     *
-     * @param object to send
-     */
-    public void sendToAllUDP(Object object) {
-        server.sendToAllUDP(object);
+    @Override
+    public void sendUDP(Object o, int connection) {
+        server.sendToUDP(connection, o);
     }
 
-    /**
-     * Sends a TCP message to all clients except one
-     *
-     * @param client to exclude
-     * @param object to send
-     */
-    public void sendToAllExceptTCP(int client, Object object) {
-        server.sendToAllExceptTCP(client, object);
-    }
-
-    /**
-     * Sends an UDP message to all clients except one
-     *
-     * @param client to exclude
-     * @param object to send
-     */
-    public void sendToAllExceptUDP(int client, Object object) {
-        server.sendToAllExceptUDP(client, object);
-    }
-
-    /**
-     * Starts the server
-     */
+    @Override
     public void start() {
         try {
             server.bind(KryoUtil.TCP_PORT, KryoUtil.UDP_PORT);
@@ -99,9 +60,7 @@ public class NetworkServer {
         }
     }
 
-    /**
-     * Stops the server
-     */
+    @Override
     public void stop() {
         server.close();
         server.stop();

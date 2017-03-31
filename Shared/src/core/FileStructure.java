@@ -19,7 +19,7 @@ public class FileStructure {
     public void removeFile(String name) {
         Iterator<FileInfo> iterator = files.iterator();
         while (iterator.hasNext())
-            if (iterator.next().getName().equals(name))
+            if (iterator.next().name.equals(name))
                 iterator.remove();
     }
 
@@ -29,12 +29,32 @@ public class FileStructure {
 
     public FileInfo getFile(String name) {
         for (FileInfo fileInfo : files)
-            if (fileInfo.getName().equals(name))
+            if (fileInfo.name.equals(name))
                 return fileInfo;
         return null;
     }
 
     public List<FileInfo> getFiles() {
         return files;
+    }
+
+    public FileStructure getNonPending() {
+        FileStructure fileStructure = new FileStructure();
+
+        for (FileInfo fi : files)
+            if (!fi.pending)
+                fileStructure.addFile(fi);
+
+        return fileStructure;
+    }
+
+    public FileStructure getPending() {
+        FileStructure fileStructure = new FileStructure();
+
+        for (FileInfo fi : files)
+            if (fi.pending)
+                fileStructure.addFile(fi);
+
+        return fileStructure;
     }
 }

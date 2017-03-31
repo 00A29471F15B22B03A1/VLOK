@@ -5,6 +5,7 @@ import com.esotericsoftware.kryonet.Listener;
 import core.VLOKManager;
 import core.logging.Logger;
 import core.packets.FileStructurePacket;
+import core.packets.RequestPacket;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,12 +14,17 @@ public class MainWindow extends JFrame {
 
     public FileTreePanel fileTreePanel;
 
+    public JMenuBar menuBar;
+
     public MainWindow() {
         setSize(700, 400);
         setLocationRelativeTo(null);
         setResizable(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+
+        menuBar = new MenuBar();
+        add(menuBar, BorderLayout.NORTH);
 
         fileTreePanel = new FileTreePanel();
         add(fileTreePanel, BorderLayout.CENTER);
@@ -40,6 +46,6 @@ public class MainWindow extends JFrame {
             }
         });
 
-        VLOKManager.sendFileStructureRequest();
+        VLOKManager.sendRequest(RequestPacket.Type.FILE_STRUCTURE, "");
     }
 }

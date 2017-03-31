@@ -4,10 +4,7 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Server;
 import core.logging.Logger;
-import core.packets.FileStructurePacket;
-import core.packets.FileTransferPacket;
-import core.packets.LoginPacket;
-import core.packets.RequestPacket;
+import core.packets.*;
 
 import javax.crypto.KeyGenerator;
 import java.security.NoSuchAlgorithmException;
@@ -78,6 +75,7 @@ public class KryoUtil {
         kryo.register(FileStructurePacket.class);
         kryo.register(FileTransferPacket.class);
         kryo.register(LoginPacket.class);
+        kryo.register(ErrorPacket.class);
 
         Logger.info("Registered serialization classes");
     }

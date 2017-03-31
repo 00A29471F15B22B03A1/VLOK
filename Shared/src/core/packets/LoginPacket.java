@@ -1,6 +1,6 @@
 package core.packets;
 
-public class LoginPacket {
+public class LoginPacket extends Packet {
 
     public String fullKey;
 

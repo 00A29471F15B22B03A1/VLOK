@@ -2,6 +2,10 @@ package core.logging;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,7 +20,15 @@ public class Logger {
     private final JFrame frame;
     private final JTextArea logArea;
 
+    private PrintWriter outputStream;
+
     public Logger() {
+        try {
+            outputStream = new PrintWriter(new FileOutputStream(new File("log.txt")));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         frame = new JFrame("Log");
         frame.setSize(500, 300);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -40,22 +52,22 @@ public class Logger {
 
     public static void info(String message) {
         print(INFO, message);
-        System.out.println("\u001B[30m" + INFO + message + "\u001B[0m");
     }
 
     public static void warn(String message) {
         print(WARNING, message);
-        System.out.println("\u001B[33m" + WARNING + message + "\u001B[0m");
     }
 
     public static void err(String message) {
         print(ERROR, message);
-        System.out.println("\u001B[31m" + ERROR + message + "\u001B[0m");
     }
 
     private static void print(String type, String message) {
-        String fullMessage = getTime() + "|" + type + message;
+        String fullMessage = getTime() + " | " + type + message;
         INSTANCE.logArea.append(fullMessage + "\n");
+        System.out.println(fullMessage);
+        INSTANCE.outputStream.println(fullMessage);
+        INSTANCE.outputStream.flush();
     }
 
     private static String getTime() {
@@ -64,5 +76,9 @@ public class Logger {
 
     public static void closeWindow() {
         INSTANCE.frame.dispose();
+    }
+
+    public static void close() {
+        INSTANCE.outputStream.close();
     }
 }

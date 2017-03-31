@@ -20,7 +20,9 @@ public class FileInfoPanel extends JPanel {
     public FileInfoPanel(FileTreePanel fileTreePanel) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        setBorder(new TitledBorder(new LineBorder(Color.black), Localization.getString("ui.file_properties")));
+        TitledBorder titledBorder = new TitledBorder(new LineBorder(Color.black), Localization.getString("ui.file_properties"));
+
+        setBorder(titledBorder);
 
         nameLabel = new JLabel();
         add(nameLabel);
@@ -41,12 +43,18 @@ public class FileInfoPanel extends JPanel {
                 return;
             }
 
-            nameLabel.setText(selectedFile.fileInfo.getName());
-            pathLabel.setText(selectedFile.fileInfo.getPath());
+            nameLabel.setText(selectedFile.fileInfo.name);
+            pathLabel.setText(selectedFile.fileInfo.path);
             downloadButton.setEnabled(true);
             currentFile = selectedFile.fileInfo;
         });
 
         downloadButton.addActionListener(e -> VLOKManager.sendDownloadRequest(currentFile));
+
+        Localization.addLanguageListener(newLanguage -> {
+            titledBorder.setTitle(Localization.getString("ui.file_properties"));
+            downloadButton.setText(Localization.getString("ui.download"));
+            repaint();
+        });
     }
 }

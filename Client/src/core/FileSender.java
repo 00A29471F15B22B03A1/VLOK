@@ -18,7 +18,7 @@ public class FileSender {
             return;
         }
 
-        Logger.info("Started uploading " + fileInfo.getName());
+        Logger.info("Started uploading " + fileInfo.name);
 
         try {
             byte[] buffer = new byte[FileTransferPacket.MAX_PACKET_SIZE];
@@ -44,10 +44,10 @@ public class FileSender {
             finishedPacket.finished = true;
             client.sendTCP(finishedPacket);
 
-            Logger.info("Finished uploading " + fileInfo.getName());
+            Logger.info("Finished uploading " + fileInfo.name);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-            Logger.err("Failed to upload " + fileInfo.getName());
+            Logger.err("Failed to upload " + fileInfo.name);
         }
     }
 

@@ -60,7 +60,7 @@ public class FileTreePanel extends JPanel {
 
     private void addFile(FileInfo fileInfo) {
         DefaultMutableTreeNode current = root;
-        String fullPath = (fileInfo.getPath() + fileInfo.getName());
+        String fullPath = (fileInfo.path + fileInfo.name);
         String[] splitPath = fullPath.split("/");
 
         for (int i = 0; i < splitPath.length; i++) {
@@ -91,7 +91,7 @@ public class FileTreePanel extends JPanel {
             if (node.getUserObject() instanceof String)
                 fileInfo = (String) node.getUserObject();
             else if (node.getUserObject() instanceof FileInfo)
-                fileInfo = ((FileInfo) node.getUserObject()).getName();
+                fileInfo = ((FileInfo) node.getUserObject()).name;
 
             if (fileInfo.equals(name))
                 return node;

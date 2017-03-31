@@ -1,6 +1,6 @@
 package core;
 
-public class PermissionLevels {
+public final class PermissionLevels {
 
     public static int ADMIN = 5;
     public static int TRUSTED = 4;
@@ -9,16 +9,20 @@ public class PermissionLevels {
     public static int QUEUED = 1;
     public static int BLOCKED = 0;
 
-    public boolean canRead(int permissionLevel) {
+    public static boolean canRead(int permissionLevel) {
         return permissionLevel >= 2;
     }
 
-    public boolean canWrite(int permissionLevel) {
+    public static boolean canWrite(int permissionLevel) {
         return permissionLevel >= 3;
     }
 
-    public boolean needsCheckABooleanssss(int permissionLevel) {
+    public static boolean needsCheck(int permissionLevel) {
         return permissionLevel < 4;
+    }
+
+    public static boolean isAdmin(int permissionLevel) {
+        return permissionLevel >= ADMIN;
     }
 
 }
