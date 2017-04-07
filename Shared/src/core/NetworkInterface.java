@@ -24,9 +24,10 @@ public abstract class NetworkInterface {
             return;
 
         Packet packet = (Packet) o;
-        for (PacketHandler packetHandler : packetHandlers)
+        for (PacketHandler packetHandler : packetHandlers) {
             if (packetHandler.getType().equals(o.getClass()))
                 packetHandler.handlePacket(packet, connection, this);
+        }
     }
 
     public abstract void addListener(Listener listener);

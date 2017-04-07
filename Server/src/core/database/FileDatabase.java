@@ -3,7 +3,7 @@ package core.database;
 import core.FileInfo;
 import core.FileStructure;
 import core.PermissionLevels;
-import core.logging.Logger;
+import core.logging.Console;
 
 import java.sql.*;
 
@@ -15,11 +15,11 @@ public class FileDatabase {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:" + "dbs/files.sqlite");
-            Logger.info("Opened file database successfully");
+            Console.info("Opened file database successfully");
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to connect to file database");
+            Console.err("Failed to connect to file database");
         }
     }
 
@@ -32,24 +32,25 @@ public class FileDatabase {
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to execute sqlite query " + query);
+            Console.err("Failed to execute sqlite query " + query);
         }
     }
 
     public static void updateFile(FileInfo fileInfo) {
-        String sql = "UPDATE files SET path=?, description=?, minPermissions=? WHERE name=?";
+        String sql = "UPDATE files SET name=?, path=?, description=?, minPermissions=? WHERE id=?";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setString(1, fileInfo.path);
-            pstmt.setString(2, fileInfo.description);
-            pstmt.setInt(3, fileInfo.minPermissionLevel);
-            pstmt.setString(4, fileInfo.name);
+            pstmt.setString(1, fileInfo.name);
+            pstmt.setString(2, fileInfo.path);
+            pstmt.setString(3, fileInfo.description);
+            pstmt.setInt(4, fileInfo.minPermissionLevel);
+            pstmt.setInt(5, fileInfo.id);
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to update file info for " + fileInfo.name);
+            Console.err("Failed to update file info for " + fileInfo.name);
         }
     }
 
@@ -66,7 +67,7 @@ public class FileDatabase {
             pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to add file info for " + name);
+            Console.err("Failed to add file info for " + name);
         }
     }
 
@@ -83,7 +84,7 @@ public class FileDatabase {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to update file info for file" + id);
+            Console.err("Failed to update file info for file" + id);
         }
     }
 
@@ -107,7 +108,7 @@ public class FileDatabase {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to fetch files from database");
+            Console.err("Failed to fetch files from database");
         }
 
         return files;
@@ -122,7 +123,7 @@ public class FileDatabase {
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to close database connection");
+            Console.err("Failed to stop database connection");
         }
     }
 

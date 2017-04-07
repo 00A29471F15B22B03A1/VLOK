@@ -7,14 +7,15 @@ import java.util.Random;
 public class KeyGen {
 
     public static void main(String[] args) {
-        String username = "";
+        String username = "</hakPeer>";
         String key = getNewKey();
-        String hash = Utils.hash("");
+        String hash = Utils.hash("wachtwoord");
         UserDatabase.addUser(username, key, hash, PermissionLevels.ADMIN);
         System.out.println("New User: " + username);
         System.out.println(key);
         System.out.println(hash);
         System.exit(0);
+//        FileDatabase.addFile("test.mp4", "test file");
     }
 
     private static String getNewKey() {

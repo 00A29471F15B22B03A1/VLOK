@@ -1,6 +1,6 @@
 package core;
 
-public class User {
+public class CurrentUser {
 
     public static String sessionKey;
 

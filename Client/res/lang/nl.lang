@@ -10,8 +10,19 @@ ui.code=Code
 ui.continue=Doorgaan
 ui.file=Bestand
 ui.files=Bestanden
-
+ui.language=Taal
+ui.languages=Talen
+ui.settings=Instellingen
+ui.save=Opslaan
+ui.cancel=Annuleer
+ui.accept=Akkoord
 ui.pending=In afwachting
+ui.debug=Ontwikkelaars
+ui.exit=Stop
+ui.name=Naam
+ui.description=Beschrijving
+ui.created_by=Gemaakt door
+ui.path=Pad
 
 #ERROR
 error.error=Fout

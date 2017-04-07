@@ -27,9 +27,9 @@ public class FileStructure {
         return files.size();
     }
 
-    public FileInfo getFile(String name) {
+    public FileInfo getFile(int id) {
         for (FileInfo fileInfo : files)
-            if (fileInfo.name.equals(name))
+            if (fileInfo.id == id)
                 return fileInfo;
         return null;
     }

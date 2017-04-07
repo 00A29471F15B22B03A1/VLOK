@@ -1,7 +1,7 @@
 package core.database;
 
 import core.PermissionLevels;
-import core.logging.Logger;
+import core.logging.Console;
 
 import java.sql.*;
 
@@ -13,11 +13,11 @@ public class UserDatabase {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:" + "dbs/users.sqlite");
-            Logger.info("Opened file database successfully");
+            Console.info("Opened file database successfully");
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to connect to user database");
+            Console.err("Failed to connect to user database");
         }
     }
 
@@ -34,7 +34,7 @@ public class UserDatabase {
             pstmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to add user " + name);
+            Console.err("Failed to add user " + name);
         }
     }
 
@@ -52,7 +52,7 @@ public class UserDatabase {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to get code info for " + key);
+            Console.err("Failed to get code info for " + key);
         }
 
         return false;
@@ -72,7 +72,7 @@ public class UserDatabase {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            Logger.err("Failed to get code info for " + key);
+            Console.err("Failed to get code info for " + key);
         }
 
         return false;

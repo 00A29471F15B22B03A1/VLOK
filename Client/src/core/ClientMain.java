@@ -1,22 +1,53 @@
 package core;
 
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
+import core.logging.Console;
+import core.packets.UpdatePacket;
+import core.ui.UpdateWindow;
 import core.ui.login.LoginWindow;
-import core.ui.mainwindow.MainWindow;
+import core.ui.main.MainWindow;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.stage.Stage;
 
-public class ClientMain {
+public class ClientMain extends Application {
 
-    public static void main(String[] args) {
-        Utils.setNativeLookAndFeel();
+    public static final float VERSION = 0.1f;
+    public static String DOWNLOAD_URL = "";
 
-        VLOKManager.init();
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Login");
 
-        LoginWindow loginWindow = new LoginWindow();
+        LoginWindow loginWindow = new LoginWindow(primaryStage);
 
         loginWindow.addLoginListener((sessionKey) -> {
-            User.sessionKey = sessionKey;
-            new MainWindow();
+            CurrentUser.sessionKey = sessionKey;
+            Platform.runLater(() -> primaryStage.setScene(new MainWindow(primaryStage).getScene()));
         });
 
+        VLOKManager.client.addListener(new Listener() {
+            @Override
+            public void received(Connection connection, Object o) {
+                if (o instanceof UpdatePacket) {
+                    DOWNLOAD_URL = ((UpdatePacket) o).downloadURL;
+                    Platform.runLater(() -> primaryStage.setScene(new UpdateWindow(primaryStage).getScene()));
+                }
+            }
+        });
+
+        primaryStage.setOnCloseRequest(event -> Console.stop());
+
+        primaryStage.setScene(loginWindow.getScene());
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        VLOKManager.init();
+
+
+        launch(args);
     }
 
 }

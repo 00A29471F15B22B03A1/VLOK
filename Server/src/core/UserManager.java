@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ *
+ */
 public class UserManager {
 
     private static List<ConnectedClient> clients = new ArrayList<>();

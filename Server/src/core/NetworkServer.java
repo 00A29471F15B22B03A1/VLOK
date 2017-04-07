@@ -3,7 +3,7 @@ package core;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
-import core.logging.Logger;
+import core.logging.Console;
 
 import java.io.IOException;
 
@@ -56,7 +56,7 @@ public class NetworkServer extends NetworkInterface {
             server.bind(KryoUtil.TCP_PORT, KryoUtil.UDP_PORT);
         } catch (IOException e) {
             e.printStackTrace();
-            Logger.err("Failed to start server");
+            Console.err("Failed to start server");
         }
     }
 

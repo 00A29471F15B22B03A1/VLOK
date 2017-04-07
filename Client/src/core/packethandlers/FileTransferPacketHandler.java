@@ -3,7 +3,7 @@ package core.packethandlers;
 import com.esotericsoftware.kryonet.Connection;
 import core.NetworkInterface;
 import core.PacketHandler;
-import core.logging.Logger;
+import core.logging.Console;
 import core.packets.FileTransferPacket;
 import core.packets.Packet;
 
@@ -32,7 +32,7 @@ public class FileTransferPacketHandler extends PacketHandler {
             OutputStream outputStream = createOutputStream(packet.fileInfo.name);
 
             if (outputStream == null) {
-                Logger.err("Failed to create output stream");
+                Console.err("Failed to create output stream");
                 return;
             }
 
@@ -45,11 +45,10 @@ public class FileTransferPacketHandler extends PacketHandler {
                 outputStreams.get(c).close();
                 outputStreams.remove(c);
 
-                String tempPath = File.createTempFile("temp-file", "tmp").getParent();
+                String tempPath = File.createTempFile("temp-file", ".tmp").getParent();
 
-                Logger.info("Finished downloading " + packet.fileInfo.name);
-
-                Logger.info("Opening " + packet.fileInfo.name);
+                Console.info("Finished downloading " + packet.fileInfo.name);
+                Console.info("Opening " + packet.fileInfo.name);
 
                 File file = new File(tempPath + "/" + packet.fileInfo.name);
                 Desktop.getDesktop().open(file);
@@ -57,7 +56,7 @@ public class FileTransferPacketHandler extends PacketHandler {
                 return;
             } catch (IOException e) {
                 e.printStackTrace();
-                Logger.err("Failed to finish downloading " + packet.fileInfo.name);
+                Console.err("Failed to finish downloading " + packet.fileInfo.name);
             }
         }
 
@@ -65,17 +64,17 @@ public class FileTransferPacketHandler extends PacketHandler {
             outputStreams.get(c).write(packet.data);
         } catch (IOException e) {
             e.printStackTrace();
-            Logger.err("Failed writing to output steam");
+            Console.err("Failed writing to output steam");
         }
     }
 
     private OutputStream createOutputStream(String name) {
         try {
-            Logger.info("Created output stream for " + name);
+            Console.info("Created output stream for " + name);
             return new FileOutputStream(new File(File.createTempFile("temp-file", "tmp").getParent() + "/" + name));
         } catch (IOException e) {
             e.printStackTrace();
-            Logger.err("Failed creating output stream for " + name);
+            Console.err("Failed creating output stream for " + name);
         }
         return null;
     }

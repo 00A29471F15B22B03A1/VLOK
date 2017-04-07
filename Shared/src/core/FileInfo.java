@@ -2,6 +2,7 @@ package core;
 
 public class FileInfo {
 
+    //TODO: use id instead of name
     public int id;
     public String name;
     public String path;

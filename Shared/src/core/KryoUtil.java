@@ -3,7 +3,7 @@ package core;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Server;
-import core.logging.Logger;
+import core.logging.Console;
 import core.packets.*;
 
 import javax.crypto.KeyGenerator;
@@ -30,10 +30,10 @@ public class KryoUtil {
         byte[] key = null;
         try {
             key = KeyGenerator.getInstance("Blowfish").generateKey().getEncoded();
-            Logger.info("Successfully generated fullKey");
+            Console.info("Successfully generated fullKey");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-            Logger.err("Failed to generate encryption fullKey");
+            Console.err("Failed to generate encryption fullKey");
         }
         return key;
     }
@@ -66,6 +66,7 @@ public class KryoUtil {
         kryo.register(List.class);
         kryo.register(ArrayList.class);
         kryo.register(byte[].class);
+        kryo.register(float.class);
 
         kryo.register(FileInfo.class);
         kryo.register(FileStructure.class);
@@ -76,8 +77,9 @@ public class KryoUtil {
         kryo.register(FileTransferPacket.class);
         kryo.register(LoginPacket.class);
         kryo.register(ErrorPacket.class);
+        kryo.register(UpdatePacket.class);
 
-        Logger.info("Registered serialization classes");
+        Console.info("Registered serialization classes");
     }
 
 }

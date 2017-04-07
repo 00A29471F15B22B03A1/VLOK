@@ -1,10 +1,10 @@
 package core;
 
 import core.localization.Localization;
-import core.logging.Logger;
+import core.logging.Console;
 import core.packets.FileTransferPacket;
+import core.ui.Popup;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,13 +12,16 @@ import java.io.InputStream;
 
 public class FileSender {
 
-    public static void sendFile(FileInfo fileInfo, File file, String sessionKey, NetworkClient client) {
+    //TODO: make on file sender for server and client
+    public static void sendFile(String name, String description, File file, String sessionKey, NetworkInterface ni) {
         if (file.length() > Math.pow(10, 9)) {
-            JOptionPane.showMessageDialog(null, Localization.getString("error.file_too_big"), Localization.getString("error.error"), JOptionPane.ERROR_MESSAGE);
+            Popup.alert(Localization.get("error.error"), Localization.get("error.file_too_big"));
             return;
         }
 
-        Logger.info("Started uploading " + fileInfo.name);
+        FileInfo fileInfo = new FileInfo(name, "", description, 0, false);
+
+        Console.info("Started uploading " + name);
 
         try {
             byte[] buffer = new byte[FileTransferPacket.MAX_PACKET_SIZE];
@@ -31,7 +34,7 @@ public class FileSender {
 
                 if (sendData.length == 0) continue;
 
-                sendFilePacket(fileInfo, sendData, sessionKey, client);
+                sendFilePacket(fileInfo, sendData, sessionKey, ni);
 
                 Thread.sleep(1);
             }
@@ -42,21 +45,21 @@ public class FileSender {
             finishedPacket.sessionKey = sessionKey;
             finishedPacket.fileInfo = fileInfo;
             finishedPacket.finished = true;
-            client.sendTCP(finishedPacket);
+            ni.sendTCP(finishedPacket);
 
-            Logger.info("Finished uploading " + fileInfo.name);
+            Console.info("Finished uploading " + fileInfo.name);
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-            Logger.err("Failed to upload " + fileInfo.name);
+            Console.err("Failed to upload " + fileInfo.name);
         }
     }
 
-    private static void sendFilePacket(FileInfo fileInfo, byte[] data, String sessionKey, NetworkClient client) {
+    private static void sendFilePacket(FileInfo fileInfo, byte[] data, String sessionKey, NetworkInterface ni) {
         FileTransferPacket packet = new FileTransferPacket();
         packet.sessionKey = sessionKey;
         packet.fileInfo = fileInfo;
         packet.data = data;
-        client.sendTCP(packet);
+        ni.sendTCP(packet);
     }
 
     private static byte[] compact(byte[] data, int size) {

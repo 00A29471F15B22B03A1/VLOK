@@ -2,62 +2,62 @@ package core.ui.login;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
-import core.Utils;
 import core.VLOKManager;
 import core.localization.Localization;
-import core.logging.Logger;
+import core.logging.Console;
 import core.packets.LoginPacket;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginWindow extends JFrame {
+public class LoginWindow {
 
-    private static List<LoginListener> loginListeners = new ArrayList<>();
+    private Scene scene;
 
-    public LoginWindow() {
-        setSize(300, 130);
-        setLocationRelativeTo(null);
-        setTitle(Localization.getString("ui.login"));
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
+    private List<LoginListener> loginListeners = new ArrayList<>();
 
-        JPanel panel = new JPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        panel.setLayout(new GridLayout(3, 2, 10, 10));
+    public LoginWindow(Stage primaryStage) {
+        scene = new Scene(createPane(), 215, 115);
+        primaryStage.setTitle(Localization.get("ui.login"));
+    }
 
+    private GridPane createPane() {
+        GridPane gridPane = new GridPane();
 
-        JTextField keyField = new JTextField(10);
-        keyField.setText("5B3872Y0241Y5H6N");
-        JLabel keyLabel = new JLabel(Localization.getString("ui.key"));
-        keyLabel.setLabelFor(keyField);
+        gridPane.setPadding(new Insets(10, 10, 10, 10));
+        gridPane.setVgap(8);
+        gridPane.setHgap(10);
 
-        panel.add(keyLabel);
-        panel.add(keyField);
+        Label keyLabel = new Label(Localization.get("ui.key"));
+        GridPane.setConstraints(keyLabel, 0, 0);
 
+        TextField keyField = new TextField("7X0666Y8994F6U7A");
+        GridPane.setConstraints(keyField, 1, 0);
 
-        JPasswordField codeField = new JPasswordField(10);
-        JLabel codeLabel = new JLabel(Localization.getString("ui.code"));
-        codeLabel.setLabelFor(codeField);
+        Label codeLabel = new Label(Localization.get("ui.code"));
+        GridPane.setConstraints(keyLabel, 0, 1);
 
-        codeField.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    VLOKManager.sendLogin(keyField.getText(), Utils.hash(codeField.getText()), getOS());
-                }
-            }
+        PasswordField codeField = new PasswordField();
+        codeField.setOnKeyPressed(ke -> {
+            if (ke.getCode().equals(KeyCode.ENTER))
+                login(keyField, codeField);
         });
+        GridPane.setConstraints(codeField, 1, 1);
 
-        panel.add(codeLabel);
-        panel.add(codeField);
+        Button loginButton = new Button(Localization.get("ui.login"));
+        GridPane.setConstraints(loginButton, 1, 2);
+        loginButton.setOnAction(event -> login(keyField, codeField));
 
-
-        JButton continueButton = new JButton(Localization.getString("ui.continue"));
-        panel.add(continueButton);
+        gridPane.getChildren().addAll(keyLabel, keyField, codeLabel, codeField, loginButton);
 
         VLOKManager.client.addListener(new Listener() {
             @Override
@@ -65,25 +65,20 @@ public class LoginWindow extends JFrame {
                 if (o instanceof LoginPacket) {
                     LoginPacket packet = (LoginPacket) o;
 
-                    if (packet.sessionKey == null || packet.sessionKey.isEmpty()) {
-                        Logger.err("Failed to login");
-                        codeField.setText("");
-                        JOptionPane.showMessageDialog(null, Localization.getString("error.login"), Localization.getString("error.error"), JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        Logger.info("Logged in");
+                    if (packet.sessionKey != null && !packet.sessionKey.isEmpty()) {
+                        Console.info("Logged in");
                         fireLoginEvent(packet.sessionKey);
-                        dispose();
                     }
                 }
             }
         });
 
-        continueButton.addActionListener(e -> VLOKManager.sendLogin(keyField.getText(), Utils.hash(codeField.getText()), getOS()));
-
-        add(panel);
-        setVisible(true);
+        return gridPane;
     }
 
+    private void login(TextField keyField, TextField codeField) {
+        VLOKManager.sendLogin(keyField.getText(), codeField.getText(), "-");
+    }
 
     private void fireLoginEvent(String sessionKey) {
         for (LoginListener loginListener : loginListeners)
@@ -98,8 +93,7 @@ public class LoginWindow extends JFrame {
         loginListeners.add(loginListener);
     }
 
-    public String getOS() {
-        return System.getProperty("os.name");
+    public Scene getScene() {
+        return scene;
     }
-
 }

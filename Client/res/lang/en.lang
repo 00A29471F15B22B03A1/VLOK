@@ -10,12 +10,24 @@ ui.code=Code
 ui.continue=Continue
 ui.file=File
 ui.files=Files
+ui.language=Language
 ui.languages=Languages
 ui.settings=Settings
 ui.save=Save
 ui.cancel=Cancel
 ui.accept=Accept
 ui.pending=Pending
+ui.debug=Debug
+ui.exit=Exit
+ui.name=Name
+ui.description=Description
+ui.created_by=Created by
+ui.path=Path
+ui.close=Close
+ui.credits=Credits
+ui.help=Help
+ui.documentation=Documentation
+ui.choose_file=Choose File
 
 #ERROR
 error.error=Error

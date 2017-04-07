@@ -1,7 +1,7 @@
 package core;
 
 import com.esotericsoftware.kryonet.Connection;
-import core.logging.Logger;
+import core.logging.Console;
 import core.packets.FileTransferPacket;
 
 import java.io.*;
@@ -9,7 +9,8 @@ import java.io.*;
 public class FileSender {
 
     public static void sendFile(final NetworkInterface ni, final Connection connection, final FileInfo fileInfo) {
-        final InputStream inputStream = getInputStream(new File("storage/" + fileInfo.name));
+        final InputStream inputStream = createInputStream("storage/" + fileInfo.name);
+
         if (inputStream == null)
             return;
 
@@ -23,8 +24,6 @@ public class FileSender {
                     byte[] sendData = compact(buffer, read);
 
                     sendFilePacket(fileInfo, sendData, ni, connection);
-
-                    Thread.sleep(1);
                 }
 
                 inputStream.close();
@@ -34,20 +33,20 @@ public class FileSender {
                 finishedPacket.finished = true;
                 ni.sendTCP(finishedPacket, connection.getID());
 
-            } catch (IOException | InterruptedException e) {
+            } catch (IOException e) {
+                Console.err("Failed to read file " + fileInfo.name);
                 e.printStackTrace();
-                Logger.err("Failed to read file " + fileInfo.name);
             }
         });
         thread.start();
     }
 
-    private static InputStream getInputStream(File f) {
+    private static InputStream createInputStream(String path) {
         try {
-            return new FileInputStream(f);
+            return new FileInputStream(new File(path));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Logger.err("Failed to create new input stream for " + f.getName());
+            Console.err("Failed to create new input stream for " + path);
         }
         return null;
     }
@@ -63,9 +62,7 @@ public class FileSender {
 
     private static byte[] compact(byte[] data, int size) {
         byte[] result = new byte[size];
-
         System.arraycopy(data, 0, result, 0, size);
-
         return result;
     }
 

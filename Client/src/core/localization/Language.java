@@ -1,41 +1,36 @@
 package core.localization;
 
-import core.logging.Logger;
+import core.logging.Console;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
-public class Language {
+public enum Language {
 
-//    English("en"),
-//    Dutch("nl"),
-//    French("fr"),
-//    German("de"),
-//    Spanish("es"),
-//    Polish("pl"),
-//    Russian("ru"),
-//    Italian("it"),
-//    Japanese("ja"),
-//    Punjabi("pa"),
-//    Romanian("ro"),
-//    Afrikaans("af"),
-//    Swahili("sw");
+    English("en"),
+    Dutch("nl"),
+    French("fr"),
+    German("de"),
+    Spanish("es"),
+    Polish("pl"),
+    Russian("ru"),
+    Italian("it"),
+    Japanese("ja"),
+    Punjabi("pa"),
+    Romanian("ro"),
+    Afrikaans("af"),
+    Swahili("sw");
 
-    private String languageName;
-    private String languageCode;
     private Map<String, String> languageValues;
 
-    Language(String langPath) {
-        File langFile = new File(langPath);
-        this.languageCode = langFile.getName().replace(".lang", "");
-        this.languageName = new Locale(languageCode).getDisplayName();
+    public final String languageCode;
 
-        loadLangFile(langFile);
+    Language(String langCode) {
+        this.languageCode = langCode;
+        loadLangFile("/lang/" + langCode + ".lang");
     }
 
     public String getString(String key) {
@@ -46,26 +41,11 @@ public class Language {
         return languageValues.containsKey(key);
     }
 
-    public String getLanguageName() {
-        return languageName;
-    }
-
-    public String getLanguageCode() {
-        return languageCode;
-    }
-
-    private void loadLangFile(File file) {
+    private void loadLangFile(String path) {
         try {
             languageValues = new HashMap<>();
 
-            if (!file.exists()) {
-                Logger.warn("Language file " + file.getName() + " not found");
-                return;
-            }
-
-            System.out.println(file.getName().toUpperCase());
-
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(Class.class.getResourceAsStream(path)));
 
             String line;
 
@@ -76,32 +56,33 @@ public class Language {
                     continue;
 
                 if (!line.contains("=")) {
-                    Logger.err("Language file " + file.getName() + " has invalid line");
+                    Console.err("Language file " + path + " has invalid line");
                     continue;
                 }
 
                 String[] keyValue = line.split("=");
 
                 if (keyValue.length != 2) {
-                    Logger.err("Failed to parse language file " + file.getName());
+                    Console.err("Failed to parse language file " + path);
                     continue;
                 }
-
-                System.out.println(keyValue[1]);
 
                 languageValues.put(keyValue[0], keyValue[1]);
             }
 
             reader.close();
 
-            Logger.info("Finished loading language file " + file.getName());
+            Console.info("Finished loading language file " + path);
         } catch (IOException e) {
             e.printStackTrace();
+            Console.err("Language file " + path + " not found");
         }
     }
 
-    @Override
-    public String toString() {
-        return languageName;
+    public static Language getLanguage(String code) {
+        for (Language l : Language.values())
+            if (l.languageCode.equals(code))
+                return l;
+        return null;
     }
 }

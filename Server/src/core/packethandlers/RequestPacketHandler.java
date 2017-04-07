@@ -22,25 +22,34 @@ public class RequestPacketHandler extends PacketHandler {
 
         boolean admin = UserDatabase.isAdmin(UserManager.getLoginKey(packet.sessionKey));
 
-        if (packet.type == RequestPacket.Type.FILE_STRUCTURE) {
-            ServerMain.sendFileStructure(c, ServerMain.fileStructure.getNonPending());
+        switch (packet.type) {
+            case FILE_STRUCTURE:
+                ServerMain.sendFileStructure(c, FileManager.getNonPendingFiles());
+                break;
 
-        } else if (packet.type == RequestPacket.Type.FILE_STRUCTURE_ALL) {
-            if (admin) {
-                ServerMain.sendFileStructure(c, ServerMain.fileStructure);
-            }
-        } else if (packet.type == RequestPacket.Type.FILE_STRUCTURE_PENDING) {
-            if (admin) {
-                ServerMain.sendFileStructure(c, ServerMain.fileStructure.getPending());
-            }
-        } else if (packet.type == RequestPacket.Type.FILE_DOWNLOAD) {
-            FileSender.sendFile(ni, c, ServerMain.fileStructure.getFile(packet.argument));
-        } else if (packet.type == RequestPacket.Type.FILE_UNPEND) {
-            if (admin) {
-                int id = Integer.parseInt(packet.argument.split("|")[0]);
-                String path = packet.argument.split("|")[1];
-                FileDatabase.unpend(id, path);
-            }
+            case FILE_STRUCTURE_ALL:
+                if (admin)
+                    ServerMain.sendFileStructure(c, FileManager.getAllFiles());
+                break;
+
+            case FILE_STRUCTURE_PENDING:
+                if (admin)
+                    ServerMain.sendFileStructure(c, FileManager.getPendingFiles());
+                break;
+
+            case FILE_DOWNLOAD:
+                int fileId = Integer.parseInt(((RequestPacket) p).argument);
+                FileSender.sendFile(ni, c, FileManager.getFile(fileId));
+                break;
+
+            case FILE_UNPEND:
+                if (admin) {
+                    int id = Integer.parseInt(packet.argument.split("|")[0]);
+                    String path = packet.argument.split("|")[1];
+                    FileDatabase.unpend(id, path);
+                }
+                break;
         }
     }
+
 }
