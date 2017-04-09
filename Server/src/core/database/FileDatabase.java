@@ -14,7 +14,7 @@ public class FileDatabase {
     static {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:" + "dbs/files.sqlite");
+            connection = DriverManager.getConnection("jdbc:sqlite:" + "Server/dbs/files.sqlite");
             Console.info("Opened file database successfully");
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -123,7 +123,7 @@ public class FileDatabase {
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            Console.err("Failed to stop database connection");
+            Console.err("Failed to close database connection");
         }
     }
 

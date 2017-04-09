@@ -16,10 +16,10 @@ public class FileStructure {
         files.add(file);
     }
 
-    public void removeFile(String name) {
+    public void removeFile(int id) {
         Iterator<FileInfo> iterator = files.iterator();
         while (iterator.hasNext())
-            if (iterator.next().name.equals(name))
+            if (iterator.next().id == id)
                 iterator.remove();
     }
 

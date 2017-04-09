@@ -14,18 +14,16 @@ public class ServerMain {
     private static NetworkServer server;
 
     public static void main(String[] args) {
-        Utils.setNativeLookAndFeel();
+        Console.close();
 
         server = new NetworkServer();
 
-        server.addListener(new FileReceiver());
-
         server.addPacketHandler(new LoginPacketHandler());
         server.addPacketHandler(new RequestPacketHandler());
+        server.addPacketHandler(new FileTransferPacketHandler("storage/", (file, fileInfo) -> FileManager.addFile(fileInfo)));
 
         server.start();
     }
-
 
     public static void sendFileStructure(Connection connection, FileStructure fileStructure) {
         FileStructurePacket fileStructurePacket = new FileStructurePacket();

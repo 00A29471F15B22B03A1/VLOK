@@ -56,7 +56,7 @@ public class MainWindow {
         Button downloadButton = new Button(Localization.get("ui.download"));
         downloadButton.setOnAction(event -> {
             if (selectedFile != null)
-                VLOKManager.sendDownloadRequest(selectedFile);
+                VLOKManager.sendRequest(RequestPacket.Type.FILE_DOWNLOAD, selectedFile.id + "");
         });
         GridPane.setConstraints(downloadButton, 0, 3);
 

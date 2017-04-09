@@ -1,6 +1,7 @@
 package core.prefs;
 
 import core.Utils;
+import core.logging.Console;
 
 import java.io.File;
 import java.util.HashMap;
@@ -26,7 +27,11 @@ public class Prefs {
 
         File f = new File(prefsPath);
         if (!f.exists()) {
-            f.getParentFile().mkdir();
+            Console.warn("Prefs file does not exist");
+            if (!f.getParentFile().mkdir()) {
+                Console.err("Could not create folder for prefs file");
+                return;
+            }
             Utils.writeToFile(prefsPath, Utils.readFileWithIS("/default.prefs"));
         }
 

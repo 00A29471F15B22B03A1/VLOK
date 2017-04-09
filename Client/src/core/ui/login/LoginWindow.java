@@ -77,7 +77,7 @@ public class LoginWindow {
     }
 
     private void login(TextField keyField, TextField codeField) {
-        VLOKManager.sendLogin(keyField.getText(), codeField.getText(), "-");
+        VLOKManager.sendLogin(keyField.getText(), codeField.getText(), System.getProperty("os.name"));
     }
 
     private void fireLoginEvent(String sessionKey) {

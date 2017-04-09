@@ -12,7 +12,7 @@ public class Debug {
         if (enabled) {
             Console.openWindow();
         } else {
-            Console.stop();
+            Console.close();
         }
     }
 

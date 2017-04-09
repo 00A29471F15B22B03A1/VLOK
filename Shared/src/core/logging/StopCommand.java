@@ -3,7 +3,7 @@ package core.logging;
 public class StopCommand extends AbstractConsoleCommand {
 
     public StopCommand() {
-        super("stop");
+        super("close");
     }
 
     @Override

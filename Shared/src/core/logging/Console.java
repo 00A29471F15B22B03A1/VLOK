@@ -83,7 +83,7 @@ public class Console {
         INSTANCE.frame.setVisible(true);
     }
 
-    public static void stop() {
+    public static void close() {
 //        INSTANCE.outputStream.close();
         INSTANCE.frame.dispose();
     }

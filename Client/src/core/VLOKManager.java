@@ -1,21 +1,15 @@
 package core;
 
-import com.esotericsoftware.kryonet.Connection;
-import com.esotericsoftware.kryonet.Listener;
 import core.localization.Localization;
 import core.logging.Console;
 import core.packethandlers.ErrorPacketHandler;
-import core.packethandlers.FileTransferPacketHandler;
 import core.packets.LoginPacket;
 import core.packets.RequestPacket;
-import core.packets.UpdatePacket;
 import core.ui.Popup;
-import javafx.application.Platform;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.File;
 
 public class VLOKManager {
@@ -27,59 +21,39 @@ public class VLOKManager {
 
         client.start();
 
-        client.addListener(new Listener() {
-            @Override
-            public void received(Connection connection, Object o) {
-                if (o instanceof UpdatePacket)
-                    System.out.println("UPDATE");
-            }
-        });
+        client.addPacketHandler(new FileTransferPacketHandler(Utils.getDownloadPath(), (file, fileInfo) -> Utils.selectFile(file.getPath())));
 
-        client.addPacketHandler(new FileTransferPacketHandler());
         client.addPacketHandler(new ErrorPacketHandler());
 
         Console.info("Initialized VLOK");
     }
 
-
     //TODO: fix localization
     public static void sendFile() {
-        Platform.runLater(() -> {
-            Stage window = new Stage();
+        Stage window = new Stage();
 
-            window.initModality(Modality.APPLICATION_MODAL);
+        window.initModality(Modality.APPLICATION_MODAL);
 
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle(Localization.get("ui.choose_file"));
-            File file = fileChooser.showOpenDialog(window);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle(Localization.get("ui.choose_file"));
+        File file = fileChooser.showOpenDialog(window);
 
-            if (file == null)
-                return;
+        if (file == null)
+            return;
 
-            String name = JOptionPane.showInputDialog("Give the file a name");
+        String name = Popup.input("File Name", "Give the file a name", file.getName());
 
-            if (name.isEmpty())
-                return;
+        if (name.isEmpty()) {
+            Popup.info("Canceling upload", "Canceling upload because there is no name");
+            return;
+        }
 
-            String description = JOptionPane.showInputDialog("Give the file a description");
+        String description = Popup.input("Give Description", "Give the file a description");
 
-            int choice = JOptionPane.showConfirmDialog(null, "Filename: " + name + ", description: " + description);
-
-            if (choice == JOptionPane.YES_OPTION) {
-                FileSender.sendFile(name, description, file, CurrentUser.sessionKey, client);
-                Popup.info("File upload", "File upload completed!");
-            }
-        });
-    }
-
-    public static void sendDownloadRequest(FileInfo fileInfo) {
-        RequestPacket requestPacket = new RequestPacket();
-        requestPacket.sessionKey = CurrentUser.sessionKey;
-        requestPacket.type = RequestPacket.Type.FILE_DOWNLOAD;
-        requestPacket.argument = fileInfo.id + "";
-
-        client.sendTCP(requestPacket);
-        Console.info("Sent file download request");
+        if (Popup.confirm("Confirm?", "Filename: " + name + ", description: " + description)) {
+            FileSender.sendFile(new FileInfo(name, description), file, CurrentUser.sessionKey, packet -> client.sendTCP(packet));
+            Popup.info("File upload", "File upload completed!");
+        }
     }
 
     public static void sendLogin(String key, String code, String os) {

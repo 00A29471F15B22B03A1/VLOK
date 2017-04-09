@@ -6,8 +6,6 @@ import com.esotericsoftware.kryonet.Server;
 import core.logging.Console;
 import core.packets.*;
 
-import javax.crypto.KeyGenerator;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,25 +16,6 @@ public class KryoUtil {
 
     public static final int TCP_PORT = 54555;   //TCP port for kryonet
     public static final int UDP_PORT = 54777;   //UDP port for kryonet
-
-    private static byte[] key = generateKey();
-
-    /**
-     * Generates a new blowfish fullKey
-     *
-     * @return fullKey as byte[]
-     */
-    private static byte[] generateKey() {
-        byte[] key = null;
-        try {
-            key = KeyGenerator.getInstance("Blowfish").generateKey().getEncoded();
-            Console.info("Successfully generated fullKey");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            Console.err("Failed to generate encryption fullKey");
-        }
-        return key;
-    }
 
     /**
      * Registers serializable classes for kryonet server

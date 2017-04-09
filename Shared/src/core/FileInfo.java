@@ -2,11 +2,10 @@ package core;
 
 public class FileInfo {
 
-    //TODO: use id instead of name
     public int id;
     public String name;
     public String path;
-    public String description = "EMPTY";
+    public String description;
     public int minPermissionLevel = PermissionLevels.PEASAN;
     public boolean pending;
 
@@ -19,6 +18,11 @@ public class FileInfo {
      * Empty constructor for serialization
      */
     public FileInfo() {
+    }
+
+    public FileInfo(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     public FileInfo(String name, String path, String description, int minPermissionLevel, boolean pending) {

@@ -37,10 +37,11 @@ public class ClientMain extends Application {
             }
         });
 
-        primaryStage.setOnCloseRequest(event -> Console.stop());
+        primaryStage.setOnCloseRequest(event -> Console.close());
 
         primaryStage.setScene(loginWindow.getScene());
         primaryStage.show();
+        primaryStage.requestFocus();
     }
 
     public static void main(String[] args) {

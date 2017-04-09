@@ -2,18 +2,20 @@ package core;
 
 import core.logging.Console;
 
-import javax.swing.*;
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Utils {
 
-    public static void setNativeLookAndFeel() {
+    public static String getDownloadPath() {
+        return System.getProperty("user.home") + "/Downloads/";
+    }
+
+    public static void selectFile(String path) {
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            Console.info("Set ui look and feel to system default");
-        } catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException | IllegalAccessException e) {
+            Runtime.getRuntime().exec("explorer.exe /select," + path);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

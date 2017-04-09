@@ -7,6 +7,8 @@ import core.database.UserDatabase;
 import core.packets.Packet;
 import core.packets.RequestPacket;
 
+import java.io.File;
+
 public class RequestPacketHandler extends PacketHandler {
 
     public RequestPacketHandler() {
@@ -39,7 +41,8 @@ public class RequestPacketHandler extends PacketHandler {
 
             case FILE_DOWNLOAD:
                 int fileId = Integer.parseInt(((RequestPacket) p).argument);
-                FileSender.sendFile(ni, c, FileManager.getFile(fileId));
+                FileInfo fileInfo = FileManager.getFile(fileId);
+                FileSender.sendFile(fileInfo, new File("storage/" + fileInfo.name), "", packet1 -> ni.sendTCP(packet1, c.getID()));
                 break;
 
             case FILE_UNPEND:
