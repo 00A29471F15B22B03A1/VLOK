@@ -54,7 +54,10 @@ public class ChatWindow {
         input.setPromptText("Type here to chat...");
         input.setOnKeyPressed(ke -> {
             if (ke.getCode().equals(KeyCode.ENTER)) {
-                VLOKManager.sentChatMessage(username, input.getText());
+                if (input.getText().isEmpty())
+                    return;
+
+                VLOKManager.sentChatMessage(username, input.getText().trim());
                 input.setText("");
             }
         });
