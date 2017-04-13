@@ -6,6 +6,8 @@ import core.VLOKManager;
 import core.localization.Localization;
 import core.logging.Console;
 import core.packets.LoginPacket;
+import core.prefs.Prefs;
+import core.prefs.PrefsValue;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -40,7 +42,7 @@ public class LoginWindow {
         Label keyLabel = new Label(Localization.get("ui.key"));
         GridPane.setConstraints(keyLabel, 0, 0);
 
-        TextField keyField = new TextField("7X0666Y8994F6U7A");
+        TextField keyField = new TextField(Prefs.SETTINGS.doesValueExist("last_key") ? Prefs.SETTINGS.getString("last_key") : "");
         GridPane.setConstraints(keyField, 1, 0);
 
         Label codeLabel = new Label(Localization.get("ui.code"));
@@ -78,6 +80,7 @@ public class LoginWindow {
 
     private void login(TextField keyField, TextField codeField) {
         VLOKManager.sendLogin(keyField.getText(), codeField.getText(), System.getProperty("os.name"));
+        Prefs.SETTINGS.updateValue("last_key", keyField.getText(), PrefsValue.Type.STRING);
     }
 
     private void fireLoginEvent(String sessionKey) {

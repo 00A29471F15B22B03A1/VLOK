@@ -6,6 +6,8 @@ import core.PermissionLevels;
 import core.logging.Console;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class FileDatabase {
 
@@ -37,7 +39,7 @@ public class FileDatabase {
     }
 
     public static void updateFile(FileInfo fileInfo) {
-        String sql = "UPDATE files SET name=?, path=?, description=?, minPermissions=? WHERE id=?";
+        String sql = "UPDATE files SET name=?, path=?, description=?, minPermissions=?, uploadDate=? WHERE id=?";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -46,6 +48,7 @@ public class FileDatabase {
             pstmt.setString(3, fileInfo.description);
             pstmt.setInt(4, fileInfo.minPermissionLevel);
             pstmt.setInt(5, fileInfo.id);
+            pstmt.setString(6, fileInfo.uploadDate);
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {
@@ -55,7 +58,7 @@ public class FileDatabase {
     }
 
     public static void addFile(String name, String description) {
-        String sql = "INSERT INTO files(id, name, path, description, minPermissions, pending) VALUES(?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO files(id, name, path, description, minPermissions, pending, uploadDate) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -63,6 +66,7 @@ public class FileDatabase {
             pstmt.setString(3, description);
             pstmt.setInt(5, PermissionLevels.PEASAN);
             pstmt.setString(6, "true");
+            pstmt.setString(7, new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new Date()));
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {
@@ -102,6 +106,7 @@ public class FileDatabase {
                 fileInfo.path = resultSet.getString("path");
                 fileInfo.description = resultSet.getString("description");
                 fileInfo.minPermissionLevel = resultSet.getInt("minPermissions");
+                fileInfo.uploadDate = resultSet.getString("uploadDate");
                 fileInfo.pending = Boolean.parseBoolean(resultSet.getString("pending"));
                 files.addFile(fileInfo);
             }

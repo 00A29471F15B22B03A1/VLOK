@@ -12,7 +12,7 @@ public class NetworkServer extends NetworkInterface {
     private Server server;
 
     public NetworkServer() {
-        server = new Server(60000000, 60000000);
+        server = new Server(6000000, 6000000);
         server.start();
 
         KryoUtil.registerServerClass(server);

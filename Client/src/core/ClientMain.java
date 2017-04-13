@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class ClientMain extends Application {
 
-    public static final float VERSION = 0.1f;
+    public static final float VERSION = 0.01f;
     public static String DOWNLOAD_URL = "";
 
     @Override
@@ -46,7 +46,6 @@ public class ClientMain extends Application {
 
     public static void main(String[] args) {
         VLOKManager.init();
-
 
         launch(args);
     }

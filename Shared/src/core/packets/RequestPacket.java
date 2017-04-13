@@ -9,7 +9,8 @@ public class RequestPacket extends Packet {
         FILE_STRUCTURE_ALL,
         FILE_STRUCTURE_PENDING,
         FILE_DOWNLOAD,
-        FILE_UNPEND
+        FILE_UNPEND,
+        DOCUMENTATION
     }
 
     public Type type;

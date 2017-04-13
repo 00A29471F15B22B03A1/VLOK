@@ -4,6 +4,7 @@ import com.esotericsoftware.kryonet.Connection;
 import core.*;
 import core.database.FileDatabase;
 import core.database.UserDatabase;
+import core.logging.Console;
 import core.packets.Packet;
 import core.packets.RequestPacket;
 
@@ -51,6 +52,11 @@ public class RequestPacketHandler extends PacketHandler {
                     String path = packet.argument.split("|")[1];
                     FileDatabase.unpend(id, path);
                 }
+                break;
+
+            case DOCUMENTATION:
+                DocumentationLoader.sendDocumentation(c);
+                Console.info("Sent documentation to " + c.getID());
                 break;
         }
     }

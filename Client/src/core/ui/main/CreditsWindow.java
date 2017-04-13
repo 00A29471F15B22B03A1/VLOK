@@ -32,7 +32,7 @@ public class CreditsWindow {
         Label createdByLabel = new Label(Localization.get("ui.created_by"));
         GridPane.setConstraints(createdByLabel, 0, 0);
 
-        Label userName1 = new Label("someone");
+        Label userName1 = new Label("computr_kint;");
         GridPane.setConstraints(userName1, 1, 0);
 
         Label userName2 = new Label("<\\hakPeer>");
@@ -44,7 +44,7 @@ public class CreditsWindow {
 
         layout.getChildren().addAll(createdByLabel, userName1, userName2, closeButton);
 
-        Scene dialogScene = new Scene(layout, 155, 100);
+        Scene dialogScene = new Scene(layout, 255, 100);
         dialog.setScene(dialogScene);
 
         Localization.addLanguageListener(newLanguage -> createdByLabel.setText(Localization.get("ui.created_by")));

@@ -23,11 +23,20 @@ ui.name=Name
 ui.description=Description
 ui.created_by=Created by
 ui.path=Path
+ui.upload_date=Upload Date
 ui.close=Close
 ui.credits=Credits
 ui.help=Help
 ui.documentation=Documentation
 ui.choose_file=Choose File
+ui.update=Update
+ui.update_available=New Update Available
+ui.give_file_name=Give the file a name
+ui.give_file_description=Give the file a description
+ui.canceling_upload=Canceling Upload
+ui.canceling_upload_no_name=Canceling upload because there is no name
+ui.confirm=Confirm
+ui.file_upload_complete=File upload is complete
 
 #ERROR
 error.error=Error

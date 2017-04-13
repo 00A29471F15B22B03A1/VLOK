@@ -8,10 +8,10 @@ public class FileInfo {
     public String description;
     public int minPermissionLevel = PermissionLevels.PEASAN;
     public boolean pending;
+    public String uploadDate;
 
     //TODO: add these properties
     private int size;
-    private String uploadDate;
     private String uploader;
 
     /**

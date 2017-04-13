@@ -28,7 +28,6 @@ public class VLOKManager {
         Console.info("Initialized VLOK");
     }
 
-    //TODO: fix localization
     public static void sendFile() {
         Stage window = new Stage();
 
@@ -41,18 +40,18 @@ public class VLOKManager {
         if (file == null)
             return;
 
-        String name = Popup.input("File Name", "Give the file a name", file.getName());
+        String name = Popup.input(Localization.get("ui.name"), Localization.get("ui.give_file_name"), file.getName());
 
         if (name.isEmpty()) {
-            Popup.info("Canceling upload", "Canceling upload because there is no name");
+            Popup.info(Localization.get("ui.canceling_upload"), Localization.get("ui.canceling_upload_no_name"));
             return;
         }
 
-        String description = Popup.input("Give Description", "Give the file a description");
+        String description = Popup.input(Localization.get("ui.description"), Localization.get("ui.give_file_description"));
 
-        if (Popup.confirm("Confirm?", "Filename: " + name + ", description: " + description)) {
+        if (Popup.confirm(Localization.get("ui.confirm"), Localization.get("ui.name") + ": " + name + ", " + Localization.get("ui.description") + ": " + description)) {
             FileSender.sendFile(new FileInfo(name, description), file, CurrentUser.sessionKey, packet -> client.sendTCP(packet));
-            Popup.info("File upload", "File upload completed!");
+            Popup.info(Localization.get("ui.upload"), Localization.get("ui.file_upload_complete"));
         }
     }
 

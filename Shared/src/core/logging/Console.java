@@ -73,8 +73,8 @@ public class Console {
     private static void print(String type, String message) {
         String fullMessage = getTime() + " | " + type + message;
         System.out.println(fullMessage);
-        INSTANCE.logArea.append(fullMessage + "\n");
-        INSTANCE.logArea.setCaretPosition(INSTANCE.logArea.getDocument().getLength());
+//        INSTANCE.logArea.append(fullMessage + "\n");
+//        INSTANCE.logArea.setCaretPosition(INSTANCE.logArea.getDocument().getLength());
 //        INSTANCE.outputStream.println(fullMessage);
 //        INSTANCE.outputStream.flush();
     }

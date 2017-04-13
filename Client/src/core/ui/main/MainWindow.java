@@ -23,7 +23,7 @@ public class MainWindow {
 
     public MainWindow(Stage primaryStage) {
         settingsWindow = new SettingsWindow();
-        scene = new Scene(createPane(), 600, 400);
+        scene = new Scene(createPane(), 854, 480);
         primaryStage.setTitle("");
     }
 
@@ -36,7 +36,7 @@ public class MainWindow {
         infoPane.setPadding(new Insets(10, 10, 10, 10));
         infoPane.setVgap(8);
         infoPane.setHgap(10);
-        infoPane.setPrefWidth(250);
+        infoPane.setPrefWidth(350);
 
         Label fileNameLabel = new Label(Localization.get("ui.name") + ": ");
         GridPane.setConstraints(fileNameLabel, 0, 0);
@@ -46,6 +46,7 @@ public class MainWindow {
         Label fileDescriptionLabel = new Label(Localization.get("ui.description") + ": ");
         GridPane.setConstraints(fileDescriptionLabel, 0, 1);
         Label fileDescription = new Label();
+        fileDescription.setWrapText(true);
         GridPane.setConstraints(fileDescription, 1, 1);
 
         Label filePathLabel = new Label(Localization.get("ui.path") + ": ");
@@ -53,14 +54,19 @@ public class MainWindow {
         Label filePath = new Label();
         GridPane.setConstraints(filePath, 1, 2);
 
+        Label fileUploadDateLabel = new Label(Localization.get("ui.upload_date") + ": ");
+        GridPane.setConstraints(fileUploadDateLabel, 0, 3);
+        Label fileUploadDate = new Label();
+        GridPane.setConstraints(fileUploadDate, 1, 3);
+
         Button downloadButton = new Button(Localization.get("ui.download"));
         downloadButton.setOnAction(event -> {
             if (selectedFile != null)
                 VLOKManager.sendRequest(RequestPacket.Type.FILE_DOWNLOAD, selectedFile.id + "");
         });
-        GridPane.setConstraints(downloadButton, 0, 3);
+        GridPane.setConstraints(downloadButton, 0, 4);
 
-        infoPane.getChildren().addAll(fileNameLabel, fileName, fileDescriptionLabel, fileDescription, filePathLabel, filePath, downloadButton);
+        infoPane.getChildren().addAll(fileNameLabel, fileName, fileDescriptionLabel, fileDescription, filePathLabel, filePath, fileUploadDateLabel, fileUploadDate, downloadButton);
 
         borderPane.setRight(infoPane);
         //</editor-fold>
@@ -89,6 +95,8 @@ public class MainWindow {
             fileName.setText(selectedInfo.name);
             fileDescription.setText(selectedInfo.description);
             filePath.setText(selectedInfo.path);
+            System.out.println(selectedInfo.uploadDate);
+            fileUploadDate.setText(selectedInfo.uploadDate);
             selectedFile = selectedInfo;
         });
 
@@ -131,6 +139,7 @@ public class MainWindow {
             fileNameLabel.setText(Localization.get("ui.name"));
             fileDescriptionLabel.setText(Localization.get("ui.description"));
             filePathLabel.setText(Localization.get("ui.path"));
+            fileUploadDateLabel.setText(Localization.get("ui.upload_date"));
             downloadButton.setText(Localization.get("ui.download"));
             fileMenu.setText("_" + Localization.get("ui.file"));
             settingsItem.setText(Localization.get("ui.settings"));
@@ -139,6 +148,34 @@ public class MainWindow {
 
         return borderPane;
     }
+
+    private void addChild(TreeView<FileInfo> treeView, FileInfo fileInfo) {
+
+    }
+
+//    private void addChild(TreeView<FileInfo> treeView, FileInfo fileInfo) {
+//        DefaultMutableTreeNode current = root;
+//        String fullPath = (fileInfo.getPath() + fileInfo.getName());
+//        String[] splitPath = fullPath.split("/");
+//
+//        for (int i = 0; i < splitPath.length; i++) {
+//            String folder = splitPath[i];
+//
+//            DefaultMutableTreeNode child = getChild(current, folder);
+//
+//            if (child == null) {
+//                DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(folder);
+//
+//                if (i == splitPath.length - 1) {
+//                    newChild = new DefaultMutableTreeNode(fileInfo);
+//                }
+//
+//                current.add(newChild);
+//                current = newChild;
+//            } else
+//                current = child;
+//        }
+//    }
 
     public Scene getScene() {
         return scene;

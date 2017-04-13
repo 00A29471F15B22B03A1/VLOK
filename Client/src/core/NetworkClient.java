@@ -15,7 +15,7 @@ public class NetworkClient extends NetworkInterface {
     private String address;
 
     public NetworkClient(String address) {
-        client = new Client(600000, 600000);
+        client = new Client(1000000, 1000000);
         client.start();
 
         this.address = address;
