@@ -5,8 +5,8 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import core.localization.Localization;
 import core.logging.Console;
-import core.ui.Popup;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class NetworkClient extends NetworkInterface {
@@ -62,7 +62,7 @@ public class NetworkClient extends NetworkInterface {
         } catch (IOException e) {
             e.printStackTrace();
             Console.err("Failed to connect to " + address);
-            Popup.alert(Localization.get("error.error"), Localization.get("error.connect_to_server"));
+            JOptionPane.showMessageDialog(null, Localization.get("error.connect_to_server"), Localization.get("error.error"), JOptionPane.ERROR_MESSAGE);
         }
     }
 
