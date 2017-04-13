@@ -3,6 +3,7 @@ package core;
 import core.localization.Localization;
 import core.logging.Console;
 import core.packethandlers.ErrorPacketHandler;
+import core.packets.ChatMessagePacket;
 import core.packets.LoginPacket;
 import core.packets.RequestPacket;
 import core.ui.Popup;
@@ -16,8 +17,9 @@ public class VLOKManager {
 
     public static NetworkClient client;
 
+
     public static void init() {
-        client = new NetworkClient("vlok.dynu.com");
+        client = new NetworkClient("localhost");
 
         client.start();
 
@@ -69,6 +71,11 @@ public class VLOKManager {
         requestPacket.type = type;
         requestPacket.argument = argument;
         client.sendTCP(requestPacket);
+    }
+
+    public static void sentChatMessage(String username, String text) {
+        ChatMessagePacket chatMessage = new ChatMessagePacket(text, CurrentUser.sessionKey, username);
+        client.sendTCP(chatMessage);
     }
 
 }

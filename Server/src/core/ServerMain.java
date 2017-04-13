@@ -2,6 +2,7 @@ package core;
 
 import com.esotericsoftware.kryonet.Connection;
 import core.logging.Console;
+import core.packethandlers.ChatPacketHandler;
 import core.packethandlers.LoginPacketHandler;
 import core.packethandlers.RequestPacketHandler;
 import core.packets.FileStructurePacket;
@@ -21,6 +22,7 @@ public class ServerMain {
         server.addPacketHandler(new LoginPacketHandler());
         server.addPacketHandler(new RequestPacketHandler());
         server.addPacketHandler(new FileTransferPacketHandler("storage/", (file, fileInfo) -> FileManager.addFile(fileInfo)));
+        server.addPacketHandler(new ChatPacketHandler());
 
         server.start();
     }

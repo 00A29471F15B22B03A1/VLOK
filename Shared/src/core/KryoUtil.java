@@ -58,6 +58,7 @@ public class KryoUtil {
         kryo.register(ErrorPacket.class);
         kryo.register(UpdatePacket.class);
         kryo.register(DocumentationPacket.class);
+        kryo.register(ChatMessagePacket.class);
 
         Console.info("Registered serialization classes");
     }

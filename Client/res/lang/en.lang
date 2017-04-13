@@ -13,6 +13,7 @@ ui.files=Files
 ui.language=Language
 ui.languages=Languages
 ui.settings=Settings
+ui.chat=Chat
 ui.save=Save
 ui.cancel=Cancel
 ui.accept=Accept

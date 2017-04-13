@@ -114,6 +114,10 @@ public class MainWindow {
         MenuItem settingsItem = new MenuItem(Localization.get("ui.settings"));
         settingsItem.setOnAction(event -> settingsWindow.show());
 
+        MenuItem chatItem = new MenuItem(Localization.get("ui.chat"));
+        ChatWindow chatWindow = new ChatWindow();
+        chatItem.setOnAction(event -> chatWindow.show());
+
         MenuItem creditsItem = new MenuItem(Localization.get("ui.credits"));
         CreditsWindow creditsWindow = new CreditsWindow();
         creditsItem.setOnAction(event -> creditsWindow.show());
@@ -121,7 +125,7 @@ public class MainWindow {
         MenuItem exitItem = new MenuItem(Localization.get("ui.exit"));
         exitItem.setOnAction(event -> System.exit(0));
 
-        fileMenu.getItems().addAll(uploadItem, settingsItem, creditsItem, exitItem);
+        fileMenu.getItems().addAll(uploadItem, chatItem, settingsItem, creditsItem, exitItem);
 
         Menu helpMenu = new Menu("_" + Localization.get("ui.help"));
 
@@ -144,6 +148,7 @@ public class MainWindow {
             fileMenu.setText("_" + Localization.get("ui.file"));
             settingsItem.setText(Localization.get("ui.settings"));
             exitItem.setText(Localization.get("ui.exit"));
+            chatItem.setText(Localization.get("ui.chat"));
         });
 
         return borderPane;
