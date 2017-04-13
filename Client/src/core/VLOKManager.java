@@ -20,7 +20,7 @@ public class VLOKManager {
 
 
     public static void init() {
-        client = new NetworkClient("localhost");
+        client = new NetworkClient("vlok.dynu.com");
 
         client.start();
 

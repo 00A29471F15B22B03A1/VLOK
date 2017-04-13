@@ -2,8 +2,7 @@
 ## Intellij
 #################
 
-workspace.xml
-storage/
+*.xml
 
 #################
 ## Eclipse
@@ -64,4 +63,4 @@ storage/
 #Mr Developer
 VLOKData/
 out/
-*.xml
+Server/dbs/users.sqlite

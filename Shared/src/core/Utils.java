@@ -3,17 +3,15 @@ package core;
 import core.logging.Console;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
 public class Utils {
 
-    /**
-     * Returns
-     *
-     * @return the
-     */
     public static String getDownloadPath() {
         return System.getProperty("user.home") + "/Downloads/";
     }
@@ -49,6 +47,15 @@ public class Utils {
             hexChars[j * 2 + 1] = hexArray[v & 0x0F];
         }
         return new String(hexChars);
+    }
+
+    public static void appendFile(String path, String text) {
+        try {
+            Files.write(Paths.get(path), text.getBytes(), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Console.err("Failed to append to file " + path);
+        }
     }
 
     public static String readFileWithIS(String path) {

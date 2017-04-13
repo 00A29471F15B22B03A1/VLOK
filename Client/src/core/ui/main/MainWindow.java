@@ -64,6 +64,7 @@ public class MainWindow {
             if (selectedFile != null)
                 VLOKManager.sendRequest(RequestPacket.Type.FILE_DOWNLOAD, selectedFile.id + "");
         });
+
         GridPane.setConstraints(downloadButton, 0, 4);
 
         infoPane.getChildren().addAll(fileNameLabel, fileName, fileDescriptionLabel, fileDescription, filePathLabel, filePath, fileUploadDateLabel, fileUploadDate, downloadButton);
@@ -157,30 +158,6 @@ public class MainWindow {
     private void addChild(TreeView<FileInfo> treeView, FileInfo fileInfo) {
 
     }
-
-//    private void addChild(TreeView<FileInfo> treeView, FileInfo fileInfo) {
-//        DefaultMutableTreeNode current = root;
-//        String fullPath = (fileInfo.getPath() + fileInfo.getName());
-//        String[] splitPath = fullPath.split("/");
-//
-//        for (int i = 0; i < splitPath.length; i++) {
-//            String folder = splitPath[i];
-//
-//            DefaultMutableTreeNode child = getChild(current, folder);
-//
-//            if (child == null) {
-//                DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(folder);
-//
-//                if (i == splitPath.length - 1) {
-//                    newChild = new DefaultMutableTreeNode(fileInfo);
-//                }
-//
-//                current.add(newChild);
-//                current = newChild;
-//            } else
-//                current = child;
-//        }
-//    }
 
     public Scene getScene() {
         return scene;
