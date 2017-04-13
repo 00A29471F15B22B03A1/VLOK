@@ -16,10 +16,10 @@ public class FileStructure {
         files.add(file);
     }
 
-    public void removeFile(String name) {
+    public void removeFile(int id) {
         Iterator<FileInfo> iterator = files.iterator();
         while (iterator.hasNext())
-            if (iterator.next().getName().equals(name))
+            if (iterator.next().id == id)
                 iterator.remove();
     }
 
@@ -27,14 +27,34 @@ public class FileStructure {
         return files.size();
     }
 
-    public FileInfo getFile(String name) {
+    public FileInfo getFile(int id) {
         for (FileInfo fileInfo : files)
-            if (fileInfo.getName().equals(name))
+            if (fileInfo.id == id)
                 return fileInfo;
         return null;
     }
 
     public List<FileInfo> getFiles() {
         return files;
+    }
+
+    public FileStructure getNonPending() {
+        FileStructure fileStructure = new FileStructure();
+
+        for (FileInfo fi : files)
+            if (!fi.pending)
+                fileStructure.addFile(fi);
+
+        return fileStructure;
+    }
+
+    public FileStructure getPending() {
+        FileStructure fileStructure = new FileStructure();
+
+        for (FileInfo fi : files)
+            if (fi.pending)
+                fileStructure.addFile(fi);
+
+        return fileStructure;
     }
 }

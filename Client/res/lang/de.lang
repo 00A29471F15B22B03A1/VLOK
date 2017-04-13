@@ -1,0 +1,25 @@
+#UI
+ui.file_properties=Dateieigenschaften
+ui.download=Herunterladen
+ui.folder_properties=Ordner-Eigenschaften
+ui.upload=Hochladen
+
+ui.login=Anmeldung
+ui.key=Schlüssel
+ui.code=Code
+ui.continue=Fortsetzen
+ui.file=Datei
+ui.files=Dateien
+ui.languages=Sprachen
+ui.settings=Einstellungen
+ui.save=Sparen
+ui.cancel=Stornieren
+ui.accept=Akzeptieren
+ui.pending=Steht aus
+
+#ERROR
+error.error=Fehler
+error.file_too_big=Datei ist zu großx
+error.connect_to_server=Verbindung zum Server fehlgeschlagen
+
+error.login=Einloggen fehlgeschlagen

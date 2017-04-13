@@ -1,62 +1,41 @@
 package core;
 
 import com.esotericsoftware.kryonet.Connection;
-import com.esotericsoftware.kryonet.Listener;
+import core.logging.Console;
+import core.packethandlers.LoginPacketHandler;
+import core.packethandlers.RequestPacketHandler;
 import core.packets.FileStructurePacket;
-import core.packets.FileTransferPacket;
-import core.packets.RequestPacket;
 
 public class ServerMain {
 
+    public static final float NEWEST_VERSION = 0.1f;
+    public static final String DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=0B--FUaYGCO3DVzhzVm1obE9vbUE";
+
     private static NetworkServer server;
 
-    private static FileStructure fileStructure;
-
     public static void main(String[] args) {
-        fileStructure = FileDatabase.getAllFiles();
+        Console.close();
 
         server = new NetworkServer();
 
-        server.addListener(new FileReceiver(fileStructure));
-
-        server.addListener(new Listener() {
-            @Override
-            public void connected(Connection connection) {
-                sendFileStructure(connection);
-            }
-
-            @Override
-            public void received(Connection connection, Object o) {
-                System.out.println(o.getClass().getSimpleName());
-
-                if (o instanceof FileTransferPacket) {
-                    FileTransferPacket packet = (FileTransferPacket) o;
-
-                    if (packet.finished)
-                        sendFileStructure(null);
-
-                } else if (o instanceof RequestPacket) {
-                    RequestPacket packet = (RequestPacket) o;
-
-                    if (packet.type == RequestPacket.Type.FILE_STRUCTURE)
-                        sendFileStructure(connection);
-                    else if (packet.type == RequestPacket.Type.FILE_DOWNLOAD)
-                        FileSender.sendFile(server, connection, fileStructure.getFile(packet.argument));
-                }
-            }
-        });
+        server.addPacketHandler(new LoginPacketHandler());
+        server.addPacketHandler(new RequestPacketHandler());
+        server.addPacketHandler(new FileTransferPacketHandler("storage/", (file, fileInfo) -> FileManager.addFile(fileInfo)));
 
         server.start();
     }
 
-    public static void sendFileStructure(Connection connection) {
+    public static void sendFileStructure(Connection connection, FileStructure fileStructure) {
         FileStructurePacket fileStructurePacket = new FileStructurePacket();
 
         fileStructurePacket.fileStructure = fileStructure;
 
         if (connection == null)
-            server.sendToAllTCP(fileStructurePacket);
+            server.sendTCP(fileStructurePacket);
         else
-            server.sendTCP(connection.getID(), fileStructurePacket);
+            server.sendTCP(fileStructurePacket, connection.getID());
+
+        Console.info("Sent file structure to " + (connection == null ? "all" : connection.getRemoteAddressTCP().toString()));
     }
+
 }

@@ -3,12 +3,9 @@ package core;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Server;
-import core.packets.FileStructurePacket;
-import core.packets.FileTransferPacket;
-import core.packets.RequestPacket;
+import core.logging.Console;
+import core.packets.*;
 
-import javax.crypto.KeyGenerator;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,24 +16,6 @@ public class KryoUtil {
 
     public static final int TCP_PORT = 54555;   //TCP port for kryonet
     public static final int UDP_PORT = 54777;   //UDP port for kryonet
-
-    private static byte[] key = generateKey();
-
-    /**
-     * Generates a new blowfish key
-     *
-     * @return key as byte[]
-     */
-    private static byte[] generateKey() {
-        byte[] key = null;
-        try {
-            key = KeyGenerator.getInstance("Blowfish").generateKey().getEncoded();
-            System.out.println("Successfully generated key");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return key;
-    }
 
     /**
      * Registers serializable classes for kryonet server
@@ -66,6 +45,7 @@ public class KryoUtil {
         kryo.register(List.class);
         kryo.register(ArrayList.class);
         kryo.register(byte[].class);
+        kryo.register(float.class);
 
         kryo.register(FileInfo.class);
         kryo.register(FileStructure.class);
@@ -74,8 +54,12 @@ public class KryoUtil {
         kryo.register(RequestPacket.Type.class);
         kryo.register(FileStructurePacket.class);
         kryo.register(FileTransferPacket.class);
+        kryo.register(LoginPacket.class);
+        kryo.register(ErrorPacket.class);
+        kryo.register(UpdatePacket.class);
+        kryo.register(DocumentationPacket.class);
 
-        System.out.println("Registered serialization classes");
+        Console.info("Registered serialization classes");
     }
 
 }

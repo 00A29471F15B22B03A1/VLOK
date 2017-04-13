@@ -1,93 +1,71 @@
 package core;
 
 import com.esotericsoftware.kryonet.Client;
+import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import core.localization.Localization;
+import core.logging.Console;
+import core.ui.Popup;
 
 import java.io.IOException;
-import java.net.InetAddress;
-import java.util.List;
 
-public class NetworkClient {
+public class NetworkClient extends NetworkInterface {
 
-    private static Client client;
+    private Client client;
+    private String address;
 
-    /**
-     * Creates a new client instance and registers serializable classes
-     */
-    public NetworkClient() {
-        client = new Client(600000, 600000);
+    public NetworkClient(String address) {
+        client = new Client(1000000, 1000000);
         client.start();
 
+        this.address = address;
+
         KryoUtil.registerClientClass(client);
+
+        client.addListener(new Listener() {
+            @Override
+            public void received(Connection connection, Object o) {
+                handlePacket(connection, o);
+            }
+        });
     }
 
-    /**
-     * Adds a listener to the client
-     *
-     * @param listener to add to client
-     */
+    @Override
     public void addListener(Listener listener) {
         client.addListener(listener);
     }
 
-    /**
-     * Discovers all servers on the local network
-     *
-     * @return List of InetAddresses
-     */
-    public List<InetAddress> discoverHosts() {
-        return client.discoverHosts(54777, 1000);
+    @Override
+    public void sendTCP(Object o) {
+        client.sendTCP(o);
     }
 
-    /**
-     * Sends a TCP message to the server
-     *
-     * @param object to send
-     */
-    public void sendTCP(Object object) {
-        client.sendTCP(object);
+    @Override
+    public void sendUDP(Object o) {
+        client.sendUDP(o);
     }
 
-    /**
-     * Sends an UDP message to the server
-     *
-     * @param object to send
-     */
-    public void sendUDP(Object object) {
-        client.sendUDP(object);
+    @Override
+    public void sendTCP(Object o, int connection) {
+        sendTCP(o);
     }
 
-    /**
-     * Connects to a server using a String as the address
-     *
-     * @param address to connect to
-     */
-    public void connect(String address) {
+    @Override
+    public void sendUDP(Object o, int connection) {
+        sendUDP(o);
+    }
+
+    @Override
+    public void start() {
         try {
             client.connect(5000, address, 54555, 54777);
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Failed to connect to " + address);
+            Console.err("Failed to connect to " + address);
+            Popup.alert(Localization.get("error.error"), Localization.get("error.connect_to_server"));
         }
     }
 
-    /**
-     * Connects to a server using an InetAddress as the address
-     *
-     * @param address to connect to
-     */
-    public void connect(InetAddress address) {
-        try {
-            client.connect(5000, address, 54555, 54777);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Failed to connect to " + address);
-        }
-    }
-
-    /**
-     * Stops the client
-     */
     public void stop() {
         client.close();
         client.stop();

@@ -2,32 +2,52 @@ package core;
 
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
-import core.packets.FileStructurePacket;
-import core.ui.MainWindow;
+import core.logging.Console;
+import core.packets.UpdatePacket;
+import core.ui.UpdateWindow;
+import core.ui.login.LoginWindow;
+import core.ui.main.MainWindow;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.stage.Stage;
 
-import javax.swing.*;
+public class ClientMain extends Application {
 
-public class ClientMain {
+    public static final float VERSION = 0.01f;
+    public static String DOWNLOAD_URL = "";
 
-    public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Login");
 
-        final MainWindow mainWindow = new MainWindow();
+        LoginWindow loginWindow = new LoginWindow(primaryStage);
 
-        VLOKManager.init();
+        loginWindow.addLoginListener((sessionKey) -> {
+            CurrentUser.sessionKey = sessionKey;
+            Platform.runLater(() -> primaryStage.setScene(new MainWindow(primaryStage).getScene()));
+        });
 
         VLOKManager.client.addListener(new Listener() {
             @Override
             public void received(Connection connection, Object o) {
-                if (o instanceof FileStructurePacket) {
-                    mainWindow.fileTreePanel.updateTree(((FileStructurePacket) o).fileStructure);
+                if (o instanceof UpdatePacket) {
+                    DOWNLOAD_URL = ((UpdatePacket) o).downloadURL;
+                    Platform.runLater(() -> primaryStage.setScene(new UpdateWindow(primaryStage).getScene()));
                 }
             }
         });
+
+        primaryStage.setOnCloseRequest(event -> Console.close());
+
+        primaryStage.setScene(loginWindow.getScene());
+        primaryStage.show();
+        primaryStage.requestFocus();
+    }
+
+    public static void main(String[] args) {
+        VLOKManager.init();
+
+        launch(args);
     }
 
 }
