@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class ClientMain extends Application {
 
-    public static final float VERSION = 0.01f;
+    public static final float VERSION = 0.1f;
     public static String DOWNLOAD_URL = "";
 
     @Override
@@ -23,7 +23,7 @@ public class ClientMain extends Application {
         LoginWindow loginWindow = new LoginWindow(primaryStage);
 
         loginWindow.addLoginListener((sessionKey) -> {
-            CurrentUser.sessionKey = sessionKey;
+            VLOKManager.sessionKey = sessionKey;
             Platform.runLater(() -> primaryStage.setScene(new MainWindow(primaryStage).getScene()));
         });
 

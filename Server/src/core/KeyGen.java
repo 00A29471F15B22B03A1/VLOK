@@ -11,11 +11,10 @@ public class KeyGen {
         String key = getNewKey();
         String hash = Utils.hash("Kaaskoek123");
         UserDatabase.addUser(username, key, hash, PermissionLevels.ADMIN);
-        System.out.println("New User: " + username);
+        System.out.println("New user: " + username);
         System.out.println(key);
         System.out.println(hash);
         System.exit(0);
-//        FileDatabase.addFile("test.mp4", "test file");
     }
 
     private static String getNewKey() {

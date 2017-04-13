@@ -15,6 +15,7 @@ import java.io.File;
 public class VLOKManager {
 
     public static NetworkClient client;
+    public static String sessionKey;
 
     public static void init() {
         client = new NetworkClient("vlok.dynu.com");
@@ -50,24 +51,19 @@ public class VLOKManager {
         String description = Popup.input(Localization.get("ui.description"), Localization.get("ui.give_file_description"));
 
         if (Popup.confirm(Localization.get("ui.confirm"), Localization.get("ui.name") + ": " + name + ", " + Localization.get("ui.description") + ": " + description)) {
-            FileSender.sendFile(new FileInfo(name, description), file, CurrentUser.sessionKey, packet -> client.sendTCP(packet));
+            FileSender.sendFile(new FileInfo(name, description), file, sessionKey, packet -> client.sendTCP(packet));
             Popup.info(Localization.get("ui.upload"), Localization.get("ui.file_upload_complete"));
         }
     }
 
     public static void sendLogin(String key, String code, String os) {
-        LoginPacket loginPacket = new LoginPacket();
-        loginPacket.fullKey = key + "¡" + Utils.hash(code) + "¡" + os;
-        loginPacket.version = ClientMain.VERSION;
+        LoginPacket loginPacket = new LoginPacket(key + "¡" + Utils.hash(code) + "¡" + os, ClientMain.VERSION, "");
 
         client.sendTCP(loginPacket);
     }
 
     public static void sendRequest(RequestPacket.Type type, String argument) {
-        RequestPacket requestPacket = new RequestPacket();
-        requestPacket.sessionKey = CurrentUser.sessionKey;
-        requestPacket.type = type;
-        requestPacket.argument = argument;
+        RequestPacket requestPacket = new RequestPacket(sessionKey, type, argument);
         client.sendTCP(requestPacket);
     }
 

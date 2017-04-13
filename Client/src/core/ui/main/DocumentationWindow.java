@@ -25,10 +25,11 @@ public class DocumentationWindow {
 
     private TabPane tabPane;
 
-    public void show() {
+    public DocumentationWindow() {
+        createWindow();
+    }
 
-        if (dialog == null)
-            createWindow();
+    public void show() {
         dialog.show();
     }
 

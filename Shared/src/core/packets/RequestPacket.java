@@ -16,4 +16,12 @@ public class RequestPacket extends Packet {
     public Type type;
     public String argument;
 
+    public RequestPacket() {
+    }
+
+    public RequestPacket(String sessionKey, Type type, String argument) {
+        this.sessionKey = sessionKey;
+        this.type = type;
+        this.argument = argument;
+    }
 }

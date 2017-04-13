@@ -23,9 +23,7 @@ public class DocumentationLoader {
 
     public static void sendDocumentation(Connection connection) {
         for (Map.Entry<String, String> entry : documentation.entrySet()) {
-            DocumentationPacket packet = new DocumentationPacket();
-            packet.name = entry.getKey();
-            packet.text = entry.getValue();
+            DocumentationPacket packet = new DocumentationPacket(entry.getKey(), entry.getValue());
             connection.sendTCP(packet);
         }
     }

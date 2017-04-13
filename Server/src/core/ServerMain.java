@@ -26,9 +26,7 @@ public class ServerMain {
     }
 
     public static void sendFileStructure(Connection connection, FileStructure fileStructure) {
-        FileStructurePacket fileStructurePacket = new FileStructurePacket();
-
-        fileStructurePacket.fileStructure = fileStructure;
+        FileStructurePacket fileStructurePacket = new FileStructurePacket(fileStructure);
 
         if (connection == null)
             server.sendTCP(fileStructurePacket);

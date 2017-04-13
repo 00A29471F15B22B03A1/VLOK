@@ -6,8 +6,14 @@ import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class Utils {
 
+    /**
+     * Returns
+     *
+     * @return the
+     */
     public static String getDownloadPath() {
         return System.getProperty("user.home") + "/Downloads/";
     }

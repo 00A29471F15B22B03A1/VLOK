@@ -13,7 +13,7 @@ public class UserDatabase {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:" + "Server/dbs/users.sqlite");
-            Console.info("Opened file database successfully");
+            Console.info("Opened user database successfully");
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

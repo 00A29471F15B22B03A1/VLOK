@@ -27,6 +27,7 @@ public class MainWindow {
         primaryStage.setTitle("");
     }
 
+    //TODO: extras tab
     private BorderPane createPane() {
         BorderPane borderPane = new BorderPane();
 
@@ -95,7 +96,6 @@ public class MainWindow {
             fileName.setText(selectedInfo.name);
             fileDescription.setText(selectedInfo.description);
             filePath.setText(selectedInfo.path);
-            System.out.println(selectedInfo.uploadDate);
             fileUploadDate.setText(selectedInfo.uploadDate);
             selectedFile = selectedInfo;
         });
@@ -118,10 +118,7 @@ public class MainWindow {
         CreditsWindow creditsWindow = new CreditsWindow();
         creditsItem.setOnAction(event -> creditsWindow.show());
 
-        MenuItem exitItem = new MenuItem(Localization.get("ui.exit"));
-        exitItem.setOnAction(event -> System.exit(0));
-
-        fileMenu.getItems().addAll(uploadItem, settingsItem, creditsItem, exitItem);
+        fileMenu.getItems().addAll(uploadItem, settingsItem, creditsItem);
 
         Menu helpMenu = new Menu("_" + Localization.get("ui.help"));
 
@@ -143,39 +140,10 @@ public class MainWindow {
             downloadButton.setText(Localization.get("ui.download"));
             fileMenu.setText("_" + Localization.get("ui.file"));
             settingsItem.setText(Localization.get("ui.settings"));
-            exitItem.setText(Localization.get("ui.exit"));
         });
 
         return borderPane;
     }
-
-    private void addChild(TreeView<FileInfo> treeView, FileInfo fileInfo) {
-
-    }
-
-//    private void addChild(TreeView<FileInfo> treeView, FileInfo fileInfo) {
-//        DefaultMutableTreeNode current = root;
-//        String fullPath = (fileInfo.getPath() + fileInfo.getName());
-//        String[] splitPath = fullPath.split("/");
-//
-//        for (int i = 0; i < splitPath.length; i++) {
-//            String folder = splitPath[i];
-//
-//            DefaultMutableTreeNode child = getChild(current, folder);
-//
-//            if (child == null) {
-//                DefaultMutableTreeNode newChild = new DefaultMutableTreeNode(folder);
-//
-//                if (i == splitPath.length - 1) {
-//                    newChild = new DefaultMutableTreeNode(fileInfo);
-//                }
-//
-//                current.add(newChild);
-//                current = newChild;
-//            } else
-//                current = child;
-//        }
-//    }
 
     public Scene getScene() {
         return scene;

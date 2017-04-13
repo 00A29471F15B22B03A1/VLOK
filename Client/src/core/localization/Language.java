@@ -37,8 +37,8 @@ public enum Language {
         return languageValues.get(key);
     }
 
-    public boolean hasKey(String key) {
-        return languageValues.containsKey(key);
+    public boolean isKeyAbsent(String key) {
+        return !languageValues.containsKey(key);
     }
 
     private void loadLangFile(String path) {

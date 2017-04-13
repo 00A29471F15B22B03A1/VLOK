@@ -43,8 +43,7 @@ public class LoginPacketHandler extends PacketHandler {
         if (version == ServerMain.NEWEST_VERSION)
             return;
 
-        UpdatePacket updatePacket = new UpdatePacket();
-        updatePacket.downloadURL = ServerMain.DOWNLOAD_URL;
+        UpdatePacket updatePacket = new UpdatePacket(ServerMain.DOWNLOAD_URL);
         ni.sendTCP(updatePacket, c.getID());
     }
 }

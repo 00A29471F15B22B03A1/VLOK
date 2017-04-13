@@ -33,8 +33,8 @@ public class Localization {
     }
 
     public static String get(String key) {
-        if (!currentLanguage.hasKey(key)) {
-            if (!defaultLanguage.hasKey(key)) {
+        if (currentLanguage.isKeyAbsent(key)) {
+            if (defaultLanguage.isKeyAbsent(key)) {
                 Console.err("No language entry found for " + key);
                 return "LANG ERROR";
             }

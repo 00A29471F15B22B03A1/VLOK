@@ -11,18 +11,20 @@ import javafx.stage.Stage;
 
 public class CreditsWindow {
 
-    private Stage dialog;
+    private Stage window;
 
-    public void show() {
-        if (dialog == null)
-            createDialog();
-        dialog.show();
+    public CreditsWindow() {
+        createWindow();
     }
 
-    private void createDialog() {
-        dialog = new Stage();
-        dialog.setTitle(Localization.get("ui.settings"));
-        dialog.initModality(Modality.APPLICATION_MODAL);
+    public void show() {
+        window.show();
+    }
+
+    private void createWindow() {
+        window = new Stage();
+        window.setTitle(Localization.get("ui.settings"));
+        window.initModality(Modality.APPLICATION_MODAL);
 
         GridPane layout = new GridPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
@@ -39,15 +41,19 @@ public class CreditsWindow {
         GridPane.setConstraints(userName2, 1, 1);
 
         Button closeButton = new Button(Localization.get("ui.close"));
-        closeButton.setOnAction(event -> dialog.hide());
+        closeButton.setOnAction(event -> window.hide());
         GridPane.setConstraints(closeButton, 1, 2);
 
         layout.getChildren().addAll(createdByLabel, userName1, userName2, closeButton);
 
         Scene dialogScene = new Scene(layout, 255, 100);
-        dialog.setScene(dialogScene);
+        window.setScene(dialogScene);
 
-        Localization.addLanguageListener(newLanguage -> createdByLabel.setText(Localization.get("ui.created_by")));
+        Localization.addLanguageListener(newLanguage -> {
+            window.setTitle(Localization.get("ui.settings"));
+            createdByLabel.setText(Localization.get("ui.created_by"));
+            closeButton.setText(Localization.get("ui.close"));
+        });
     }
 
 }

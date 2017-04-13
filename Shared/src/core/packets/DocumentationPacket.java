@@ -7,4 +7,9 @@ public class DocumentationPacket extends Packet {
 
     public DocumentationPacket() {
     }
+
+    public DocumentationPacket(String name, String text) {
+        this.name = name;
+        this.text = text;
+    }
 }
