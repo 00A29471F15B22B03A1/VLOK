@@ -64,3 +64,4 @@ storage/
 #Mr Developer
 VLOKData/
 out/
+*.xml
