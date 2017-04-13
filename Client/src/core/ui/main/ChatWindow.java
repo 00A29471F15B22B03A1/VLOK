@@ -1,5 +1,4 @@
 package core.ui.main;
-//TODO: fix localization
 
 import com.esotericsoftware.kryonet.Connection;
 import core.NetworkInterface;
@@ -20,6 +19,7 @@ import javafx.stage.Stage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//TODO: fix localization
 public class ChatWindow {
 
     private Stage window;

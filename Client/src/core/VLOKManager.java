@@ -70,7 +70,7 @@ public class VLOKManager {
     }
 
     public static void sentChatMessage(String username, String text) {
-        ChatMessagePacket chatMessage = new ChatMessagePacket(text, CurrentUser.sessionKey, username);
+        ChatMessagePacket chatMessage = new ChatMessagePacket(text, VLOKManager.sessionKey, username);
         client.sendTCP(chatMessage);
     }
 

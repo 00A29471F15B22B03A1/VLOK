@@ -7,9 +7,9 @@ import java.util.Random;
 public class KeyGen {
 
     public static void main(String[] args) {
-        String username = "computr_kint;";
+        String username = "";
         String key = getNewKey();
-        String hash = Utils.hash("Kaaskoek123");
+        String hash = Utils.hash("");
         UserDatabase.addUser(username, key, hash, PermissionLevels.ADMIN);
         System.out.println("New user: " + username);
         System.out.println(key);
