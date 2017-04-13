@@ -9,6 +9,7 @@ import core.ui.login.LoginWindow;
 import core.ui.main.MainWindow;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class ClientMain extends Application {
@@ -39,8 +40,10 @@ public class ClientMain extends Application {
 
         primaryStage.setOnCloseRequest(event -> Console.close());
 
+
         primaryStage.setScene(loginWindow.getScene());
         primaryStage.show();
+        primaryStage.getIcons().add(new Image(Class.class.getResourceAsStream("/icon.png")));
         primaryStage.requestFocus();
     }
 
