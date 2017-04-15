@@ -71,7 +71,7 @@ public class UpdateWindow {
         @Override
         public void run() {
             try {
-                System.out.println("Started download");
+                Console.info("Started download");
                 URL url = new URL(ClientMain.DOWNLOAD_URL);
                 HttpURLConnection httpConnection = (HttpURLConnection) (url.openConnection());
                 long fullFileSize = httpConnection.getContentLength();

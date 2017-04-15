@@ -9,11 +9,12 @@ import core.ui.login.LoginWindow;
 import core.ui.main.MainWindow;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class ClientMain extends Application {
 
-    public static final float VERSION = 0.1f;
+    public static final float VERSION = 0.15f;
     public static String DOWNLOAD_URL = "";
 
     @Override
@@ -41,6 +42,7 @@ public class ClientMain extends Application {
 
         primaryStage.setScene(loginWindow.getScene());
         primaryStage.show();
+        primaryStage.getIcons().add(new Image(Class.class.getResourceAsStream("/icon.png")));
         primaryStage.requestFocus();
     }
 

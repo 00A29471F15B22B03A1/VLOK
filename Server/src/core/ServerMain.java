@@ -9,7 +9,7 @@ import core.packets.FileStructurePacket;
 
 public class ServerMain {
 
-    public static final float NEWEST_VERSION = 0.1f;
+    public static final float NEWEST_VERSION = 0.15f;
     public static final String DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=0B--FUaYGCO3DVzhzVm1obE9vbUE";
 
     private static NetworkServer server;

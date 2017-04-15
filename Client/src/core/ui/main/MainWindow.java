@@ -96,7 +96,6 @@ public class MainWindow {
             fileName.setText(selectedInfo.name);
             fileDescription.setText(selectedInfo.description);
             filePath.setText(selectedInfo.path);
-            System.out.println(selectedInfo.uploadDate);
             fileUploadDate.setText(selectedInfo.uploadDate);
             selectedFile = selectedInfo;
         });

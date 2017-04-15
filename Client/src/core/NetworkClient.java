@@ -15,7 +15,7 @@ public class NetworkClient extends NetworkInterface {
     private String address;
 
     public NetworkClient(String address) {
-        client = new Client(1000000, 1000000);
+        client = new Client(2000000, 2000000);
         client.start();
 
         this.address = address;
@@ -41,18 +41,8 @@ public class NetworkClient extends NetworkInterface {
     }
 
     @Override
-    public void sendUDP(Object o) {
-        client.sendUDP(o);
-    }
-
-    @Override
     public void sendTCP(Object o, int connection) {
         sendTCP(o);
-    }
-
-    @Override
-    public void sendUDP(Object o, int connection) {
-        sendUDP(o);
     }
 
     @Override
