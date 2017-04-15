@@ -1,11 +1,10 @@
 package core.ui.main;
 
-import com.esotericsoftware.kryonet.Connection;
 import core.*;
 import core.localization.Localization;
-import core.packets.FileStructurePacket;
-import core.packets.Packet;
-import core.packets.RequestPacket;
+import core.packetlisteners.PacketListener;
+import core.serialization.VLOKDatabase;
+import core.serialization.VLOKObject;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -62,7 +61,7 @@ public class MainWindow {
         Button downloadButton = new Button(Localization.get("ui.download"));
         downloadButton.setOnAction(event -> {
             if (selectedFile != null)
-                VLOKManager.sendRequest(RequestPacket.Type.FILE_DOWNLOAD, selectedFile.id + "");
+                VLOKManager.sendRequest(RequestType.FILE_DOWNLOAD, selectedFile.id + "");
         });
 
         GridPane.setConstraints(downloadButton, 0, 4);
@@ -75,16 +74,24 @@ public class MainWindow {
         //<editor-fold desc="FileTree">
         TreeItem<FileInfo> root = new TreeItem<>();
 
-        VLOKManager.sendRequest(RequestPacket.Type.FILE_STRUCTURE, "");
+        VLOKManager.sendRequest(RequestType.FILE_STRUCTURE, "");
 
-        VLOKManager.client.addPacketHandler(new PacketHandler(FileStructurePacket.class) {
+        VLOKManager.client.addPacketListener(new PacketListener("file_structure") {
             @Override
-            public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
-                if (p instanceof FileStructurePacket) {
-                    FileStructure fileStructure = ((FileStructurePacket) p).fileStructure;
-                    root.getChildren().clear();
-                    for (FileInfo f : fileStructure.getFiles())
-                        root.getChildren().add(new TreeItem<>(f));
+            public void packetReceived(VLOKDatabase db, Client c) {
+                for (VLOKObject obj : db.objects) {
+                    if (!obj.getName().equals("file"))
+                        continue;
+
+                    int id = obj.findField("id").getInt();
+                    String name = obj.findString("name").getString();
+                    String path = obj.findString("path").getString();
+                    String description = obj.findString("description").getString();
+                    int minPermission = obj.findField("minPermission").getInt();
+                    boolean pending = obj.findField("pending").getBoolean();
+                    String uploadDate = obj.findString("uploadDate").getString();
+                    FileInfo fileInfo = new FileInfo(id, name, path, description, minPermission, pending, uploadDate);
+                    root.getChildren().add(new TreeItem<>(fileInfo));
                 }
             }
         });

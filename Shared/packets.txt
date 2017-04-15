@@ -1,0 +1,64 @@
+CHATPACKET
+chat_message
+    data
+        username
+        text
+
+FILETRANSFER
+file_transfer
+    data
+        name
+        data
+
+
+REQUESTPACKET
+request
+    data
+        type
+        sessionkey
+        argument
+
+
+LOGINPACKET
+login
+    data
+        key
+        code
+        version
+
+
+LOGINRESPONSE
+login
+    data
+        session
+
+
+UPDATEPACKET
+update
+    data
+        url
+
+
+ERROR
+error
+    data
+        message
+
+
+FILESTRUCTURE
+file_structure
+    file
+        id
+        name
+        path
+        description
+        minPermission
+        pending
+        uploadDate
+    ...
+
+DOCUMENTATIONPACKET
+documentation
+    data
+        name
+        text

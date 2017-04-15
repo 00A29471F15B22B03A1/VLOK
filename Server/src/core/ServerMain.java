@@ -1,41 +1,54 @@
 package core;
 
-import com.esotericsoftware.kryonet.Connection;
 import core.logging.Console;
-import core.packethandlers.ChatPacketHandler;
-import core.packethandlers.LoginPacketHandler;
-import core.packethandlers.RequestPacketHandler;
-import core.packets.FileStructurePacket;
+import core.packethandlers.ChatPacketListener;
+import core.packethandlers.LoginPacketListener;
+import core.packethandlers.RequestPacketListener;
+import core.serialization.VLOKDatabase;
+import core.serialization.VLOKField;
+import core.serialization.VLOKObject;
+import core.serialization.VLOKString;
 
 public class ServerMain {
 
     public static final float NEWEST_VERSION = 0.15f;
     public static final String DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=0B--FUaYGCO3DVzhzVm1obE9vbUE";
 
-    private static NetworkServer server;
+    private static Server server;
 
     public static void main(String[] args) {
         Console.close();
 
-        server = new NetworkServer();
-
-        server.addPacketHandler(new LoginPacketHandler());
-        server.addPacketHandler(new RequestPacketHandler());
-        server.addPacketHandler(new FileTransferPacketHandler("storage/", (file, fileInfo) -> FileManager.addFile(fileInfo)));
-        server.addPacketHandler(new ChatPacketHandler());
+        server = new Server(54555);
 
         server.start();
+
+        server.addPacketListener(new LoginPacketListener());
+        server.addPacketListener(new RequestPacketListener());
+        server.addPacketListener(new ChatPacketListener());
     }
 
-    public static void sendFileStructure(Connection connection, FileStructure fileStructure) {
-        FileStructurePacket fileStructurePacket = new FileStructurePacket(fileStructure);
+    public static void sendFileStructure(int c, FileStructure fileStructure) {
+        VLOKDatabase db = new VLOKDatabase("file_structure");
 
-        if (connection == null)
-            server.sendTCP(fileStructurePacket);
+        for (FileInfo fileInfo : fileStructure.getFiles()) {
+            VLOKObject file = new VLOKObject("file");
+            file.addField(VLOKField.Integer("id", fileInfo.id));
+            file.addString(VLOKString.Create("name", fileInfo.name));
+            file.addString(VLOKString.Create("path", fileInfo.path));
+            file.addString(VLOKString.Create("description", fileInfo.description == null ? "" : fileInfo.description));
+            file.addField(VLOKField.Integer("minPermission", fileInfo.minPermissionLevel));
+            file.addField(VLOKField.Boolean("pending", fileInfo.pending));
+            file.addString(VLOKString.Create("uploadDate", fileInfo.uploadDate == null ? "" : fileInfo.uploadDate));
+            db.addObject(file);
+        }
+
+        if (c == -1)
+            server.send(db);
         else
-            server.sendTCP(fileStructurePacket, connection.getID());
+            server.send(db, c);
 
-        Console.info("Sent file structure to " + (connection == null ? "all" : connection.getRemoteAddressTCP().toString()));
+        Console.info("Sent file structure to " + (c == -1 ? "all" : c));
     }
 
 }

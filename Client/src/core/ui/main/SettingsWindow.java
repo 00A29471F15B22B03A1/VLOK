@@ -1,5 +1,6 @@
 package core.ui.main;
 
+import core.ClientMain;
 import core.Debug;
 import core.localization.Language;
 import core.localization.Localization;
@@ -17,18 +18,19 @@ import javafx.stage.Stage;
 
 public class SettingsWindow {
 
-    private Stage dialog;
+    private Stage window;
 
     public void show() {
-        if (dialog == null)
+        if (window == null)
             createWindow();
-        dialog.show();
+        window.show();
     }
 
     private void createWindow() {
-        dialog = new Stage();
-        dialog.setTitle(Localization.get("ui.settings"));
-        dialog.initModality(Modality.APPLICATION_MODAL);
+        window = new Stage();
+        window.setTitle(Localization.get("ui.settings"));
+        window.getIcons().add(ClientMain.icon);
+        window.initModality(Modality.APPLICATION_MODAL);
 
         GridPane layout = new GridPane();
         layout.setPadding(new Insets(10, 10, 10, 10));
@@ -53,19 +55,19 @@ public class SettingsWindow {
         acceptButton.setOnAction(event -> {
             Localization.setLanguage(languageCombo.getValue().languageCode);
             Debug.setDebug(debugCheck.isSelected());
-            dialog.close();
+            window.close();
         });
 
         GridPane.setConstraints(acceptButton, 0, 2);
 
         Button cancelButton = new Button(Localization.get("ui.cancel"));
-        cancelButton.setOnAction(event -> dialog.close());
+        cancelButton.setOnAction(event -> window.close());
         GridPane.setConstraints(cancelButton, 1, 2);
 
         layout.getChildren().addAll(languageLabel, languageCombo, debugLabel, debugCheck, acceptButton, cancelButton);
 
         Scene dialogScene = new Scene(layout, 300, 200);
-        dialog.setScene(dialogScene);
+        window.setScene(dialogScene);
 
         Localization.addLanguageListener(newLanguage -> {
             languageLabel.setText(Localization.get("ui.language"));

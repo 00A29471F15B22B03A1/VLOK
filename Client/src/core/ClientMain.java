@@ -1,9 +1,8 @@
 package core;
 
-import com.esotericsoftware.kryonet.Connection;
-import com.esotericsoftware.kryonet.Listener;
 import core.logging.Console;
-import core.packets.UpdatePacket;
+import core.packetlisteners.PacketListener;
+import core.serialization.VLOKDatabase;
 import core.ui.UpdateWindow;
 import core.ui.login.LoginWindow;
 import core.ui.main.MainWindow;
@@ -17,6 +16,8 @@ public class ClientMain extends Application {
     public static final float VERSION = 0.15f;
     public static String DOWNLOAD_URL = "";
 
+    public static Image icon = new Image(Class.class.getResourceAsStream("/icon.png"));
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Login");
@@ -28,21 +29,22 @@ public class ClientMain extends Application {
             Platform.runLater(() -> primaryStage.setScene(new MainWindow(primaryStage).getScene()));
         });
 
-        VLOKManager.client.addListener(new Listener() {
+        VLOKManager.client.addPacketListener(new PacketListener("update") {
             @Override
-            public void received(Connection connection, Object o) {
-                if (o instanceof UpdatePacket) {
-                    DOWNLOAD_URL = ((UpdatePacket) o).downloadURL;
-                    Platform.runLater(() -> primaryStage.setScene(new UpdateWindow(primaryStage).getScene()));
-                }
+            public void packetReceived(VLOKDatabase db, Client c) {
+                DOWNLOAD_URL = db.findObject("data").findString("url").getString();
+                Platform.runLater(() -> primaryStage.setScene(new UpdateWindow(primaryStage).getScene()));
             }
         });
 
-        primaryStage.setOnCloseRequest(event -> Console.close());
+        primaryStage.setOnCloseRequest(event -> {
+            Console.close();
+            VLOKManager.client.stop();
+        });
 
         primaryStage.setScene(loginWindow.getScene());
         primaryStage.show();
-        primaryStage.getIcons().add(new Image(Class.class.getResourceAsStream("/icon.png")));
+        primaryStage.getIcons().add(icon);
         primaryStage.requestFocus();
     }
 

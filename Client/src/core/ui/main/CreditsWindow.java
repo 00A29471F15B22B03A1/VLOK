@@ -1,5 +1,6 @@
 package core.ui.main;
 
+import core.ClientMain;
 import core.localization.Localization;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -24,6 +25,7 @@ public class CreditsWindow {
     private void createWindow() {
         window = new Stage();
         window.setTitle(Localization.get("ui.settings"));
+        window.getIcons().add(ClientMain.icon);
         window.initModality(Modality.APPLICATION_MODAL);
 
         GridPane layout = new GridPane();

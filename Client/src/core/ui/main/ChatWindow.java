@@ -1,12 +1,12 @@
 package core.ui.main;
 
-import com.esotericsoftware.kryonet.Connection;
-import core.NetworkInterface;
-import core.PacketHandler;
+import core.Client;
+import core.ClientMain;
+import core.packetlisteners.PacketListener;
 import core.VLOKManager;
 import core.localization.Localization;
-import core.packets.ChatMessagePacket;
-import core.packets.Packet;
+import core.serialization.VLOKDatabase;
+import core.serialization.VLOKObject;
 import core.ui.Popup;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -30,7 +30,7 @@ public class ChatWindow {
 
     public ChatWindow() {
         createWindow();
-        VLOKManager.client.addPacketHandler(new ChatPacketHandler());
+        VLOKManager.client.addPacketListener(new ChatPacketHandler());
     }
 
     public void show() {
@@ -44,6 +44,7 @@ public class ChatWindow {
     private void createWindow() {
         window = new Stage();
         window.setTitle(Localization.get("ui.chat"));
+        window.getIcons().add(ClientMain.icon);
         window.initModality(Modality.NONE);
 
         BorderPane layout = new BorderPane();
@@ -72,19 +73,22 @@ public class ChatWindow {
 
     }
 
-    private class ChatPacketHandler extends PacketHandler {
+    private class ChatPacketHandler extends PacketListener {
 
         public ChatPacketHandler() {
-            super(ChatMessagePacket.class);
+            super("chat_message");
         }
 
         @Override
-        public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
-            ChatMessagePacket packet = (ChatMessagePacket) p;
-            String date = new SimpleDateFormat("HH:mm:ss").format(new Date());
-            chat.appendText("[" + date + "] " + packet.username + ": " + packet.message + "\n");
+        public void packetReceived(VLOKDatabase db, Client c) {
+            VLOKObject dataObject = db.findObject("data");
+            String username = dataObject.findString("username").getString();
+            String text = dataObject.findString("text").getString();
 
+            String date = new SimpleDateFormat("HH:mm:ss").format(new Date());
+            chat.appendText("[" + date + "] " + username + ": " + text + "\n");
         }
+
     }
 
 }

@@ -1,13 +1,13 @@
 package core.ui.login;
 
-import com.esotericsoftware.kryonet.Connection;
-import com.esotericsoftware.kryonet.Listener;
+import core.Client;
+import core.packetlisteners.PacketListener;
 import core.VLOKManager;
 import core.localization.Localization;
 import core.logging.Console;
-import core.packets.LoginPacket;
 import core.prefs.Prefs;
 import core.prefs.PrefsValue;
+import core.serialization.VLOKDatabase;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -61,16 +61,13 @@ public class LoginWindow {
 
         gridPane.getChildren().addAll(keyLabel, keyField, codeLabel, codeField, loginButton);
 
-        VLOKManager.client.addListener(new Listener() {
+        VLOKManager.client.addPacketListener(new PacketListener("login") {
             @Override
-            public void received(Connection connection, Object o) {
-                if (o instanceof LoginPacket) {
-                    LoginPacket packet = (LoginPacket) o;
-
-                    if (packet.sessionKey != null && !packet.sessionKey.isEmpty()) {
-                        Console.info("Logged in");
-                        fireLoginEvent(packet.sessionKey);
-                    }
+            public void packetReceived(VLOKDatabase db, Client c) {
+                String sessionKey = db.findObject("data").findString("session").getString();
+                if (sessionKey != null && !sessionKey.isEmpty()) {
+                    Console.info("Logged in");
+                    fireLoginEvent(sessionKey);
                 }
             }
         });

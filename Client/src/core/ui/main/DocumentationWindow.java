@@ -1,13 +1,10 @@
 package core.ui.main;
 
-import com.esotericsoftware.kryonet.Connection;
-import core.NetworkInterface;
-import core.PacketHandler;
-import core.VLOKManager;
+import core.*;
 import core.localization.Localization;
-import core.packets.DocumentationPacket;
-import core.packets.Packet;
-import core.packets.RequestPacket;
+import core.packetlisteners.PacketListener;
+import core.serialization.VLOKDatabase;
+import core.serialization.VLOKObject;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
@@ -21,7 +18,7 @@ import javafx.stage.Stage;
 
 public class DocumentationWindow {
 
-    private Stage dialog;
+    private Stage window;
 
     private TabPane tabPane;
 
@@ -30,26 +27,27 @@ public class DocumentationWindow {
     }
 
     public void show() {
-        dialog.show();
+        window.show();
     }
 
     private void createWindow() {
-        dialog = new Stage();
-        dialog.setTitle(Localization.get("ui.documentation"));
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.setWidth(500);
-        dialog.setHeight(400);
+        window = new Stage();
+        window.setTitle(Localization.get("ui.documentation"));
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.getIcons().add(ClientMain.icon);
+        window.setWidth(500);
+        window.setHeight(400);
 
         BorderPane layout = new BorderPane();
         tabPane = getTabPane();
         layout.setCenter(tabPane);
 
         Scene dialogScene = new Scene(layout, 300, 200);
-        dialog.setScene(dialogScene);
+        window.setScene(dialogScene);
 
-        VLOKManager.client.addPacketHandler(new DocumentationPacketHandler());
+        VLOKManager.client.addPacketListener(new DocumentationPacketHandler());
 
-        VLOKManager.sendRequest(RequestPacket.Type.DOCUMENTATION, "");
+        VLOKManager.sendRequest(RequestType.DOCUMENTATION, "");
     }
 
     private TabPane getTabPane() {
@@ -73,16 +71,16 @@ public class DocumentationWindow {
         return tab;
     }
 
-    private class DocumentationPacketHandler extends PacketHandler {
+    private class DocumentationPacketHandler extends PacketListener {
 
         public DocumentationPacketHandler() {
-            super(DocumentationPacket.class);
+            super("documentation");
         }
 
         @Override
-        public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
-            DocumentationPacket packet = (DocumentationPacket) p;
-            Platform.runLater(() -> tabPane.getTabs().add(addTab(packet.name, packet.text)));
+        public void packetReceived(VLOKDatabase db, Client c) {
+            VLOKObject dataObject = db.findObject("data");
+            Platform.runLater(() -> tabPane.getTabs().add(addTab(dataObject.findString("name").getString(), dataObject.findString("text").getString())));
         }
     }
 }

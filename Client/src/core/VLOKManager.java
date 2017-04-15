@@ -2,10 +2,11 @@ package core;
 
 import core.localization.Localization;
 import core.logging.Console;
-import core.packethandlers.ErrorPacketHandler;
-import core.packets.ChatMessagePacket;
-import core.packets.LoginPacket;
-import core.packets.RequestPacket;
+import core.packetlisteners.ErrorPacketListener;
+import core.serialization.VLOKDatabase;
+import core.serialization.VLOKField;
+import core.serialization.VLOKObject;
+import core.serialization.VLOKString;
 import core.ui.Popup;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -15,18 +16,17 @@ import java.io.File;
 
 public class VLOKManager {
 
-    public static NetworkClient client;
+    public static Client client;
     public static String sessionKey;
 
-
     public static void init() {
-        client = new NetworkClient("localhost");
+        client = new Client("localhost", 54555);
 
         client.start();
 
-        client.addPacketHandler(new FileTransferPacketHandler(Utils.getDownloadPath(), (file, fileInfo) -> Utils.selectFile(file.getPath())));
+//        client.addPacketHandler(new FileTransferPacketHandler(Utils.getDownloadPath(), (file, fileInfo) -> Utils.selectFile(file.getPath())));
 
-        client.addPacketHandler(new ErrorPacketHandler());
+        client.addPacketListener(new ErrorPacketListener());
 
         Console.info("Initialized VLOK");
     }
@@ -53,25 +53,39 @@ public class VLOKManager {
         String description = Popup.input(Localization.get("ui.description"), Localization.get("ui.give_file_description"));
 
         if (Popup.confirm(Localization.get("ui.confirm"), Localization.get("ui.name") + ": " + name + ", " + Localization.get("ui.description") + ": " + description)) {
-            FileSender.sendFile(new FileInfo(name, description), file, sessionKey, packet -> client.sendTCP(packet));
+            // FIXME: 15/04/2017 send file
+            //FileSender.sendFile(new FileInfo(name, description), file, sessionKey, db -> client.send(db));
             Popup.info(Localization.get("ui.upload"), Localization.get("ui.file_upload_complete"));
         }
     }
 
     public static void sendLogin(String key, String code, String os) {
-        LoginPacket loginPacket = new LoginPacket(key + "¡" + Utils.hash(code) + "¡" + os, ClientMain.VERSION, "");
-
-        client.sendTCP(loginPacket);
+        VLOKDatabase db = new VLOKDatabase("login");
+        VLOKObject data = new VLOKObject("data");
+        data.addField(VLOKField.Float("version", ClientMain.VERSION));
+        data.addString(VLOKString.Create("key", key));
+        data.addString(VLOKString.Create("code", Utils.hash(code)));
+        db.addObject(data);
+        client.send(db);
     }
 
-    public static void sendRequest(RequestPacket.Type type, String argument) {
-        RequestPacket requestPacket = new RequestPacket(sessionKey, type, argument);
-        client.sendTCP(requestPacket);
+    public static void sendRequest(byte type, String argument) {
+        VLOKDatabase db = new VLOKDatabase("request");
+        VLOKObject data = new VLOKObject("data");
+        data.addField(VLOKField.Byte("type", type));
+        data.addString(VLOKString.Create("sessionkey", sessionKey));
+        data.addString(VLOKString.Create("argument", argument));
+        db.addObject(data);
+        client.send(db);
     }
 
     public static void sentChatMessage(String username, String text) {
-        ChatMessagePacket chatMessage = new ChatMessagePacket(text, VLOKManager.sessionKey, username);
-        client.sendTCP(chatMessage);
+        VLOKDatabase db = new VLOKDatabase("chat_message");
+        VLOKObject data = new VLOKObject("data");
+        data.addString(VLOKString.Create("username", username));
+        data.addString(VLOKString.Create("text", text));
+        db.addObject(data);
+        client.send(db);
     }
 
 }

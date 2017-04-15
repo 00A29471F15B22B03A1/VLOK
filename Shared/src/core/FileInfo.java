@@ -33,13 +33,14 @@ public class FileInfo {
         this.pending = pending;
     }
 
-    public FileInfo(int id, String name, String path, String description, int minPermissionLevel, boolean pending) {
+    public FileInfo(int id, String name, String path, String description, int minPermissionLevel, boolean pending, String uploadDate) {
         this.id = id;
         this.name = name;
         this.path = path;
         this.description = description;
         this.minPermissionLevel = minPermissionLevel;
         this.pending = pending;
+        this.uploadDate = uploadDate;
     }
 
     @Override
