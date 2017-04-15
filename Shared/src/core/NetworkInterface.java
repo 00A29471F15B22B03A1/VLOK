@@ -34,11 +34,7 @@ public abstract class NetworkInterface {
 
     public abstract void sendTCP(Object o);
 
-    public abstract void sendUDP(Object o);
-
     public abstract void sendTCP(Object o, int connection);
-
-    public abstract void sendUDP(Object o, int connection);
 
     public abstract void start();
 

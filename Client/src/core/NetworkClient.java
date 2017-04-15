@@ -41,18 +41,8 @@ public class NetworkClient extends NetworkInterface {
     }
 
     @Override
-    public void sendUDP(Object o) {
-        client.sendUDP(o);
-    }
-
-    @Override
     public void sendTCP(Object o, int connection) {
         sendTCP(o);
-    }
-
-    @Override
-    public void sendUDP(Object o, int connection) {
-        sendUDP(o);
     }
 
     @Override

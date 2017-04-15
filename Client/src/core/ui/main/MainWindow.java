@@ -30,7 +30,7 @@ public class MainWindow {
         settingsWindow = new SettingsWindow();
         scene = new Scene(createPane(), 854, 480);
         primaryStage.setTitle("");
-        
+
         Popup.init(primaryStage);
     }
 
@@ -103,7 +103,6 @@ public class MainWindow {
             fileName.setText(selectedInfo.name);
             fileDescription.setText(selectedInfo.description);
             filePath.setText(selectedInfo.path);
-            System.out.println(selectedInfo.uploadDate);
             fileUploadDate.setText(selectedInfo.uploadDate);
             selectedFile = selectedInfo;
         });

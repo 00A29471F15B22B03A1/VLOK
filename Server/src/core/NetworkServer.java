@@ -36,18 +36,8 @@ public class NetworkServer extends NetworkInterface {
     }
 
     @Override
-    public void sendUDP(Object o) {
-        server.sendToAllUDP(o);
-    }
-
-    @Override
     public void sendTCP(Object o, int connection) {
         server.sendToTCP(connection, o);
-    }
-
-    @Override
-    public void sendUDP(Object o, int connection) {
-        server.sendToUDP(connection, o);
     }
 
     @Override
