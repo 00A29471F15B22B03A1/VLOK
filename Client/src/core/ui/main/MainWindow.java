@@ -74,9 +74,7 @@ public class MainWindow {
 
         //<editor-fold desc="FileTree">
         TreeItem<FileInfo> root = new TreeItem<>();
-
         VLOKManager.sendRequest(RequestPacket.Type.FILE_STRUCTURE, "");
-
         VLOKManager.client.addPacketHandler(new PacketHandler(FileStructurePacket.class) {
             @Override
             public void handlePacket(Packet p, Connection c, NetworkInterface ni) {

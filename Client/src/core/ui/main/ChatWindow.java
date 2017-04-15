@@ -1,12 +1,14 @@
 package core.ui.main;
 
 import com.esotericsoftware.kryonet.Connection;
+import core.FileInfo;
 import core.NetworkInterface;
 import core.PacketHandler;
 import core.VLOKManager;
 import core.localization.Localization;
 import core.packets.ChatMessagePacket;
 import core.packets.Packet;
+import core.packets.RequestPacket;
 import core.ui.Popup;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -19,7 +21,7 @@ import javafx.stage.Stage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+//TODO: Fix localization
 public class ChatWindow {
 
     private Stage window;
@@ -84,18 +86,28 @@ public class ChatWindow {
 
             String[] words = packet.message.split(" ");
 
-            for (int i = 0; i < words.length; i++) {
-                System.out.println(words[i]);
-                if (words[i].contains("||")) {
-                    String fileName = words[i].replaceAll("||", "");
-                    //fileName is de naam van de file die door de command wordt gevraagd
-                }
-
-            }
-
             String date = new SimpleDateFormat("HH:mm:ss").format(new Date());
-            chat.appendText("[" + date + "] " + packet.username + ": " + packet.message + "\n");
+            chat.appendText("[" + date + "] " + packet.username + ": ");
 
+            for (int i = 0; i < words.length; i++) {
+                if (words[i].contains("%")) {
+                    String fileId = words[i].replace("%", "");
+                    int id = Integer.parseInt(fileId);
+                    FileInfo fileInfo = VLOKManager.fileStructure.getFile(id);
+                    if (fileInfo != null) {
+                        chat.appendText("{" + fileInfo.name + "}");
+                        boolean result = Popup.confirm("Chat: download", "Would you like to download " + fileInfo + "?");
+                        if (result) {
+                            VLOKManager.sendRequest(RequestPacket.Type.FILE_DOWNLOAD, fileId);
+                        }
+                    }
+
+                } else {
+                    chat.appendText(words[i]);
+                }
+                chat.appendText(" ");
+            }
+            chat.appendText("\n");
         }
     }
 

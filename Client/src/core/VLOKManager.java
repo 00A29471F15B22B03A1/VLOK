@@ -1,9 +1,12 @@
 package core;
 
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
 import core.localization.Localization;
 import core.logging.Console;
 import core.packethandlers.ErrorPacketHandler;
 import core.packets.ChatMessagePacket;
+import core.packets.FileStructurePacket;
 import core.packets.LoginPacket;
 import core.packets.RequestPacket;
 import core.ui.Popup;
@@ -17,6 +20,7 @@ public class VLOKManager {
 
     public static NetworkClient client;
     public static String sessionKey;
+    public static FileStructure fileStructure;
 
 
     public static void init() {
@@ -27,6 +31,17 @@ public class VLOKManager {
         client.addPacketHandler(new FileTransferPacketHandler(Utils.getDownloadPath(), (file, fileInfo) -> Utils.selectFile(file.getPath())));
 
         client.addPacketHandler(new ErrorPacketHandler());
+
+        VLOKManager.sendRequest(RequestPacket.Type.FILE_STRUCTURE, "");
+
+        client.addListener(new Listener() {
+            @Override
+            public void received(Connection connection, Object o) {
+                if (o instanceof FileStructurePacket) {
+                    fileStructure = ((FileStructurePacket) o).fileStructure;
+                }
+            }
+        });
 
         Console.info("Initialized VLOK");
     }
