@@ -13,7 +13,6 @@ ui.files=Files
 ui.language=Language
 ui.languages=Languages
 ui.settings=Settings
-ui.chat=Chat
 ui.save=Save
 ui.cancel=Cancel
 ui.accept=Accept
@@ -38,6 +37,13 @@ ui.canceling_upload=Canceling Upload
 ui.canceling_upload_no_name=Canceling upload because there is no name
 ui.confirm=Confirm
 ui.file_upload_complete=File upload is complete
+
+#CHAT
+#q = question
+#s = sentence
+ui.chat=Chat
+ui.q_username =Give a username please
+ui.s_type_here=Type here to chat...
 
 #ERROR
 error.error=Error

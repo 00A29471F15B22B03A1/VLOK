@@ -15,6 +15,7 @@ public class ChatPacketHandler extends PacketHandler {
 
     @Override
     public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
+
         Console.info("Received chat message from " + c.getID());
         ni.sendTCP(p);
 

@@ -19,14 +19,14 @@ import javafx.stage.Stage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//TODO: fix localization
+
 public class ChatWindow {
 
     private Stage window;
 
     private TextArea chat;
 
-    String username;
+    private String username;
 
     public ChatWindow() {
         createWindow();
@@ -35,7 +35,7 @@ public class ChatWindow {
 
     public void show() {
         if (username == null) {
-            username = Popup.input("Chat", "Give a username please");
+            username = Popup.input(Localization.get("ui.chat"), Localization.get("ui.q_username"));
         }
         window.show();
     }
@@ -51,13 +51,13 @@ public class ChatWindow {
         chat = new TextArea();
         chat.setEditable(false);
         TextField input = new TextField();
-        input.setPromptText("Type here to chat...");
+        input.setPromptText(Localization.get("ui.s_type_here"));
         input.setOnKeyPressed(ke -> {
             if (ke.getCode().equals(KeyCode.ENTER)) {
                 if (input.getText().isEmpty())
                     return;
 
-                VLOKManager.sentChatMessage(username, input.getText().trim());
+                VLOKManager.sendChatMessage(username, input.getText().trim());
                 input.setText("");
             }
         });
@@ -81,6 +81,18 @@ public class ChatWindow {
         @Override
         public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
             ChatMessagePacket packet = (ChatMessagePacket) p;
+
+            String[] words = packet.message.split(" ");
+
+            for (int i = 0; i < words.length; i++) {
+                System.out.println(words[i]);
+                if (words[i].contains("||")) {
+                    String fileName = words[i].replaceAll("||", "");
+                    //fileName is de naam van de file die door de command wordt gevraagd
+                }
+
+            }
+
             String date = new SimpleDateFormat("HH:mm:ss").format(new Date());
             chat.appendText("[" + date + "] " + packet.username + ": " + packet.message + "\n");
 

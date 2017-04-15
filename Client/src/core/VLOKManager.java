@@ -20,7 +20,7 @@ public class VLOKManager {
 
 
     public static void init() {
-        client = new NetworkClient("vlok.dynu.com");
+        client = new NetworkClient("localhost");
 
         client.start();
 
@@ -69,7 +69,7 @@ public class VLOKManager {
         client.sendTCP(requestPacket);
     }
 
-    public static void sentChatMessage(String username, String text) {
+    public static void sendChatMessage(String username, String text) {
         ChatMessagePacket chatMessage = new ChatMessagePacket(text, VLOKManager.sessionKey, username);
         client.sendTCP(chatMessage);
     }
