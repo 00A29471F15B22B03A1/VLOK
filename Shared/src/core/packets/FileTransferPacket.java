@@ -4,7 +4,6 @@ import core.FileInfo;
 
 public class FileTransferPacket extends Packet {
 
-
     public static final int MAX_PACKET_SIZE = 10000;
 
     public FileInfo fileInfo;
