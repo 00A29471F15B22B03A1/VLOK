@@ -6,12 +6,17 @@ import core.localization.Localization;
 import core.packets.FileStructurePacket;
 import core.packets.Packet;
 import core.packets.RequestPacket;
+import core.ui.Popup;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class MainWindow {
 
@@ -25,6 +30,8 @@ public class MainWindow {
         settingsWindow = new SettingsWindow();
         scene = new Scene(createPane(), 854, 480);
         primaryStage.setTitle("");
+        
+        Popup.init(primaryStage);
     }
 
     private BorderPane createPane() {

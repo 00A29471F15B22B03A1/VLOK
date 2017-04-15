@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 public class ClientMain extends Application {
 
-    public static final float VERSION = 0.1f;
+    public static final float VERSION = 0.15f;
     public static String DOWNLOAD_URL = "";
 
     @Override

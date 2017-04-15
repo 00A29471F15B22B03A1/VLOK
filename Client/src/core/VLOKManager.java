@@ -53,7 +53,9 @@ public class VLOKManager {
         String description = Popup.input(Localization.get("ui.description"), Localization.get("ui.give_file_description"));
 
         if (Popup.confirm(Localization.get("ui.confirm"), Localization.get("ui.name") + ": " + name + ", " + Localization.get("ui.description") + ": " + description)) {
+            Popup.enableLoading();
             FileSender.sendFile(new FileInfo(name, description), file, sessionKey, packet -> client.sendTCP(packet));
+            Popup.disableLoading();
             Popup.info(Localization.get("ui.upload"), Localization.get("ui.file_upload_complete"));
         }
     }
