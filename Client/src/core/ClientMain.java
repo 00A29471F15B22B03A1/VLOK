@@ -3,9 +3,7 @@ package core;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import core.logging.Console;
-import core.packets.FileTransferPacket;
 import core.packets.UpdatePacket;
-import core.ui.Popup;
 import core.ui.UpdateWindow;
 import core.ui.login.LoginWindow;
 import core.ui.main.MainWindow;
@@ -41,7 +39,6 @@ public class ClientMain extends Application {
         });
 
         primaryStage.setOnCloseRequest(event -> Console.close());
-
 
         primaryStage.setScene(loginWindow.getScene());
         primaryStage.show();

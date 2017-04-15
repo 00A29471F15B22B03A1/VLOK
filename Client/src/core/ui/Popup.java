@@ -1,51 +1,13 @@
 package core.ui;
 
 import javafx.application.Platform;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 
 import java.util.Optional;
 
 public class Popup {
-
-    private static Dialog<Void> loadingDialog;
-
-    public static void init(Stage primaryStage) {
-        loadingDialog = new Dialog<>();
-        loadingDialog.initModality(Modality.WINDOW_MODAL);
-        loadingDialog.initOwner(primaryStage);//stage here is the stage of your webview
-        loadingDialog.initStyle(StageStyle.TRANSPARENT);
-
-        loadingDialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-        Node closeButton = loadingDialog.getDialogPane().lookupButton(ButtonType.CLOSE);
-        closeButton.managedProperty().bind(closeButton.visibleProperty());
-        closeButton.setVisible(false);
-
-        Label loader = new Label("LOADING");
-        loader.setContentDisplay(ContentDisplay.BOTTOM);
-        loader.setGraphic(new ProgressIndicator());
-        loadingDialog.getDialogPane().setGraphic(loader);
-        DropShadow ds = new DropShadow();
-        ds.setOffsetX(1.3);
-        ds.setOffsetY(1.3);
-        ds.setColor(Color.DARKGRAY);
-        loadingDialog.getDialogPane().setEffect(ds);
-    }
-
-    public static void enableLoading() {
-        loadingDialog.show();
-    }
-
-    //TODO: fix
-    public static void disableLoading() {
-        loadingDialog.setResult(null);
-        loadingDialog.close();
-    }
 
     public static void alert(String title, String message) {
         Platform.runLater(() -> {
