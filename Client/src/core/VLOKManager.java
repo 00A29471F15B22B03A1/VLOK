@@ -5,10 +5,7 @@ import com.esotericsoftware.kryonet.Listener;
 import core.localization.Localization;
 import core.logging.Console;
 import core.packethandlers.ErrorPacketHandler;
-import core.packets.ChatMessagePacket;
-import core.packets.FileStructurePacket;
-import core.packets.LoginPacket;
-import core.packets.RequestPacket;
+import core.packets.*;
 import core.ui.Popup;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -87,6 +84,11 @@ public class VLOKManager {
     public static void sendChatMessage(String username, String text) {
         ChatMessagePacket chatMessage = new ChatMessagePacket(text, VLOKManager.sessionKey, username);
         client.sendTCP(chatMessage);
+    }
+
+    public static void sendChatLogin(String username) {
+        ChatLoginPacket chatLogin = new ChatLoginPacket(username);
+        client.sendTCP(chatLogin);
     }
 
 }

@@ -6,6 +6,7 @@ import core.NetworkInterface;
 import core.PacketHandler;
 import core.VLOKManager;
 import core.localization.Localization;
+import core.packets.ChatLoginPacket;
 import core.packets.ChatMessagePacket;
 import core.packets.Packet;
 import core.packets.RequestPacket;
@@ -22,7 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 //TODO: Fix localization
-//TODO: Max chat message size
+
 public class ChatWindow {
 
     private Stage window;
@@ -34,12 +35,14 @@ public class ChatWindow {
     public ChatWindow() {
         createWindow();
         VLOKManager.client.addPacketHandler(new ChatPacketHandler());
+        VLOKManager.client.addPacketHandler(new ChatLoginPacketHandler());
     }
 
     public void show() {
         if (username == null) {
             username = Popup.input(Localization.get("ui.chat"), Localization.get("ui.q_username"));
         }
+        VLOKManager.sendChatLogin(username);
         window.show();
     }
 
@@ -116,6 +119,21 @@ public class ChatWindow {
                 }
                 chat.appendText(" ");
             }
+            chat.appendText("\n");
+        }
+    }
+
+    private class ChatLoginPacketHandler extends PacketHandler {
+
+        public ChatLoginPacketHandler() {
+            super(ChatLoginPacket.class);
+        }
+
+        @Override
+        public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
+            ChatLoginPacket packet = (ChatLoginPacket) p;
+
+            chat.appendText("--Welcome " + packet.username + " to the chatroom--");
             chat.appendText("\n");
         }
     }
