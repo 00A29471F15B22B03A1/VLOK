@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+
 
 //TODO: Fix localization
 
@@ -30,7 +32,10 @@ public class ChatWindow {
 
     private TextArea chat;
 
+    private TextArea online;
+
     private String username;
+
 
     public ChatWindow() {
         createWindow();
@@ -42,7 +47,7 @@ public class ChatWindow {
         if (username == null) {
             username = Popup.input(Localization.get("ui.chat"), Localization.get("ui.q_username"));
         }
-        VLOKManager.sendChatLogin(username);
+        VLOKManager.sendChatLogin(username, true, VLOKManager.sessionKey);
         window.show();
     }
 
@@ -56,6 +61,11 @@ public class ChatWindow {
 
         chat = new TextArea();
         chat.setEditable(false);
+
+        online = new TextArea();
+        online.setEditable(false);
+
+
         TextField input = new TextField();
         input.setPromptText(Localization.get("ui.s_type_here"));
         input.setOnKeyPressed(ke -> {
@@ -78,6 +88,10 @@ public class ChatWindow {
 
         layout.setCenter(chat);
         layout.setBottom(input);
+
+        online.setPrefWidth(100);
+        layout.setRight(online);
+        online.appendText("[ONLINE] \n");
 
         Scene scene = new Scene(layout, 500, 400);
         window.setScene(scene);
@@ -133,9 +147,25 @@ public class ChatWindow {
         public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
             ChatLoginPacket packet = (ChatLoginPacket) p;
 
+            HashMap<Integer, String> hmap = new HashMap<>();
+
             chat.appendText("--Welcome " + packet.username + " to the chatroom--");
             chat.appendText("\n");
+
+            if (((ChatLoginPacket) p).onlineStatus) {
+
+                int sessionKey = Integer.parseInt(packet.sessionKey);
+                hmap.put(sessionKey, packet.username);
+
+            }
         }
+
     }
 
+
 }
+
+
+
+
+
