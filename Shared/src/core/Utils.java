@@ -9,7 +9,6 @@ import java.nio.file.StandardOpenOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-@SuppressWarnings("ResultOfMethodCallIgnored")
 public class Utils {
 
     public static String getDownloadPath() {
@@ -59,13 +58,13 @@ public class Utils {
     }
 
     public static String readFileWithIS(String path) {
-        String fullFile = "";
+        StringBuilder fullFile = new StringBuilder();
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(Class.class.getResourceAsStream(path)));
 
             String line;
             while ((line = reader.readLine()) != null)
-                fullFile += line + "\n";
+                fullFile.append(line).append("\n");
 
             reader.close();
         } catch (IOException e) {
@@ -73,17 +72,17 @@ public class Utils {
             Console.err("Failed to read file " + path);
         }
 
-        return fullFile;
+        return fullFile.toString();
     }
 
     public static String readFile(String path) {
-        String fullFile = "";
+        StringBuilder fullFile = new StringBuilder();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(new File(path)));
 
             String line;
             while ((line = reader.readLine()) != null)
-                fullFile += line + "\n";
+                fullFile.append(line).append("\n");
 
             reader.close();
         } catch (IOException e) {
@@ -91,7 +90,7 @@ public class Utils {
             Console.err("Failed to read file " + path);
         }
 
-        return fullFile;
+        return fullFile.toString();
     }
 
     public static void writeToFile(String path, String contents) {

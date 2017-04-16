@@ -3,6 +3,7 @@ package core;
 import core.localization.Localization;
 import core.logging.Console;
 import core.packetlisteners.ErrorPacketListener;
+import core.packetlisteners.FileTransferPacketListener;
 import core.serialization.VLOKDatabase;
 import core.serialization.VLOKField;
 import core.serialization.VLOKObject;
@@ -27,6 +28,7 @@ public class VLOKManager {
 //        client.addPacketHandler(new FileTransferPacketHandler(Utils.getDownloadPath(), (file, fileInfo) -> Utils.selectFile(file.getPath())));
 
         client.addPacketListener(new ErrorPacketListener());
+        client.addPacketListener(new FileTransferPacketListener());
 
         Console.info("Initialized VLOK");
     }
@@ -54,7 +56,7 @@ public class VLOKManager {
 
         if (Popup.confirm(Localization.get("ui.confirm"), Localization.get("ui.name") + ": " + name + ", " + Localization.get("ui.description") + ": " + description)) {
             // FIXME: 15/04/2017 send file
-            //FileSender.sendFile(new FileInfo(name, description), file, sessionKey, db -> client.send(db));
+            // FileSender.sendFile(new FileInfo(name, description), file, sessionKey, db -> client.send(db));
             Popup.info(Localization.get("ui.upload"), Localization.get("ui.file_upload_complete"));
         }
     }
@@ -78,6 +80,17 @@ public class VLOKManager {
         db.addObject(data);
         client.send(db);
     }
+
+    public static void sendRequest(byte type, int argument) {
+        VLOKDatabase db = new VLOKDatabase("request");
+        VLOKObject data = new VLOKObject("data");
+        data.addField(VLOKField.Byte("type", type));
+        data.addString(VLOKString.Create("sessionkey", sessionKey));
+        data.addField(VLOKField.Integer("argument", argument));
+        db.addObject(data);
+        client.send(db);
+    }
+
 
     public static void sentChatMessage(String username, String text) {
         VLOKDatabase db = new VLOKDatabase("chat_message");

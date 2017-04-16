@@ -8,9 +8,9 @@ import static core.serialization.SerializationUtils.*;
 
 public class VLOKDatabase extends VLOKBase {
 
-    public static final byte[] HEADER = "VLOKDB".getBytes();
-    public static final short VERSION = 0x0100;
-    public static final byte CONTAINER_TYPE = ContainerType.DATABASE;
+    private static final byte[] HEADER = "VLOKDB".getBytes();
+    private static final short VERSION = 0x0100;
+    private static final byte CONTAINER_TYPE = ContainerType.DATABASE;
     private short objectCount;
     public List<VLOKObject> objects = new ArrayList<>();
 

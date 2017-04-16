@@ -13,7 +13,7 @@ public class VLOKObject extends VLOKBase {
     private short stringCount;
     public List<VLOKString> strings = new ArrayList<>();
     private short arrayCount;
-    public List<VLOKArray> arrays = new ArrayList<VLOKArray>();
+    public List<VLOKArray> arrays = new ArrayList<>();
 
     private VLOKObject() {
     }

@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Client {
 
@@ -27,6 +29,8 @@ public class Client {
     private byte[] receivedDataBuffer = new byte[MAX_PACKET_SIZE * 10];
 
     private List<PacketListener> packetListeners = new ArrayList<>();
+
+    private List<VLOKDatabase> DBsToProcess = new ArrayList<>();
 
     public Client(String host, int port) {
         this.ipAddress = host;
@@ -46,6 +50,22 @@ public class Client {
 
         running = true;
         new Thread(this::listen, "ListenThread").start();
+
+        new Thread(() -> {
+            while (running) {
+                if (DBsToProcess.isEmpty()) {
+                    try {
+                        Thread.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    continue;
+                }
+
+                process(DBsToProcess.get(0));
+                DBsToProcess.remove(0);
+            }
+        }, "ProcessThread").start();
     }
 
     private void listen() {
@@ -53,24 +73,20 @@ public class Client {
             try {
                 inputStream.read(receivedDataBuffer);
 
-                process(receivedDataBuffer);
+                if (new String(receivedDataBuffer, 0, 6).equals("VLOKDB"))
+                    DBsToProcess.add(VLOKDatabase.Deserialize(receivedDataBuffer));
             } catch (IOException e) {
                 stop();
             }
         }
     }
 
-    private void process(byte[] data) {
-        if (new String(data, 0, 6).equals("VLOKDB")) {
-            VLOKDatabase db = VLOKDatabase.Deserialize(data);
-            Console.info("Received " + db.getName());
+    private void process(VLOKDatabase db) {
+        Console.info("Received " + db.getName());
 
-            for (PacketListener packetListener : packetListeners)
-                if (packetListener.getPacketName().equals(db.getName()))
-                    packetListener.packetReceived(db, this);
-        } else {
-            Console.err("Packet received is not a VLOK database");
-        }
+        for (PacketListener packetListener : packetListeners)
+            if (packetListener.getPacketName().equals(db.getName()))
+                packetListener.packetReceived(db, this);
     }
 
     public void send(VLOKDatabase db) {

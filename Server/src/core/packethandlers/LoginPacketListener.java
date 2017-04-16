@@ -1,7 +1,7 @@
 package core.packethandlers;
 
 import core.PacketListener;
-import core.Server;
+import core.networking.Server;
 import core.ServerMain;
 import core.UserManager;
 import core.database.UserDatabase;

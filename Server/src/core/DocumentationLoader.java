@@ -1,5 +1,6 @@
 package core;
 
+import core.networking.Server;
 import core.serialization.VLOKDatabase;
 import core.serialization.VLOKObject;
 import core.serialization.VLOKString;
@@ -15,6 +16,7 @@ public class DocumentationLoader {
 
     static {
         load("Uploading");
+        load("Chat");
     }
 
     private static void load(String name) {

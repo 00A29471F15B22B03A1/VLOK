@@ -1,6 +1,9 @@
 package core.ui.main;
 
-import core.*;
+import core.Client;
+import core.ClientMain;
+import core.RequestType;
+import core.VLOKManager;
 import core.localization.Localization;
 import core.packetlisteners.PacketListener;
 import core.serialization.VLOKDatabase;
@@ -58,7 +61,7 @@ public class DocumentationWindow {
         return tabPane;
     }
 
-    private Tab addTab(String name, String text) {
+    private Tab makeTab(String name, String text) {
         Tab tab = new Tab(name);
 
         BorderPane borderPane = new BorderPane();
@@ -80,7 +83,7 @@ public class DocumentationWindow {
         @Override
         public void packetReceived(VLOKDatabase db, Client c) {
             VLOKObject dataObject = db.findObject("data");
-            Platform.runLater(() -> tabPane.getTabs().add(addTab(dataObject.findString("name").getString(), dataObject.findString("text").getString())));
+            Platform.runLater(() -> tabPane.getTabs().add(makeTab(dataObject.findString("name").getString(), dataObject.findString("text").getString())));
         }
     }
 }

@@ -1,4 +1,4 @@
-package core;
+package core.networking;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -16,12 +16,15 @@ public class ServerClient {
     private Server server;
 
     private Socket socket;
+
+    private boolean running;
+
     private DataInputStream inputStream;
     private DataOutputStream outputStream;
 
     public ServerClient(Socket socket, Server server) {
-        this.id = getNewClientID();
         this.socket = socket;
+        this.id = getNewClientID();
         this.server = server;
         try {
             this.inputStream = new DataInputStream(socket.getInputStream());
@@ -29,17 +32,18 @@ public class ServerClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        running = true;
         new Thread(this::listen, "ListenThread").start();
     }
 
 
     private void listen() {
-        while (true) {
+        while (running) {
             try {
                 try {
                     inputStream.read(receivedDataBuffer);
                 } catch (SocketException e) {
-                    server.removeClient(id);
                     break;
                 }
 
@@ -47,6 +51,17 @@ public class ServerClient {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        stop();
+    }
+
+    public void stop() {
+        try {
+            running = false;
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -45,6 +45,8 @@ public class LoginWindow {
         TextField keyField = new TextField(Prefs.SETTINGS.doesValueExist("last_key") ? Prefs.SETTINGS.getString("last_key") : "");
         GridPane.setConstraints(keyField, 1, 0);
 
+        keyLabel.setLabelFor(keyField);
+
         Label codeLabel = new Label(Localization.get("ui.code"));
         GridPane.setConstraints(keyLabel, 0, 1);
 
@@ -54,6 +56,8 @@ public class LoginWindow {
                 login(keyField, codeField);
         });
         GridPane.setConstraints(codeField, 1, 1);
+
+        codeLabel.setLabelFor(codeField);
 
         Button loginButton = new Button(Localization.get("ui.login"));
         GridPane.setConstraints(loginButton, 1, 2);

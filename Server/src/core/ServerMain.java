@@ -1,6 +1,7 @@
 package core;
 
 import core.logging.Console;
+import core.networking.Server;
 import core.packethandlers.ChatPacketListener;
 import core.packethandlers.LoginPacketListener;
 import core.packethandlers.RequestPacketListener;

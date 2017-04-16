@@ -1,5 +1,6 @@
 package core;
 
+import core.networking.Server;
 import core.serialization.VLOKDatabase;
 
 public abstract class PacketListener {

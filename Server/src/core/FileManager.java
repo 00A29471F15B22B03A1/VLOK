@@ -1,6 +1,7 @@
 package core;
 
 import core.database.FileDatabase;
+import core.logging.Console;
 
 public class FileManager {
 
@@ -29,6 +30,14 @@ public class FileManager {
 
     public static FileInfo getFile(int id) {
         return fileStructure.getFile(id);
+    }
+
+    public static FileInfo getFile(String name) {
+        for (FileInfo info : fileStructure.getFiles())
+            if (info.name.equals(name))
+                return info;
+        Console.err("Could not file file with name " + name);
+        return null;
     }
 
 }

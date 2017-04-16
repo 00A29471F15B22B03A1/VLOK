@@ -1,5 +1,7 @@
-package core;
+package core.networking;
 
+import core.PacketListener;
+import core.logging.Console;
 import core.serialization.VLOKDatabase;
 import core.serialization.VLOKField;
 import core.serialization.VLOKObject;
@@ -21,7 +23,7 @@ public class Server {
 
     private ServerSocket socket;
 
-    protected boolean running = false;
+    private boolean running = false;
 
     private List<PacketListener> packetListeners = new ArrayList<>();
 
@@ -29,7 +31,7 @@ public class Server {
         this.port = port;
     }
 
-    protected void start() {
+    public void start() {
         try {
             socket = new ServerSocket(port);
         } catch (IOException e) {
@@ -69,7 +71,10 @@ public class Server {
         if (new String(data, 0, 6).equals("VLOKDB")) {
             VLOKDatabase db = VLOKDatabase.Deserialize(data);
 
-            dump(db);
+            if (db == null) {
+                Console.err("Couldn't deserialize database");
+                return;
+            }
 
             for (PacketListener packetListener : packetListeners)
                 if (packetListener.getPacketName().equals(db.getName()))
@@ -89,10 +94,15 @@ public class Server {
         db.getBytes(data, 0);
 
         try {
-            connectedClients.get(id).getOutputStream().write(data);
+            ServerClient client = connectedClients.get(id);
+            if (client != null)
+                client.getOutputStream().write(data);
+            else
+                throw new IOException("ServerClient is null");
         } catch (IOException e) {
             removeClient(id);
         }
+        System.out.println("Sent " + db.getName());
     }
 
     public void stop() {
@@ -105,11 +115,14 @@ public class Server {
     }
 
     public void removeClient(int id) {
+        ServerClient client = connectedClients.get(id);
+        if (client != null)
+            client.stop();
         connectedClients.remove(id);
         System.out.println("Client " + id + " disconnected");
     }
 
-    public void dump(VLOKDatabase db) {
+    private void dump(VLOKDatabase db) {
         System.out.println("------------------------------");
         System.out.println("           DATABASE           ");
         System.out.println("------------------------------");

@@ -1,6 +1,9 @@
 package core.ui.main;
 
-import core.*;
+import core.Client;
+import core.FileInfo;
+import core.RequestType;
+import core.VLOKManager;
 import core.localization.Localization;
 import core.packetlisteners.PacketListener;
 import core.serialization.VLOKDatabase;
@@ -26,6 +29,7 @@ public class MainWindow {
         primaryStage.setTitle("");
     }
 
+    //TODO: change to treeview
     private BorderPane createPane() {
         BorderPane borderPane = new BorderPane();
 
@@ -61,7 +65,7 @@ public class MainWindow {
         Button downloadButton = new Button(Localization.get("ui.download"));
         downloadButton.setOnAction(event -> {
             if (selectedFile != null)
-                VLOKManager.sendRequest(RequestType.FILE_DOWNLOAD, selectedFile.id + "");
+                VLOKManager.sendRequest(RequestType.FILE_DOWNLOAD, selectedFile.id);
         });
 
         GridPane.setConstraints(downloadButton, 0, 4);
@@ -159,10 +163,6 @@ public class MainWindow {
         });
 
         return borderPane;
-    }
-
-    private void addChild(TreeView<FileInfo> treeView, FileInfo fileInfo) {
-
     }
 
     public Scene getScene() {

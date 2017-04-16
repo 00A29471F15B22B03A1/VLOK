@@ -3,8 +3,8 @@ package core.serialization;
 public class Main {
 
     static void printBytes(byte[] data) {
-        for (int i = 0; i < data.length; i++) {
-            System.out.printf("0x%x ", data[i]);
+        for (byte aData : data) {
+            System.out.printf("0x%x ", aData);
         }
         System.out.println();
     }

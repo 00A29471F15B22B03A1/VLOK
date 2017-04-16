@@ -10,6 +10,9 @@ file_transfer
         name
         data
 
+file_transfer_finished
+    data
+        name
 
 REQUESTPACKET
 request

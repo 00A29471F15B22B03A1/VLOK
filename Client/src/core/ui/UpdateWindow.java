@@ -67,7 +67,7 @@ public class UpdateWindow {
             this.progress = progressProperty;
         }
 
-        //TODO: fix progress
+        //TODO: fix progressbar
         @Override
         public void run() {
             try {

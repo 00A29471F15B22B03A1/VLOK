@@ -6,57 +6,49 @@ public class SerializationUtils {
 
     public static int writeBytes(byte[] dest, int pointer, byte[] src) {
         assert (dest.length > pointer + src.length);
-        for (int i = 0; i < src.length; i++)
-            dest[pointer++] = src[i];
+        for (byte aSrc : src) dest[pointer++] = aSrc;
         return pointer;
     }
 
     public static int writeBytes(byte[] dest, int pointer, char[] src) {
         assert (dest.length > pointer + src.length);
-        for (int i = 0; i < src.length; i++)
-            pointer = writeBytes(dest, pointer, src[i]);
+        for (char aSrc : src) pointer = writeBytes(dest, pointer, aSrc);
         return pointer;
     }
 
     public static int writeBytes(byte[] dest, int pointer, short[] src) {
         assert (dest.length > pointer + src.length);
-        for (int i = 0; i < src.length; i++)
-            pointer = writeBytes(dest, pointer, src[i]);
+        for (short aSrc : src) pointer = writeBytes(dest, pointer, aSrc);
         return pointer;
     }
 
     public static int writeBytes(byte[] dest, int pointer, int[] src) {
         assert (dest.length > pointer + src.length);
-        for (int i = 0; i < src.length; i++)
-            pointer = writeBytes(dest, pointer, src[i]);
+        for (int aSrc : src) pointer = writeBytes(dest, pointer, aSrc);
         return pointer;
     }
 
     public static int writeBytes(byte[] dest, int pointer, long[] src) {
         assert (dest.length > pointer + src.length);
-        for (int i = 0; i < src.length; i++)
-            pointer = writeBytes(dest, pointer, src[i]);
+        for (long aSrc : src) pointer = writeBytes(dest, pointer, aSrc);
         return pointer;
     }
 
     public static int writeBytes(byte[] dest, int pointer, float[] src) {
         assert (dest.length > pointer + src.length);
-        for (int i = 0; i < src.length; i++)
-            pointer = writeBytes(dest, pointer, src[i]);
+        for (float aSrc : src) pointer = writeBytes(dest, pointer, aSrc);
         return pointer;
     }
 
     public static int writeBytes(byte[] dest, int pointer, double[] src) {
         assert (dest.length > pointer + src.length);
-        for (int i = 0; i < src.length; i++)
-            pointer = writeBytes(dest, pointer, src[i]);
+        for (double aSrc : src) pointer = writeBytes(dest, pointer, aSrc);
         return pointer;
     }
 
     public static int writeBytes(byte[] dest, int pointer, boolean[] src) {
         assert (dest.length > pointer + src.length);
-        for (int i = 0; i < src.length; i++)
-            pointer = writeBytes(dest, pointer, src[i]);
+        for (boolean aSrc : src) pointer = writeBytes(dest, pointer, aSrc);
         return pointer;
     }
 
@@ -69,14 +61,14 @@ public class SerializationUtils {
     public static int writeBytes(byte[] dest, int pointer, short value) {
         assert (dest.length > pointer + Type.getSize(Type.SHORT));
         dest[pointer++] = (byte) ((value >> 8) & 0xff);
-        dest[pointer++] = (byte) ((value >> 0) & 0xff);
+        dest[pointer++] = (byte) ((value) & 0xff);
         return pointer;
     }
 
     public static int writeBytes(byte[] dest, int pointer, char value) {
         assert (dest.length > pointer + Type.getSize(Type.CHAR));
         dest[pointer++] = (byte) ((value >> 8) & 0xff);
-        dest[pointer++] = (byte) ((value >> 0) & 0xff);
+        dest[pointer++] = (byte) ((value) & 0xff);
         return pointer;
     }
 
@@ -85,7 +77,7 @@ public class SerializationUtils {
         dest[pointer++] = (byte) ((value >> 24) & 0xff);
         dest[pointer++] = (byte) ((value >> 16) & 0xff);
         dest[pointer++] = (byte) ((value >> 8) & 0xff);
-        dest[pointer++] = (byte) ((value >> 0) & 0xff);
+        dest[pointer++] = (byte) ((value) & 0xff);
         return pointer;
     }
 
@@ -98,7 +90,7 @@ public class SerializationUtils {
         dest[pointer++] = (byte) ((value >> 24) & 0xff);
         dest[pointer++] = (byte) ((value >> 16) & 0xff);
         dest[pointer++] = (byte) ((value >> 8) & 0xff);
-        dest[pointer++] = (byte) ((value >> 0) & 0xff);
+        dest[pointer++] = (byte) ((value) & 0xff);
         return pointer;
     }
 
@@ -130,8 +122,7 @@ public class SerializationUtils {
     }
 
     public static void readBytes(byte[] src, int pointer, byte[] dest) {
-        for (int i = 0; i < dest.length; i++)
-            dest[i] = src[pointer + i];
+        System.arraycopy(src, pointer, dest, 0, dest.length);
     }
 
     public static void readShorts(byte[] src, int pointer, short[] dest) {
