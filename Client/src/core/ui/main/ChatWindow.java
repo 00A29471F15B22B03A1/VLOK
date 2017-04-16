@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 //TODO: Fix localization
+//TODO: Max chat message size
 public class ChatWindow {
 
     private Stage window;
@@ -56,13 +57,21 @@ public class ChatWindow {
         input.setPromptText(Localization.get("ui.s_type_here"));
         input.setOnKeyPressed(ke -> {
             if (ke.getCode().equals(KeyCode.ENTER)) {
-                if (input.getText().isEmpty())
+                String message = input.getText();
+                int messageL = message.length();
+                if (message.isEmpty())
                     return;
 
-                VLOKManager.sendChatMessage(username, input.getText().trim());
+                if (messageL > 100) {
+                    chat.appendText("[ERROR] Messages cant be bigger than 100 characters");
+                    return;
+                }
+
+                VLOKManager.sendChatMessage(username, message.trim());
                 input.setText("");
             }
         });
+
 
         layout.setCenter(chat);
         layout.setBottom(input);
