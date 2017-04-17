@@ -107,6 +107,11 @@ public class ChatWindow {
 
         window.setOnCloseRequest(we -> VLOKManager.sendChatLogin(username, false));
 
+        Localization.addLanguageListener(newLanguage -> {
+            window.setTitle(Localization.get("ui.chat"));
+            input.setPromptText(Localization.get("ui.s_type_here"));
+        });
+
     }
 
     private class ChatPacketHandler extends PacketHandler {

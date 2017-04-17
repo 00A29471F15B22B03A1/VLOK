@@ -24,6 +24,13 @@ ui.description=Beschrijving
 ui.created_by=Gemaakt door
 ui.path=Pad
 
+#CHAT
+#q = vraag
+#s = zin
+ui.chat=babbel
+ui.q_username=Geef een gebruikersnaam a.u.b
+ui.s_type_here=Tijp hier om te babbelen...
+
 #ERROR
 error.error=Fout
 error.file_too_big=Bestand is te groot
