@@ -48,6 +48,11 @@ public class ChatWindow {
     public void show() {
         if (username == null) {
             username = Popup.input(Localization.get("ui.chat"), Localization.get("ui.q_username"));
+
+            while (onlineU.contains(username)) {
+                Popup.alert(Localization.get("error.error"), "Username already in use");
+                username = Popup.input(Localization.get("ui.chat"), Localization.get("ui.q_username"));
+            }
         }
         VLOKManager.sendChatLogin(username, true);
         window.show();
