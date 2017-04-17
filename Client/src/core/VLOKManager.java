@@ -86,7 +86,7 @@ public class VLOKManager {
         client.sendTCP(chatMessage);
     }
 
-    public static void sendChatLogin(String username, boolean onlineStatus, String sessionKey) {
+    public static void sendChatLogin(String username, boolean onlineStatus) {
         ChatLoginPacket chatLogin = new ChatLoginPacket(username, onlineStatus, VLOKManager.sessionKey);
         client.sendTCP(chatLogin);
 

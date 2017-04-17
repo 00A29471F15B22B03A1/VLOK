@@ -20,8 +20,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.List;
 
 
 //TODO: Fix localization
@@ -36,6 +37,8 @@ public class ChatWindow {
 
     private String username;
 
+    public List<String> onlineU = new ArrayList<>();
+
 
     public ChatWindow() {
         createWindow();
@@ -47,7 +50,7 @@ public class ChatWindow {
         if (username == null) {
             username = Popup.input(Localization.get("ui.chat"), Localization.get("ui.q_username"));
         }
-        VLOKManager.sendChatLogin(username, true, VLOKManager.sessionKey);
+        VLOKManager.sendChatLogin(username, true);
         window.show();
     }
 
@@ -147,21 +150,27 @@ public class ChatWindow {
         public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
             ChatLoginPacket packet = (ChatLoginPacket) p;
 
-            HashMap<Integer, String> hmap = new HashMap<>();
-
             chat.appendText("--Welcome " + packet.username + " to the chatroom--");
             chat.appendText("\n");
 
             if (((ChatLoginPacket) p).onlineStatus) {
-
-                int sessionKey = Integer.parseInt(packet.sessionKey);
-                hmap.put(sessionKey, packet.username);
-
+                onlineU.add(packet.username);
+                writeOnline();
+            } else {
+                onlineU.remove(packet.username);
+                writeOnline();
             }
+
+        }
+
+        private void writeOnline() {
+
+            for (int i = 0; onlineU.size() > i; i++)
+                online.appendText("-" + onlineU.get(i) + "\n");
+
         }
 
     }
-
 
 }
 

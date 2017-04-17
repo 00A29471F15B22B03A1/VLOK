@@ -5,7 +5,6 @@ public class ChatLoginPacket extends Packet {
 
     public String username;
     public boolean onlineStatus;
-    public String sessionKey;
 
 
     public ChatLoginPacket() {
@@ -15,7 +14,7 @@ public class ChatLoginPacket extends Packet {
 
         this.username = username;
         this.onlineStatus = onlineStatus;
-        this.sessionKey = sessionKey;
+
     }
 
 }
