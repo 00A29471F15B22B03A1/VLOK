@@ -4,15 +4,15 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import core.packets.Packet;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public abstract class NetworkInterface {
 
     private List<PacketHandler> packetHandlers;
 
     public NetworkInterface() {
-        packetHandlers = new ArrayList<>();
+        packetHandlers = new CopyOnWriteArrayList<>();
     }
 
     public void addPacketHandler(PacketHandler packetHandler) {

@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 //TODO: Fix localization
 
 public class ChatWindow {
@@ -101,6 +100,8 @@ public class ChatWindow {
 
         input.requestFocus();
 
+        window.setOnCloseRequest(we -> VLOKManager.sendChatLogin(username, false));
+
     }
 
     private class ChatPacketHandler extends PacketHandler {
@@ -150,13 +151,12 @@ public class ChatWindow {
         public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
             ChatLoginPacket packet = (ChatLoginPacket) p;
 
-            chat.appendText("--Welcome " + packet.username + " to the chatroom--");
-            chat.appendText("\n");
-
             if (((ChatLoginPacket) p).onlineStatus) {
+                chat.appendText("--Welcome " + packet.username + " to the chatroom--" + "\n");
                 onlineU.add(packet.username);
                 writeOnline();
             } else {
+                chat.appendText("--" + packet.username + " left the room--" + "\n");
                 onlineU.remove(packet.username);
                 writeOnline();
             }
@@ -165,6 +165,7 @@ public class ChatWindow {
 
         private void writeOnline() {
 
+            online.setText("[ONLINE] \n");
             for (int i = 0; onlineU.size() > i; i++)
                 online.appendText("-" + onlineU.get(i) + "\n");
 
@@ -173,8 +174,3 @@ public class ChatWindow {
     }
 
 }
-
-
-
-
-
