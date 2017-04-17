@@ -9,7 +9,6 @@ import java.nio.file.StandardOpenOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-@SuppressWarnings("ResultOfMethodCallIgnored")
 public class Utils {
 
     public static String getDownloadPath() {
