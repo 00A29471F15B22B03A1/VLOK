@@ -57,12 +57,12 @@ public class Prefs {
     }
 
     private void storeValues() {
-        String file = "";
+        StringBuilder file = new StringBuilder();
 
         for (Map.Entry<String, PrefsValue> entry : loadedValues.entrySet())
-            file += entry.getKey() + SPLIT_CHAR + entry.getValue().type.toString() + SPLIT_CHAR + entry.getValue().value + "\n";
+            file.append(entry.getKey()).append(SPLIT_CHAR).append(entry.getValue().type.toString()).append(SPLIT_CHAR).append(entry.getValue().value).append("\n");
 
-        Utils.writeToFile(prefsPath, file);
+        Utils.writeToFile(prefsPath, file.toString());
     }
 
     public void addValue(String name, String value, PrefsValue.Type type) {

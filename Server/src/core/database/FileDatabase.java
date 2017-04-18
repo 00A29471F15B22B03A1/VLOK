@@ -63,7 +63,7 @@ public class FileDatabase {
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(2, name);
-            pstmt.setString(3, description);
+            pstmt.setString(4, description);
             pstmt.setInt(5, PermissionLevels.PEASAN);
             pstmt.setString(6, "true");
             pstmt.setString(7, new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new Date()));

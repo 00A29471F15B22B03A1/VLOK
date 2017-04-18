@@ -30,6 +30,7 @@ public class LoginWindow {
     public LoginWindow(Stage primaryStage) {
         scene = new Scene(createPane(), 215, 115);
         primaryStage.setTitle(Localization.get("ui.login"));
+        primaryStage.setResizable(false);
     }
 
     private GridPane createPane() {

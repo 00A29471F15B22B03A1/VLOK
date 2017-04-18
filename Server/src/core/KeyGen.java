@@ -18,22 +18,22 @@ public class KeyGen {
     }
 
     private static String getNewKey() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
-        result += randomInt();
-        result += randomChar();
+        result.append(randomInt());
+        result.append(randomChar());
         for (int i = 0; i < 4; i++)
-            result += randomInt();
-        result += randomChar();
+            result.append(randomInt());
+        result.append(randomChar());
         for (int i = 0; i < 4; i++)
-            result += randomInt();
-        result += randomChar();
-        result += randomInt();
-        result += randomChar();
-        result += randomInt();
-        result += randomChar();
+            result.append(randomInt());
+        result.append(randomChar());
+        result.append(randomInt());
+        result.append(randomChar());
+        result.append(randomInt());
+        result.append(randomChar());
 
-        return result;
+        return result.toString();
     }
 
     private static int randomInt() {

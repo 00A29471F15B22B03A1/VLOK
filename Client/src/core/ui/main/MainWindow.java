@@ -77,18 +77,6 @@ public class MainWindow {
 
         VLOKManager.sendRequest(RequestPacket.Type.FILE_STRUCTURE, "");
 
-        VLOKManager.client.addPacketHandler(new PacketHandler(FileStructurePacket.class) {
-            @Override
-            public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
-                if (p instanceof FileStructurePacket) {
-                    FileStructure fileStructure = ((FileStructurePacket) p).fileStructure;
-                    root.getChildren().clear();
-                    for (FileInfo f : fileStructure.getFiles())
-                        root.getChildren().add(new TreeItem<>(f));
-                }
-            }
-        });
-
         TreeView<FileInfo> files = new TreeView<>(root);
         files.setShowRoot(false);
         files.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -99,6 +87,20 @@ public class MainWindow {
             fileUploadDate.setText(selectedInfo.uploadDate);
             selectedFile = selectedInfo;
         });
+
+        VLOKManager.client.addPacketHandler(new PacketHandler(FileStructurePacket.class) {
+            @Override
+            public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
+                if (p instanceof FileStructurePacket) {
+                    FileStructure fileStructure = ((FileStructurePacket) p).fileStructure;
+                    root.getChildren().clear();
+
+                    for (FileInfo f : fileStructure.getFiles())
+                        addChild(files, f);
+                }
+            }
+        });
+
 
         borderPane.setCenter(files);
         //</editor-fold>
@@ -155,7 +157,25 @@ public class MainWindow {
     }
 
     private void addChild(TreeView<FileInfo> treeView, FileInfo fileInfo) {
+        String[] splitPath = fileInfo.path.split("/");
+        TreeItem<FileInfo> currentNode = treeView.getRoot();
+        for (String dir : splitPath) {
+            TreeItem<FileInfo> item = hasChild(currentNode, dir);
+            if (item == null) {
+                item = new TreeItem<>(new FileInfo(dir, "Folder"));
+                currentNode.getChildren().add(item);
+            }
+            currentNode = item;
+        }
 
+        currentNode.getChildren().add(new TreeItem<>(fileInfo));
+    }
+
+    private TreeItem<FileInfo> hasChild(TreeItem<FileInfo> item, String name) {
+        for (TreeItem<FileInfo> child : item.getChildren())
+            if (child.getValue().name.equals(name))
+                return child;
+        return null;
     }
 
     public Scene getScene() {

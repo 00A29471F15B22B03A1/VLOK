@@ -23,6 +23,7 @@ public class SettingsWindow {
         if (dialog == null)
             createWindow();
         dialog.show();
+        dialog.setResizable(false);
     }
 
     private void createWindow() {
