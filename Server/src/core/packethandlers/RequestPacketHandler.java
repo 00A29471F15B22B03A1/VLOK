@@ -43,7 +43,7 @@ public class RequestPacketHandler extends PacketHandler {
             case FILE_DOWNLOAD:
                 int fileId = Integer.parseInt(((RequestPacket) p).argument);
                 FileInfo fileInfo = FileManager.getFile(fileId);
-                FileSender.sendFile(fileInfo, new File("storage/" + fileInfo.name), "", packet1 -> ni.sendTCP(packet1, c.getID()));
+                FileSender.sendFile(fileInfo, new File("Server/storage/" + fileInfo.name), "", packet1 -> ni.sendTCP(packet1, c.getID()));
                 break;
 
             case FILE_UNPEND:

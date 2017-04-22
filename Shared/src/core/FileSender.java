@@ -25,7 +25,7 @@ public class FileSender {
 
                 if (sendData.length == 0) continue;
 
-                    sa.send(new FileTransferPacket(fi, sendData, false, sk));
+                sa.send(new FileTransferPacket(fi, sendData, false, sk));
             }
 
             is.close();

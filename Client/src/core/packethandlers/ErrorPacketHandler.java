@@ -16,6 +16,6 @@ public class ErrorPacketHandler extends PacketHandler {
 
     @Override
     public void handlePacket(Packet p, Connection c, NetworkInterface ni) {
-        Popup.alert(Localization.get("error.error"), ((ErrorPacket) p).error);
+        Popup.error(Localization.get("error.error"), ((ErrorPacket) p).error);
     }
 }

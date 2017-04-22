@@ -22,7 +22,7 @@ public class ServerMain {
 
         server.addPacketHandler(new LoginPacketHandler());
         server.addPacketHandler(new RequestPacketHandler());
-        server.addPacketHandler(new FileTransferPacketHandler("storage/", (file, fileInfo) -> FileManager.addFile(fileInfo)));
+        server.addPacketHandler(new FileTransferPacketHandler("Server/storage/", (file, fileInfo) -> FileManager.addFile(fileInfo)));
         server.addPacketHandler(new ChatPacketHandler());
         server.addPacketHandler(new ChatLoginPacketHandler());
 

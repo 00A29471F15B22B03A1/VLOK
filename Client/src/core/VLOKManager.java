@@ -29,8 +29,6 @@ public class VLOKManager {
 
         client.addPacketHandler(new ErrorPacketHandler());
 
-        VLOKManager.sendRequest(RequestPacket.Type.FILE_STRUCTURE, "");
-
         client.addListener(new Listener() {
             @Override
             public void received(Connection connection, Object o) {

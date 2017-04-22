@@ -50,7 +50,7 @@ public class ChatWindow {
             username = Popup.input(Localization.get("ui.chat"), Localization.get("ui.q_username"));
 
             while (onlineU.contains(username)) {
-                Popup.alert(Localization.get("error.error"), "Username already in use");
+                Popup.error(Localization.get("error.error"), "Username already in use");
                 username = Popup.input(Localization.get("ui.chat"), Localization.get("ui.q_username"));
             }
         }

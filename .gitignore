@@ -1,7 +1,8 @@
 out/
-storage/
+Server/storage/
 VLOKData/
 *.xml
 main.prefs
 chat.log
 .idea
+Server/dbs/

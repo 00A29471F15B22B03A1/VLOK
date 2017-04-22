@@ -54,8 +54,8 @@ public class Console {
         });
         frame.add(inputField, BorderLayout.SOUTH);
 
-        if (Prefs.SETTINGS.getBoolean("debug"))
-            frame.setVisible(true);
+        //if (Prefs.SETTINGS.getBoolean("debug"))
+        //    frame.setVisible(true);
     }
 
     public static void info(String message) {

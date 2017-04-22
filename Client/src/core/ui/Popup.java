@@ -11,7 +11,7 @@ import java.util.concurrent.FutureTask;
 
 public class Popup {
 
-    public static void alert(String title, String message) {
+    public static void error(String title, String message) {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle(title);
@@ -35,7 +35,6 @@ public class Popup {
 
     //TODO: FIX DEZE GELE PRUT
     public static boolean confirm(String title, String message) {
-        FutureTask<Boolean> task = new FutureTask(() -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle(title);
             alert.setHeaderText(null);
@@ -43,14 +42,15 @@ public class Popup {
 
             Optional<ButtonType> result = alert.showAndWait();
             return result.map(buttonType -> buttonType == ButtonType.OK).orElse(false);
-        });
-        Platform.runLater(task);
-        try {
-            return task.get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
-        return false;
+//        });
+//
+//        Platform.runLater(task);
+//        try {
+//            return task.get();
+//        } catch (InterruptedException | ExecutionException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
     }
 
     public static String input(String title, String message) {
