@@ -1,0 +1,53 @@
+#UI
+ui.file_properties=Cyka Blyat
+ui.download=Cyka Blyat
+ui.folder_properties=Cyka Blyat
+ui.upload=Cyka Blyat
+
+ui.login=Cyka Blyat
+ui.key=Cyka Blyat
+ui.code=Cyka Blyat
+ui.continue=Cyka Blyat
+ui.file=Cyka Blyat
+ui.files=Cyka Blyat
+ui.language=Cyka Blyat
+ui.languages=Cyka Blyat
+ui.settings=Cyka Blyat
+ui.save=Cyka Blyat
+ui.cancel=Cyka Blyat
+ui.accept=Cyka Blyat
+ui.pending=Cyka Blyat
+ui.debug=Cyka Blyat
+ui.exit=Cyka Blyat
+ui.name=Cyka Blyat
+ui.description=Cyka Blyat
+ui.created_by=Cyka Blyat
+ui.path=Cyka Blyat
+ui.upload_date=Cyka Blyat
+ui.close=Cyka Blyat
+ui.credits=Cyka Blyat
+ui.help=Cyka Blyat
+ui.documentation=Cyka Blyat
+ui.choose_file=Cyka Blyat
+ui.update=Cyka Blyat
+ui.update_available=Cyka Blyat
+ui.give_file_name=Cyka Blyat
+ui.give_file_description=Cyka Blyat
+ui.canceling_upload=Cyka Blyat
+ui.canceling_upload_no_name=Cyka Blyat
+ui.confirm=Cyka Blyat
+ui.file_upload_complete=Cyka Blyat
+
+#CHAT
+#q = question
+#s = sentence
+ui.chat=Cyka Blyat
+ui.q_username=Cyka Blyat
+ui.s_type_here=Cyka Blyat
+
+#ERROR
+error.error=Cyka Blyat
+error.file_too_big=Cyka Blyat
+error.connect_to_server=Failed to connect to server
+
+error.login=Failed to login

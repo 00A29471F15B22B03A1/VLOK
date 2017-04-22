@@ -1,11 +1,11 @@
 package core;
 
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
 import core.localization.Localization;
 import core.logging.Console;
 import core.packethandlers.ErrorPacketHandler;
-import core.packets.ChatMessagePacket;
-import core.packets.LoginPacket;
-import core.packets.RequestPacket;
+import core.packets.*;
 import core.ui.Popup;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -17,6 +17,7 @@ public class VLOKManager {
 
     public static NetworkClient client;
     public static String sessionKey;
+    public static FileStructure fileStructure;
 
 
     public static void init() {
@@ -27,6 +28,17 @@ public class VLOKManager {
         client.addPacketHandler(new FileTransferPacketHandler(Utils.getDownloadPath(), (file, fileInfo) -> Utils.selectFile(file.getPath())));
 
         client.addPacketHandler(new ErrorPacketHandler());
+
+        VLOKManager.sendRequest(RequestPacket.Type.FILE_STRUCTURE, "");
+
+        client.addListener(new Listener() {
+            @Override
+            public void received(Connection connection, Object o) {
+                if (o instanceof FileStructurePacket) {
+                    fileStructure = ((FileStructurePacket) o).fileStructure;
+                }
+            }
+        });
 
         Console.info("Initialized VLOK");
     }
@@ -69,9 +81,15 @@ public class VLOKManager {
         client.sendTCP(requestPacket);
     }
 
-    public static void sentChatMessage(String username, String text) {
+    public static void sendChatMessage(String username, String text) {
         ChatMessagePacket chatMessage = new ChatMessagePacket(text, VLOKManager.sessionKey, username);
         client.sendTCP(chatMessage);
+    }
+
+    public static void sendChatLogin(String username, boolean onlineStatus) {
+        ChatLoginPacket chatLogin = new ChatLoginPacket(username, onlineStatus, VLOKManager.sessionKey);
+        client.sendTCP(chatLogin);
+
     }
 
 }

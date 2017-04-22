@@ -8,7 +8,8 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Language {
+public enum
+Language {
 
     English("en"),
     Dutch("nl"),
@@ -22,7 +23,8 @@ public enum Language {
     Punjabi("pa"),
     Romanian("ro"),
     Afrikaans("af"),
-    Swahili("sw");
+    Swahili("sw"),
+    TestLanguageDEV("tl");
 
     private Map<String, String> languageValues;
 
